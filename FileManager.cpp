@@ -1,49 +1,28 @@
 #include "FileManager.h"
 
-Stud::Stud()
+FileManager::FileManager()
 {
-    string 
+    studDataFile = "studData";
+    facDataFile = "facData";
 }
 
-Stud::Stud(int timeGetInLine, int timeNeeded)
+FileManager::FileManager(string studData, string facData)
 {
-    startingTicksNeeded = timeNeeded;
-    tickToArrive = timeGetInLine;
-    remainingTicksNeeded = startingTicksNeeded;
+    studDataFile = studData;
+    facDataFile = facData;
 }
 
-void Stud::decreaseRemainingTicksNeeded()
+void FileManager::updateStudFile(BST treeToSave)
 {
-    remainingTicksNeeded--;
+    //put stuff here
 }
 
-
-int Stud::getTickToArrive()
+void FileManager::updateFacFile(BST treeToSave)
 {
-    return tickToArrive;
+    //put stuff here
 }
 
-int Stud::getRemainingTicksNeeded()
-{
-    return remainingTicksNeeded;
-}
-
-int Stud::getStartingTicksNeeded()
-{
-    return startingTicksNeeded;
-}
-
-void Stud::assignWindow(int window)
-{
-    assignedWindow = window;
-}
-
-int Stud::getAssignedWindow()
-{
-    return assignedWindow;
-}
-
-Stud::~Stud()
+FileManager::~FileManager()
 {
     
 }

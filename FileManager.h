@@ -3,20 +3,14 @@
 class FileManager
 {
     private:
-        int studDataFile;
-        int remainingTicksNeeded;
-        int tickToArrive;
-        int assignedWindow;
+        string studDataFile;
+        string facDataFile;
 
     public:
-        Stud(); //default constructor
-        Stud(int timeGetInLine, int timeNeeded);
-        void decreaseRemainingTicksNeeded();
-        int getRemainingTicksNeeded();
-        int getTickToArrive();
-        int getStartingTicksNeeded();
-        void assignWindow(int window);
-        int getAssignedWindow();
+        FileManager(); //default constructor
+        FileManager(string studData, string facData);
+        void updateStudFile(BST treeToSave);
+        void updateFacFile(BST treeToSave);
 
-      ~Stud();
+      ~FileManager();
 };
