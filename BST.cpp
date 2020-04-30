@@ -1,4 +1,5 @@
-//still needs to be completed
+//still needs to be completed\
+#include "BST.h"
 
 BST::BST()
 {
@@ -78,7 +79,7 @@ TreeNode* BST::getMax()
                 }
             }
         }
-        
+
     }//end of insert
 
     bool BST::search(int value)
@@ -103,7 +104,7 @@ TreeNode* BST::getMax()
 
                 if(current == NULL)
                     {return false;}
-                
+
             }
             return false;
         }
@@ -151,7 +152,7 @@ TreeNode* BST::getMax()
                     {parent->left = NULL;}
                 else
                     {parent->right = NULL;}
-                
+
             }
             //one child and the child is left
             else if(current->right == NULL) //doesn't have right child
@@ -161,7 +162,7 @@ TreeNode* BST::getMax()
                     {root = current->left;}
                 else if (isLeft)
                     {parent->left = current->left;}
-                else 
+                else
                     {parent->right = current->right;}
         }
         else
