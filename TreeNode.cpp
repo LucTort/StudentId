@@ -8,7 +8,7 @@ TreeNode::TreeNode()
     right = NULL;
 }
 
-TreeNode::TreeNode(int key)
+TreeNode::TreeNode(int k)
 {
     key = k;
     left = NULL;

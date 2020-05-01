@@ -1,12 +1,19 @@
+#include <cstdlib>
+#include <stdexcept>
+#include <iostream>
+
+using namespace std;
+
+
 class TreeNode{
     public:
         TreeNode();
-        treeNode(int key);
+        TreeNode(int key);
             //could also
         //TreeNode(int key, <type> value)
         ~TreeNode();
-        //when working with template classes 
-        virtual ~TreeNode();
+        //when working with template classes
+        // virtual ~TreeNode();
 
         int key;
         TreeNode *left;
