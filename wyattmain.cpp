@@ -1,7 +1,7 @@
 #include "BST.cpp"
 int main(){
   BST *w = new BST();
-  TreeNode *node = new TreeNode();
+  // TreeNode *node = new TreeNode();
 
   w->insert(5);
   w->insert(10);
@@ -15,11 +15,17 @@ int main(){
   w-> printTree(w->getMax());
   w-> printTree(w->getMin());
 
-  cout << w->deleteNode(2) << endl;
+  // w->deleteNode(2);
 
-  cout << w->search(2) << endl;//0 means true?
+  cout << w->search(2)<< endl;
 
-  w-> printTree(w->getMin());
+  w->deleteNode(2);
+
+  cout << w->search(2)<< endl;
+
+  // w-> printTree(w->getMin());
+
+  // w->printTree(w->search(5));
 
   return 0;
 }

@@ -9,6 +9,7 @@ class BST{
 
         //only returns if the value is in the tree
         bool search(int value); //which in this example is also our key
+        TreeNode* searchNode(int value);
         bool deleteNode(int k);
 
         bool isEmpty();
