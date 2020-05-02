@@ -19,11 +19,11 @@ int main(){
 
   cout << w->search(2)<< endl;
 
-  w->deleteNode(13);
+  w->deleteNode(12);
 
   cout << "Test" << endl;
 
-  cout << w->search(13)<< endl;
+  cout << w->search(12)<< endl;
 
   w-> printTree(w->getMin());
 
