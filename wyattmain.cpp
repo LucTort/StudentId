@@ -7,10 +7,10 @@ int main(){
   w->insert(10);
   w->insert(3);
   w->insert(12);
-  w->insert(5);
   w->insert(8);
   w->insert(4);
   w->insert(2);
+  w->insert(13);
 
   w-> printTree(w->getMax());
   w-> printTree(w->getMin());
@@ -19,11 +19,13 @@ int main(){
 
   cout << w->search(2)<< endl;
 
-  w->deleteNode(2);
+  w->deleteNode(13);
 
-  cout << w->search(2)<< endl;
+  cout << "Test" << endl;
 
-  // w-> printTree(w->getMin());
+  cout << w->search(13)<< endl;
+
+  w-> printTree(w->getMin());
 
   // w->printTree(w->search(5));
 

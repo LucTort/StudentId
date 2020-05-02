@@ -118,22 +118,31 @@ TreeNode* BST::getMax()
             {
                 if(value < current->key)
                 {
+
+                    if(current->left == NULL)
+                        {
+                            return false;
+                        }
                     current = current->left;
-                    if (current->key == value){
-                      return true;
-                    }
+                    if (current->key == value)
+                        {
+                            return true;
+                            }
                 }
-                else
+                else if(value > current->key)
                     {
+                        if(current->right == NULL)
+                        {
+                            return false;
+                        }
                         current = current->right;
-                        if (current->key == value){
-                          return true;
+                        if (current->key == value)
+                        {
+                            return true;
                         }
                     }
-
                 if(current == NULL)
                     {return false;}
-
             }
             return false;
         }
@@ -192,39 +201,46 @@ TreeNode* BST::getMax()
 
         //usual code to find TreeNode
         //we will also update pointers
-        while(current->key != k)
+        while(current->key != k)    //stops when finds node to delete
         {
-          cout << "parent = current: "<< current -> key<< endl;
+            cout << "parent = current: "<< current -> key<< endl;
+            cout << "Operation 1 started" << endl;
             parent = current;
+            cout << "Operation 1 finished" << endl;
+
+
             if(k < current->key)
             {
-              cout << "ffff"<< endl;
-              cout << current->key << endl;
+                cout << "Operation 2 started" << endl;
+                cout << current->key << endl;
                 isLeft = true;
                 current = current->left;
-            }
-            else
+                cout << "Operation 2 finished" << endl;
+            }else
             {
-              cout << "dddd"<< endl;
+                cout << "Operation 3 started" << endl;
                 isLeft = false;
                 current = current->right;
+                cout << "Operation 3 finished" << endl;
             }
 
             if(current == NULL)
             {
-              cout << "ssss"<< endl;
+                cout << "Operation 4 started" << endl;
                 return false;
+                cout << "Operation 4 finished" << endl;
             }
-            cout << "jeffffff"<< endl;
-            cout << current->key << endl;
-          }
+                cout << "Operation 5 started" << endl;
+                cout << current->key << endl;
+                cout << "Operation 5 finished" << endl;
+        }
 
             //if we made here, then we've found the node now let's proceed to deleteNode
 
             //no children, leaf TreeNode
             if(current->left == NULL && current->right == NULL)
             {
-                cout << "sf s"<< endl;
+                cout << "Operation 6 started" << endl;
                 if(current == root)
                 {
                   cout << "sf"<< endl;
@@ -244,14 +260,20 @@ TreeNode* BST::getMax()
                     parent->right = NULL;
                 }
 
-                cout << "Operation complete"<< endl;
+                cout << "Operation 6 finished" << endl;
             }
-
+            
+            // else if(parent->left == NULL)
+            //     {cout << current->right->key << endl;}
+ 
+            
             // cout << "POOP"<< endl;
             //one child and the child is isLeft
+            
             else if(current->right == NULL)
             {
-              cout << "Operation started 1"<< endl;
+
+                cout << "Operation 7 started" << endl;
                 //does not have a right child
                 if(current == root)
                 {
@@ -266,10 +288,12 @@ TreeNode* BST::getMax()
                 {
                     parent->right = current->right;
                 }
+                cout << "Operation 7 finished" << endl;
             }
+
             else if(current->left == NULL)
             {
-              cout << "Operation started 2"<< endl;
+                cout << "Operation 8 started" << endl;
                 //does not have a left child
                 if(current == root)
                 {
@@ -284,6 +308,7 @@ TreeNode* BST::getMax()
                 {
                     parent->right = current->right;
                 }
+                cout << "Operation 8 finished" << endl;
             }
             else
             {
@@ -293,22 +318,31 @@ TreeNode* BST::getMax()
 
                 if(current == root)
                 {
+                    cout << "Operation 9 started" << endl;
                     root = successor;
+                    cout << "Operation 9 finished" << endl;
                 }
                 else if(isLeft)
                 {
-                  cout << "fwjfs"<< endl;
+                    cout << "Operation 10 started" << endl;
                     parent->left = successor;
+                    cout << "Operation 10 finished" << endl;
                 }
                 else
                 {
+                    cout << "Operation 11 started" << endl;
                     parent->right = successor;
+                    cout << "Operation 11 finished" << endl;
                 }
 
+                cout << "Operation 12 started" << endl;
                 successor->left = current->left;
+                cout << "Operation 12 finished" << endl;
 
                 return true;
             }
+
+            cout << "End of function" << endl;
     }
 
     TreeNode* BST::getSuccessor(TreeNode *d)
