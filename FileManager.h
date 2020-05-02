@@ -9,8 +9,11 @@ class FileManager
     public:
         FileManager(); //default constructor
         FileManager(string studData, string facData);
-        void updateStudFile(BST treeToSave);
-        void updateFacFile(BST treeToSave);
+        void saveStudFile(BST treeToSave);
+        void saveFacFile(BST treeToSave);
+
+        BST getStudData();
+        BST getFacData();
 
       ~FileManager();
 };

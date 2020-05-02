@@ -1,3 +1,4 @@
+//uses code from assignment 4
 #include "FileManager.h"
 
 FileManager::FileManager()
@@ -12,12 +13,32 @@ FileManager::FileManager(string studData, string facData)
     facDataFile = facData;
 }
 
-void FileManager::updateStudFile(BST treeToSave)
+void FileManager::saveStudFile(LinkedList studNodes)
 {
-    //put stuff here
+    ofstream saveFile;  //https://www.cplusplus.com/reference/fstream/fstream/open/
+
+    saveFile.open(studDataFile, std::trunc);   //opens file, truncating current data in file
+
+    if (!saveFile.is_open()) //makes sure file opens correctly
+        {
+            cout << "Error: Couldn't create save file" << endl;
+            return 1;
+        }
+
+    TreeNode studTreeNode = studNodes->removeFront();
+
+    Person currentStud = studTreeNode->getData();
+
+    string str = "";
+
+    str << currentStud.getId() << "+" << currentStud.getName() << "+" << currentStud.getGPA() << "+" << currentStud.getStanding();
+
+    saveFile << str << "\n";
+
+    saveFile.close();
 }
 
-void FileManager::updateFacFile(BST treeToSave)
+void FileManager::saveFacFile(LinkedList facNodes)
 {
     //put stuff here
 }
