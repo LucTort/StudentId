@@ -41,10 +41,12 @@ class Person
         void setStanding(int standing);
         void setMajor(int major);
         void setGPA(double GPA);
+        void setAdvisor(int advisor);
 
         string getStanding();
         string getMajor();
         double getGPA();
+        int getAdvisor();
 
       ~Person();
 };

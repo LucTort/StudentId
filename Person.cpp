@@ -30,6 +30,13 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             GPA = GPAIn;
         }
 
+        void Person::setAdvisor(int advisorIn)
+        {
+            advisor = advisorIn;
+        }
+
+
+
         string Person::getStanding()
         {
             return standing;
@@ -43,6 +50,11 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
         double Person::getGPA()
         {
             return GPA;
+        }
+
+        int Person::getAdvisor()
+        {
+            return advisor;
         }
 
 Person::~Person()
