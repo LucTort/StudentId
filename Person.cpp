@@ -4,47 +4,17 @@
 
 Person::Person()
 {
-    startingTicksNeeded = 1;
-    remainingTicksNeeded = startingTicksNeeded;
+
 }
 
-Person::Person(int timeGetInLine, int timeNeeded)
+Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, int advisorIn)
 {
-    startingTicksNeeded = timeNeeded;
-    tickToArrive = timeGetInLine;
-    remainingTicksNeeded = startingTicksNeeded;
+    id = idIn;
+    name = nameIn;
+    standing = standingIn;
+
 }
 
-void Person::decreaseRemainingTicksNeeded()
-{
-    remainingTicksNeeded--;
-}
-
-
-int Person::getTickToArrive()
-{
-    return tickToArrive;
-}
-
-int Person::getRemainingTicksNeeded()
-{
-    return remainingTicksNeeded;
-}
-
-int Person::getStartingTicksNeeded()
-{
-    return startingTicksNeeded;
-}
-
-void Person::assignWindow(int window)
-{
-    assignedWindow = window;
-}
-
-int Person::getAssignedWindow()
-{
-    return assignedWindow;
-}
 
 Person::~Person()
 {

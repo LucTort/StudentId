@@ -1,5 +1,9 @@
 //References Stud class from assignment 4
 
+using namespace std;
+#include <cstdlib>
+#include <stdexcept>
+#include <iostream>
 
 
 class Person
@@ -17,12 +21,12 @@ class Person
         //for faculty
         string level;
         string department;
-        SOMETYPE OF LINKED LISST advisees;
+        // SOMETYPE OF LINKED LISST advisees;
 
     public:
         Person(); //default constructor
         Person(int id, string name, string standing, string major, double GPA, int advisor);  //constructor for students
-        Person(int id, string name, string standing, string level, string department, SOMETYPE OF LINKED LISST advisees;);  //constructor for students
+        // Person(int id, string name, string standing, string level, string department, SOMETYPE OF LINKED LISST advisees;);  //constructor for students
 
         //all person functions
 
@@ -42,7 +46,6 @@ class Person
         int getStanding();
         int getMajor();
         double getGPA();
-        int getGPA();
 
       ~Person();
 };
