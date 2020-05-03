@@ -1,6 +1,6 @@
 #include "BST.cpp"
 int main(){
-  BST *w = new BST();
+  BST<int> *w = new BST<int>();
   // TreeNode *node = new TreeNode();
 
   w->insert(5);
@@ -19,13 +19,23 @@ int main(){
 
   cout << w->search(2)<< endl;
 
-  w->deleteNode(12);
+
+  // w->deleteNode(10);
+  // w->deleteNode(3);
+  // w->deleteNode(12);
+  // w->deleteNode(8);
+  // w->deleteNode(4);
+  // w->deleteNode(2);
+  // w->deleteNode(13);
+    w->deleteNode(5);
 
   cout << "Test" << endl;
 
-  cout << w->search(12)<< endl;
+  cout << "Is it in tree:" << w->search(5)<< endl;
 
-  w-> printTree(w->getMin());
+  cout << "Entire tree" << endl;
+
+  w-> printTree(w->getRoot());
 
   // w->printTree(w->search(5));
 

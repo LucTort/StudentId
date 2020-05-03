@@ -1,5 +1,7 @@
 #include "TreeNode.cpp"
 
+template <class T>
+
 class BST{
     public:
         BST();
@@ -9,16 +11,17 @@ class BST{
 
         //only returns if the value is in the tree
         bool search(int value); //which in this example is also our key
-        TreeNode* searchNode(int value);
+        TreeNode<T>* searchNode(int value);
         bool deleteNode(int k);
 
         bool isEmpty();
-        TreeNode* getMin();
-        TreeNode* getMax();
+        TreeNode<T>* getMin();
+        TreeNode<T>* getMax();
+        TreeNode<T>* getRoot();
 
-        TreeNode* getSuccessor(TreeNode *d);
-        void printTree(TreeNode *node);
+        TreeNode<T>* getSuccessor(TreeNode<T> *d);
+        void printTree(TreeNode<T> *node);
 
     private:
-        TreeNode *root;
+        TreeNode<T> *root;
 };

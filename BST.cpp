@@ -2,18 +2,20 @@
 
 #include "BST.h"
 
-
-BST::BST()
+template <class T>
+BST<T>::BST()
 {
     root = NULL;
 }
 
-BST::~BST()
+template <class T>
+BST<T>::~BST()
 {
     //do it yo'self
 }
 
-void BST::printTree(TreeNode *node)
+template <class T>
+void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
 {
     if (node == NULL)
         {return;}
@@ -23,9 +25,10 @@ void BST::printTree(TreeNode *node)
     printTree(node->right);
 }
 
-TreeNode* BST::getMax()
+template <class T>
+TreeNode<T>* BST<T>::getMax()
 {
-    TreeNode *curr = root;
+    TreeNode<T> *curr = root;
 
     if (root == NULL)
         {return NULL;} //empty tree
@@ -38,10 +41,17 @@ TreeNode* BST::getMax()
     return curr;
 
   } // or curr->key to get the value
+  
+  template <class T>
+TreeNode<T>* BST<T>::getRoot()
+{
+    return root;
+}
 
-  TreeNode* BST::getMin()
+template <class T>
+  TreeNode<T>* BST<T>::getMin()
   {
-      TreeNode *curr = root;
+      TreeNode<T> *curr = root;
 
       if (root == NULL)
           {return NULL;} //empty tree
@@ -55,14 +65,16 @@ TreeNode* BST::getMax()
 
     } // or curr->key to get the value
 
-    bool BST::isEmpty()
+template <class T>
+    bool BST<T>::isEmpty()
     {
         return (root == NULL);
     }
 
-    void BST::insert(int value)
+template <class T>
+void BST<T>::insert(int value)
 {
-    TreeNode *node = new TreeNode(value); //value is also the key
+    TreeNode<T> *node = new TreeNode<T>(value); //value is also the key
 
     if(root == NULL)
     {
@@ -72,8 +84,8 @@ TreeNode* BST::getMax()
     else
     {
         //tree is not empty, we need to find the location
-        TreeNode *curr = root;
-        TreeNode *parent; //empty node
+        TreeNode<T> *curr = root;
+        TreeNode<T> *parent; //empty node
 
         while(true)
         {
@@ -105,14 +117,15 @@ TreeNode* BST::getMax()
     }
 }
 
-    bool BST::search(int value)
+template <class T>
+    bool BST<T>::search(int value)
     {
         if(isEmpty())
             {false;}
         else
         {
             //tree not empty :P
-            TreeNode *current = root;
+            TreeNode<T> *current = root;
 
             while(current->key != value)
             {
@@ -148,15 +161,15 @@ TreeNode* BST::getMax()
         }
     }//end of search
 
-
-    TreeNode* BST::searchNode(int value)
+template <class T>
+    TreeNode<T>* BST<T>::searchNode(int value)
     {
         if(isEmpty())
             {cout << "The tree is empty"<< endl;}
         else
         {
             //tree not empty :P
-            TreeNode *current = root;
+            TreeNode<T> *current = root;
 
             while(current->key != value)
             {
@@ -183,7 +196,8 @@ TreeNode* BST::getMax()
         }
     }//end of search
 
-    bool BST::deleteNode(int k)
+template <class T>
+    bool BST<T>::deleteNode(int k)
     {
         if(isEmpty())
         {
@@ -195,8 +209,8 @@ TreeNode* BST::getMax()
         }
 
         //tree is not empty and value exists
-        TreeNode *current = root;
-        TreeNode *parent = root;
+        TreeNode<T> *current = root;
+        TreeNode<T> *parent = root;
         bool isLeft = true;
 
         //usual code to find TreeNode
@@ -289,7 +303,7 @@ TreeNode* BST::getMax()
             else
             {
                 //the node has 2 children
-                TreeNode *successor = getSuccessor(current);
+                TreeNode<T> *successor = getSuccessor(current);
 
                 if(current == root)
                 {
@@ -311,13 +325,14 @@ TreeNode* BST::getMax()
 
     }
 
-    TreeNode* BST::getSuccessor(TreeNode *d)
+template <class T>
+    TreeNode<T>* BST<T>::getSuccessor(TreeNode<T> *d)
     {
         //d is the node to be deleted
 
-        TreeNode *sp = d;
-        TreeNode *successor = d;
-        TreeNode *current = d->right;
+        TreeNode<T> *sp = d;
+        TreeNode<T> *successor = d;
+        TreeNode<T> *current = d->right;
 
         while(current != NULL)
         {

@@ -4,6 +4,8 @@
 
 using namespace std;
 
+template <class T>
+
 
 class TreeNode{
     public:
@@ -16,7 +18,7 @@ class TreeNode{
         // virtual ~TreeNode();
 
         int key;
-        TreeNode *left;
-        TreeNode *right;
+        TreeNode<T> *left;
+        TreeNode<T> *right;
 
 };  //never forget!
