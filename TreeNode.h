@@ -2,6 +2,8 @@
 #include <stdexcept>
 #include <iostream>
 
+#include "Person.cpp"
+
 using namespace std;
 
 template <class T>

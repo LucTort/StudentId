@@ -39,5 +39,11 @@ int main(){
 
   // w->printTree(w->search(5));
 
+
+  cout << "What would you like to do?\n"<<endl;
+  cout << "1) Print all students and their information (sorted by ascending id #)" << endl;
+  cout << "2) Print all faculty and their information (sorted by ascending id #)" << endl;
+
+
   return 0;
 }
