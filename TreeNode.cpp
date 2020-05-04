@@ -10,9 +10,10 @@ TreeNode<T>::TreeNode()
 }
 
 template <class T>
-TreeNode<T>::TreeNode(int k)
+TreeNode<T>::TreeNode(int k, T nodeDataIn)
 {
     key = k;
+    nodeData = nodeDataIn;
     left = NULL;
     right = NULL;
 }

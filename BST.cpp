@@ -2,19 +2,19 @@
 
 #include "BST.h"
 
-template <class T>
+template<typename T>
 BST<T>::BST()
 {
     root = NULL;
 }
 
-template <class T>
+template<typename T>
 BST<T>::~BST()
 {
     //do it yo'self
 }
 
-template <class T>
+template<typename T>
 void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
 {
     if (node == NULL)
@@ -25,7 +25,28 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
     printTree(node->right);
 }
 
-template <class T>
+
+template<typename T>
+void BST<T>::returnNode(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
+{
+    //LinkedList allIds = new LinkedList();
+
+    if (node == NULL)
+        {return;}
+
+    printTree(node->left);
+    printInfo(node);
+    printTree(node->right);
+}
+
+template<typename T>
+void BST<T>::printInfo(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
+{
+    cout << "GPA" << *node->getGPA << endl;
+    cout << "Id" <<  *node->getId << endl;
+}
+
+template<typename T>
 TreeNode<T>* BST<T>::getMax()
 {
     TreeNode<T> *curr = root;
@@ -42,13 +63,13 @@ TreeNode<T>* BST<T>::getMax()
 
   } // or curr->key to get the value
   
-  template <class T>
+  template<typename T>
 TreeNode<T>* BST<T>::getRoot()
 {
     return root;
 }
 
-template <class T>
+template<typename T>
   TreeNode<T>* BST<T>::getMin()
   {
       TreeNode<T> *curr = root;
@@ -65,16 +86,17 @@ template <class T>
 
     } // or curr->key to get the value
 
-template <class T>
+template<typename T>
     bool BST<T>::isEmpty()
     {
         return (root == NULL);
     }
 
-template <class T>
-void BST<T>::insert(int value)
+template<typename T>
+void BST<T>::insert(int value, T nodeValue)
 {
-    TreeNode<T> *node = new TreeNode<T>(value); //value is also the key
+    TreeNode<T> *node = new TreeNode<T>(value, nodeValue); //value is also the key
+
 
     if(root == NULL)
     {
@@ -117,7 +139,7 @@ void BST<T>::insert(int value)
     }
 }
 
-template <class T>
+template<typename T>
     bool BST<T>::search(int value)
     {
         if(isEmpty())
@@ -161,7 +183,7 @@ template <class T>
         }
     }//end of search
 
-template <class T>
+template <typename T>
     TreeNode<T>* BST<T>::searchNode(int value)
     {
         if(isEmpty())
@@ -196,7 +218,7 @@ template <class T>
         }
     }//end of search
 
-template <class T>
+template <typename T>
     bool BST<T>::deleteNode(int k)
     {
         if(isEmpty())
@@ -222,7 +244,7 @@ template <class T>
 
             if(k < current->key)
             {
-                cout << current->key << endl;
+                // cout << current->key << endl;
                 isLeft = true;
                 current = current->left;
             }else
@@ -235,7 +257,7 @@ template <class T>
             {
                 return false;
             }
-                cout << current->key << endl;
+                // cout << current->key << endl;
         }
 
             //if we made here, then we've found the node now let's proceed to deleteNode
@@ -249,7 +271,7 @@ template <class T>
                 }
                 else if(isLeft)
                 {
-                    cout << parent->left->key<<endl;
+                    // cout << parent->left->key<<endl;
                     parent->left = NULL;
                 }
                 else
@@ -325,7 +347,7 @@ template <class T>
 
     }
 
-template <class T>
+template<typename T>
     TreeNode<T>* BST<T>::getSuccessor(TreeNode<T> *d)
     {
         //d is the node to be deleted

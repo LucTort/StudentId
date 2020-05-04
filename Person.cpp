@@ -15,6 +15,11 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
 
 }
 
+        void Person::setId(int IDIn)
+        {
+            id = IDIn;
+        }
+
         void Person::setStanding(int standingIn)
         {
             standing = standingIn;
@@ -37,6 +42,11 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
 
 
 
+        int Person::getId()
+        {
+            return id;
+        }
+
         string Person::getStanding()
         {
             return standing;
@@ -57,7 +67,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return advisor;
         }
 
-Person::~Person()
-{
-    
-}
+        Person::~Person()
+        {
+            
+        }
