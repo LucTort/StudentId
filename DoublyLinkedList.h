@@ -21,6 +21,7 @@ public:
   T removeAtPos(int pos);
   T remove (T val);
   T peekQ();
+  void clearList();
 
   unsigned int getSize();
   bool isEmpty();

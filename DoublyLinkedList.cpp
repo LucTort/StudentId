@@ -206,3 +206,12 @@ T DoublyLinkedList<T>::search(T value){
     return NULL;
 
 }
+
+template <class T>
+void DoublyLinkedList<T>::clearList(){
+
+  while(size > 0){
+    removeFront();
+  }
+
+}
