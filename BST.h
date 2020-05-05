@@ -25,9 +25,9 @@ class BST{
 
 
 
-        void returnNode(TreeNode<T> *node);
+        // void returnNode(TreeNode<T> *node);
 
-        void printInfo(TreeNode<T> *node);
+        // void printInfo(TreeNode<T> *node);
 
     private:
         TreeNode<T> *root;

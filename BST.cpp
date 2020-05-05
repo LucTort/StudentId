@@ -26,25 +26,25 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
 }
 
 
-template<typename T>
-void BST<T>::returnNode(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
-{
-    //LinkedList allIds = new LinkedList();
+// template<typename T>
+// void BST<T>::returnNode(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
+// {
+//     //LinkedList allIds = new LinkedList();
+//
+//     if (node == NULL)
+//         {return;}
+//
+//     printTree(node->left);
+//     printInfo(node);
+//     printTree(node->right);
+// }
 
-    if (node == NULL)
-        {return;}
-
-    printTree(node->left);
-    printInfo(node);
-    printTree(node->right);
-}
-
-template<typename T>
-void BST<T>::printInfo(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
-{
-    cout << "GPA" << *node->getGPA << endl;
-    cout << "Id" <<  *node->getId << endl;
-}
+// template<typename T>
+// void BST<T>::printInfo(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
+// {
+//     cout << "GPA" << *node->getGPA << endl;
+//     cout << "Id" <<  *node->getId << endl;
+// }
 
 template<typename T>
 TreeNode<T>* BST<T>::getMax()
@@ -62,7 +62,7 @@ TreeNode<T>* BST<T>::getMax()
     return curr;
 
   } // or curr->key to get the value
-  
+
   template<typename T>
 TreeNode<T>* BST<T>::getRoot()
 {
@@ -280,14 +280,14 @@ template <typename T>
                 }
 
             }
-            
+
             // else if(parent->left == NULL)
             //     {cout << current->right->key << endl;}
- 
-            
+
+
             // cout << "POOP"<< endl;
             //one child and the child is isLeft
-            
+
             else if(current->right == NULL)
             {
 
