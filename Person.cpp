@@ -86,6 +86,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             cout << "ID: " << id << endl;
             cout << "Name: " << name << endl;
             cout << "Major: " << major << endl;
+            cout << "Standing: " << standing << endl;
             cout << "GPA: " << GPA << endl;
             cout << "Advisor: " << advisor << endl;
         }
