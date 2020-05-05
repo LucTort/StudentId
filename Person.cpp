@@ -20,6 +20,11 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             id = IDIn;
         }
 
+        void Person::setName(string nameIn)
+        {
+            name = nameIn;
+        }
+
         void Person::setStanding(int standingIn)
         {
             standing = standingIn;

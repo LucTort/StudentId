@@ -31,7 +31,7 @@ class Person
         //all person functions
 
         void setId(int id);
-        void setName(int name);
+        void setName(string name);
 
         int getId();
         string getName();
