@@ -20,7 +20,58 @@ void printOptions(){
 }
 
 int main(){
+<<<<<<< HEAD
   BST<Person> *w = new BST<Person>();
+=======
+
+//    ______          __     _____ __            __   ______             
+//   /_  __/__  _____/ /_   / ___// /___  ______/ /  /_  __/_______  ___ 
+//    / / / _ \/ ___/ __/   \__ \/ __/ / / / __  /    / / / ___/ _ \/ _ \
+//   / / /  __(__  ) /_    ___/ / /_/ /_/ / /_/ /    / / / /  /  __/  __/
+//  /_/  \___/____/\__/   /____/\__/\__,_/\__,_/    /_/ /_/   \___/\___/ 
+//                                                                       
+
+
+  BST<Person*> *w = new BST<Person*>();
+
+  Person *bob = new Person();
+  bob->setId(80);
+  bob->setGPA(3.29);
+
+  Person *frank = new Person();
+  frank->setId(30);
+  frank->setGPA(1.2);
+
+  Person *rosie = new Person();
+  rosie->setId(35);
+  rosie->setGPA(16);
+
+
+
+  w->insert(bob->getId(), bob);
+
+  w->insert(frank->getId(), frank);
+  w->insert(rosie->getId(), rosie);
+
+  w->printTree(w->getRoot());
+  cout<< "Delete" << endl;
+  cout << "Derp" << endl;
+//      _______             __     __     __  _                      __                      __ 
+//     / ____(_)  __   ____/ /__  / /__  / /_(_)___  ____ _   ____ _/ /_   _________  ____  / /_
+//    / /_  / / |/_/  / __  / _ \/ / _ \/ __/ / __ \/ __ `/  / __ `/ __/  / ___/ __ \/ __ \/ __/
+//   / __/ / />  <   / /_/ /  __/ /  __/ /_/ / / / / /_/ /  / /_/ / /_   / /  / /_/ / /_/ / /_  
+//  /_/   /_/_/|_|   \__,_/\___/_/\___/\__/_/_/ /_/\__, /   \__,_/\__/  /_/   \____/\____/\__/  
+//                                                /____/                                        
+  w->deleteNode(bob->getId());
+    cout<< "Reprint tree" << endl;
+
+  w->printTree(w->getRoot());
+
+  w->returnNode(w->getRoot());
+
+
+
+>>>>>>> e809575dcab5591e267a5c750c5374acd80cf706
   int option = 0;
 
   printOptions();
