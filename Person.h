@@ -38,8 +38,8 @@ class Person
 
         //for students
 
-        void setStanding(int standing);
-        void setMajor(int major);
+        void setStanding(string standing);
+        void setMajor(string major);
         void setGPA(double GPA);
         void setAdvisor(int advisor);
 

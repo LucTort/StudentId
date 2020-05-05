@@ -12,7 +12,9 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
     id = idIn;
     name = nameIn;
     standing = standingIn;
-
+    major = majorIn;
+    GPA = GPAIn;
+    advisor = advisorIn;
 }
 
         void Person::setId(int IDIn)
@@ -25,12 +27,12 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             name = nameIn;
         }
 
-        void Person::setStanding(int standingIn)
+        void Person::setStanding(string standingIn)
         {
             standing = standingIn;
         }
 
-        void Person::setMajor(int majorIn)
+        void Person::setMajor(string majorIn)
         {
             major = majorIn;
         }
