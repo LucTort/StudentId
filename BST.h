@@ -31,4 +31,6 @@ class BST{
 
     private:
         TreeNode<T> *root;
+        DoublyLinkedList<int> *myQueue = new DoublyLinkedList<int>();
+        // int size = myQueue->getSize();
 };

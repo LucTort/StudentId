@@ -1,5 +1,6 @@
 //tree implementation
 #include "TreeNode.h"
+#include "DoublyLinkedList.cpp"
 
 template <class T>
 TreeNode<T>::TreeNode()

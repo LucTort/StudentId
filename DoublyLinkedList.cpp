@@ -54,11 +54,13 @@ void DoublyLinkedList<T>::insertFront(T d){
     front->prev=node;
     front = node;
     front->prev=NULL;
+    ++size;
   } else {
     front = node;
     front->prev=NULL;
     back  = node;
     back->next=NULL;
+    ++size;
   }
 }
 
@@ -74,11 +76,15 @@ void DoublyLinkedList<T>::insertBack(T d){
     front->next = back;
     back->next=NULL;
     back->prev=front;
+    ++size;
+
     } else if(back!=NULL){
 
       node->prev=back;
       back->next=node;
       node->next=NULL;
+      ++size;
+
     }
     back = node;
 }

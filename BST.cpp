@@ -17,12 +17,32 @@ BST<T>::~BST()
 template<typename T>
 void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
 {
-    if (node == NULL)
-        {return;}
+
+  if (node == NULL)
+      {return;}
+
+
+
+  // if (node->key == root->key && myQueue->getSize()>0){
+  //   cout << "hello"<<endl;
+  //   cout << "myq"<< myQueue->getSize()<< endl;
+  //   for (int i = 0; i<=size; ++i){
+  //     cout << "I: "<< i<< endl;
+  //     cout << "for loop" << endl;
+  //     myQueue->removeFront();
+  //   }
+  // }
+
+
 
     printTree(node->left);
+    myQueue->insertFront(node->key);
     cout << node->key << endl;
     printTree(node->right);
+
+    cout << "printing the doubly" << endl;
+    myQueue->printList();
+
 }
 
 

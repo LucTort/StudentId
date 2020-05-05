@@ -73,9 +73,6 @@ int main(){
   printOptions();
 
   cin >> option;
-  if (option == 1){
-
-  }
 
 
 
