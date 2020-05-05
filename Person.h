@@ -48,5 +48,9 @@ class Person
         double getGPA();
         int getAdvisor();
 
+        //print functions
+
+        void printStudData();
+
       ~Person();
 };

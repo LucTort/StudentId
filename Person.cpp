@@ -54,6 +54,12 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return id;
         }
 
+        int Person::getName()
+        {
+            return name;
+        }
+
+
         string Person::getStanding()
         {
             return standing;
@@ -73,6 +79,15 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
         {
             return advisor;
         }
+
+        void Person::printStudData()
+        {
+            cout << "ID" << ;
+        }
+
+
+
+
 
         Person::~Person()
         {
