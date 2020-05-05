@@ -35,7 +35,7 @@ void DoublyLinkedList<T>::printList(){
   }
 }
 template <class T>
-T DoublyLinkedList<T>::peekQ(){
+T DoublyLinkedList<T>::peekDoubly(){
   ListNode<T> *curr = back;
 
   if (front == NULL){

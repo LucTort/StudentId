@@ -27,9 +27,6 @@ int main(){
 //   / / /  __(__  ) /_    ___/ / /_/ /_/ / /_/ /    / / / /  /  __/  __/
 //  /_/  \___/____/\__/   /____/\__/\__,_/\__,_/    /_/ /_/   \___/\___/
 //
-
-cout << "Test" << endl;
-
   BST<Person*> *w = new BST<Person*>();
 
   Person *bob = new Person();
@@ -51,21 +48,18 @@ cout << "Test" << endl;
   w->insert(frank->getId(), frank);
   w->insert(rosie->getId(), rosie);
 
-  w->printTree(w->getRoot());
-  cout<< "Delete" << endl;
-  cout << "Derp" << endl;
 //      _______             __     __     __  _                      __                      __
 //     / ____(_)  __   ____/ /__  / /__  / /_(_)___  ____ _   ____ _/ /_   _________  ____  / /_
 //    / /_  / / |/_/  / __  / _ \/ / _ \/ __/ / __ \/ __ `/  / __ `/ __/  / ___/ __ \/ __ \/ __/
 //   / __/ / />  <   / /_/ /  __/ /  __/ /_/ / / / / /_/ /  / /_/ / /_   / /  / /_/ / /_/ / /_
 //  /_/   /_/_/|_|   \__,_/\___/_/\___/\__/_/_/ /_/\__, /   \__,_/\__/  /_/   \____/\____/\__/
 //                                                /____/
-  w->deleteNode(bob->getId());
-    cout<< "Reprint tree" << endl;
-
   w->printTree(w->getRoot());
 
-  // w->returnNode(w->getRoot());
+  cout << "printing the doubly"<< endl;
+  w->printStudent();
+
+
 
 
 

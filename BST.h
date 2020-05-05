@@ -13,6 +13,7 @@ class BST{
         bool search(int value); //which in this example is also our key
         TreeNode<T>* searchNode(int value);
         bool deleteNode(int k);
+        void printStudent();
 
         bool isEmpty();
         TreeNode<T>* getMin();
@@ -31,6 +32,6 @@ class BST{
 
     private:
         TreeNode<T> *root;
-        DoublyLinkedList<int> *myQueue = new DoublyLinkedList<int>();
+        DoublyLinkedList<int> *myDoubly = new DoublyLinkedList<int>();
         // int size = myQueue->getSize();
 };

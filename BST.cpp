@@ -21,50 +21,36 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
   if (node == NULL)
       {return;}
 
-
-
-  // if (node->key == root->key && myQueue->getSize()>0){
-  //   cout << "hello"<<endl;
-  //   cout << "myq"<< myQueue->getSize()<< endl;
-  //   for (int i = 0; i<=size; ++i){
-  //     cout << "I: "<< i<< endl;
-  //     cout << "for loop" << endl;
-  //     myQueue->removeFront();
-  //   }
-  // }
-
-
-
+  if (node->key == root->key && myDoubly->getSize()>0){
+    myDoubly->clearList();
+  }
     printTree(node->left);
-    myQueue->insertFront(node->key);
+    myDoubly->insertBack(node->key);
     cout << node->key << endl;
     printTree(node->right);
 
-    cout << "printing the doubly" << endl;
-    myQueue->printList();
+}
+template<typename T>
+void BST<T>::printStudent(){
+  TreeNode<Person*> *studNode= new TreeNode<Person*>();
+  // Person *studNode = new Person();
+
+  int peeker = 0;
+  int GPA = 0;
+  myDoubly->printList();
+  peeker = myDoubly->removeFront();
+  cout << "peeker " << peeker << endl;
+
+  studNode = searchNode(peeker);
+
+  GPA = studNode->getGPA();
+
+  cout << GPA << endl;
+
+
+
 
 }
-
-
-// template<typename T>
-// void BST<T>::returnNode(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
-// {
-//     //LinkedList allIds = new LinkedList();
-//
-//     if (node == NULL)
-//         {return;}
-//
-//     printTree(node->left);
-//     printInfo(node);
-//     printTree(node->right);
-// }
-
-// template<typename T>
-// void BST<T>::printInfo(TreeNode<T> *node)   //create function silimar to this to grab all the nodes in the tree
-// {
-//     cout << "GPA" << *node->getGPA << endl;
-//     cout << "Id" <<  *node->getId << endl;
-// }
 
 template<typename T>
 TreeNode<T>* BST<T>::getMax()

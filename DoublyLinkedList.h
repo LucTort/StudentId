@@ -20,7 +20,7 @@ public:
   T search(T val);//will return the value or position of node depending on implementation
   T removeAtPos(int pos);
   T remove (T val);
-  T peekQ();
+  T peekDoubly();
   void clearList();
 
   unsigned int getSize();
