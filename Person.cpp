@@ -54,7 +54,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return id;
         }
 
-        int Person::getName()
+        string Person::getName()
         {
             return name;
         }
@@ -80,9 +80,14 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return advisor;
         }
 
+
         void Person::printStudData()
         {
-            cout << "ID" << ;
+            cout << "ID: " << id << endl;
+            cout << "Name: " << name << endl;
+            cout << "Major: " << major << endl;
+            cout << "GPA: " << major << endl;
+            cout << "Advisor: " << major << endl;
         }
 
 
