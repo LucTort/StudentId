@@ -19,4 +19,10 @@ TreeNode<T>::TreeNode(int k, T nodeDataIn)
     right = NULL;
 }
 
+template <class T>
+T TreeNode<T>::getNodeData()
+{
+    return nodeData;
+}
+
 //still needs implementation

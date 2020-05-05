@@ -30,22 +30,30 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
     printTree(node->right);
 
 }
+
 template<typename T>
 void BST<T>::printStudent(){
   TreeNode<Person*> *studNode= new TreeNode<Person*>();
   // Person *studNode = new Person();
 
   int peeker = 0;
-  int GPA = 0;
+  double GPA = 0;
   myDoubly->printList();
   peeker = myDoubly->removeFront();
   cout << "peeker " << peeker << endl;
 
   studNode = searchNode(peeker);
 
-  GPA = studNode->getGPA();
+  Person *currentStud = new Person();
 
-  cout << GPA << endl;
+  currentStud = studNode->getNodeData();
+
+    GPA = currentStud->getGPA();
+
+    cout << "GPA: " << GPA << endl;
+
+
+
 
 
 

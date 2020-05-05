@@ -13,6 +13,8 @@ class TreeNode{
         //when working with template classes
         // virtual ~TreeNode();
 
+        T getNodeData();
+
         int key;
         T nodeData;
         TreeNode<T> *left;
