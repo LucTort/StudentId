@@ -117,9 +117,9 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return department;
         }
 
-        DoublyLinkedList<int> Person::getAdvisees()
+        DoublyLinkedList<int>* Person::getAdvisees()
         {
-            return *advisees;
+            return advisees;
         }
 
 

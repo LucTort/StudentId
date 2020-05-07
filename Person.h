@@ -57,7 +57,7 @@ class Person
         int getAdvisor();
         string getLevel();
         string getDepartment();
-        DoublyLinkedList<int> getAdvisees();
+        DoublyLinkedList<int>* getAdvisees();
 
 
 
