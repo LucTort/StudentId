@@ -102,7 +102,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return GPA;
         }
 
-        string Person::getAdvisor()
+        int Person::getAdvisor()
         {
             return advisor;
         }
