@@ -30,7 +30,7 @@ void DoublyLinkedList<T>::printList(){
   ListNode<T> *curr = front;
 
   while (curr != NULL){
-    cout << curr -> data << ", "<<;
+    cout << curr -> data << ", ";
     curr = curr -> next;
   }
   cout << endl;
