@@ -14,6 +14,7 @@ class BST{
         TreeNode<T>* searchNode(int value);
         bool deleteNode(int k);
         void printStudent();
+        void printFac();
 
         bool isEmpty();
         TreeNode<T>* getMin();

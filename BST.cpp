@@ -56,23 +56,44 @@ void BST<T>::printStudent(){
     name = currentStud->getName();
 
     cout << " " << endl;
+
+    currentStud->printStudData();
+  }
+}
+
+template<typename T>
+void BST<T>::printFac(){
+  TreeNode<Person*> *facNode= new TreeNode<Person*>();
+  Person *currentFac = new Person();
+  int peeker = 0;
+  string level = "";
+  string department = "";
+  // DoublyLinkedList *advisees;//?????????
+  string name = "";
+  myDoubly->printList();
+
+  while (myDoubly->getSize() != 0){
+
+    peeker = myDoubly->removeFront();
+
+    facNode = searchNode(peeker);
+
+    currentFac = facNode->getNodeData();
+
+    // GPA = currentFac->getGPA();
+    // major = currentFac->getMajor();
+    // standing = currentFac ->getStanding();
+    // name = currentFac->getName();
+
+    cout << " " << endl;
     // cout << "Name: "<< name << endl;
     // cout << "ID: " << peeker << endl;
     // cout << "GPA: " << GPA << endl;
     // cout << "Major: "<< major<<endl;
     // cout << "Standing: "<< standing<< endl;
 
-    currentStud->printStudData();
+    currentFac->printFacData();
   }
-
-
-
-
-
-
-
-
-
 }
 
 template<typename T>

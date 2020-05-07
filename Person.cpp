@@ -141,6 +141,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             cout << "Department: " << department << endl;
             cout << "Advisees: ";
             advisees->printList();
+            cout << endl;
         }
 
 
