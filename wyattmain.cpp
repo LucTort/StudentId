@@ -219,6 +219,7 @@ if (option == 7){
 
   cout<< "Please enter information for the following fields "<< endl;
   cout<< "Name? "<< endl;
+  //https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
   std::getline(std::cin >> std::ws, name1);
   cout<< "ID? "<< endl;
   cin>>id1;
