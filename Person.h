@@ -64,6 +64,7 @@ class Person
         //print functions
 
         void printStudData();
+        void printFacData();
 
       ~Person();
 };
