@@ -54,7 +54,7 @@ class Person
         string getStanding();
         string getMajor();
         double getGPA();
-        string getAdvisor();
+        int getAdvisor();
         string getLevel();
         string getDepartment();
         DoublyLinkedList<int> getAdvisees();
