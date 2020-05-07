@@ -4,6 +4,7 @@ using namespace std;
 #include <cstdlib>
 #include <stdexcept>
 #include <iostream>
+#include "DoublyLinkedList.cpp"
 
 
 class Person
@@ -16,17 +17,19 @@ class Person
         string standing;
         string major;
         double GPA;
-        int advisor;
+        string advisor;
 
         //for faculty
         string level;
         string department;
-        DoublyLinkedList *advisees;
+        //DoublyLinkedList<int> *myDoubly = new DoublyLinkedList<int>();
+        DoublyLinkedList<int> *advisees = new DoublyLinkedList<int>();
         // SOMETYPE OF LINKED LISST advisees;
 
     public:
         Person(); //default constructor
-        Person(int id, string name, string standing, string major, double GPA, int advisor);  //constructor for students
+        Person(int id, string name, string standing, string major, double GPA, string advisor);  //constructor for students
+        //Person(int id, string name, string department, string level,  DoublyLinkedList<int>* advisees);  //for the faculty
         // Person(int id, string name, string standing, string level, string department, SOMETYPE OF LINKED LISST advisees;);  //constructor for students
 
         //all person functions
@@ -42,12 +45,21 @@ class Person
         void setStanding(string standing);
         void setMajor(string major);
         void setGPA(double GPA);
-        void setAdvisor(int advisor);
+        void setAdvisor(string advisor);
+        void setLevel(string levelIn);
+        void setDepartment(string departmentIn);
+        void setAdvisees(DoublyLinkedList<int> *adviseesIn);
+
 
         string getStanding();
         string getMajor();
         double getGPA();
-        int getAdvisor();
+        string getAdvisor();
+        string getLevel();
+        string getDepartment();
+        DoublyLinkedList<int> getAdvisees();
+
+
 
         //print functions
 
