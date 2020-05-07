@@ -29,36 +29,49 @@ int main(){
 //
   BST<Person*> *w = new BST<Person*>();
 
-  Person *bob = new Person();
-  bob->setId(80);
-  bob->setGPA(3.29);
+  Person *rosie = new Person();
+  rosie->setId(35);
+  rosie->setGPA(3.8);
+  rosie->setMajor("Accounting");
+  rosie->setStanding("Senior");
+  rosie->setName("Rosie O Donald");
 
   Person *frank = new Person();
   frank->setId(30);
   frank->setGPA(1.2);
+  frank->setMajor("CompSci");
+  frank->setStanding("Junior");
+  frank->setName("Frank Azark");
 
-  Person *rosie = new Person();
-  rosie->setId(35);
-  rosie->setGPA(16);
+  Person *bob = new Person();
+  bob->setId(40);
+  bob->setGPA(3.29);
+  bob->setMajor("Finance");
+  bob->setStanding("Senior");
+  bob->setName("Bob Miller");
+
+  // Person *lucas = new Person();
+  // lucas->setId(50);
+  // lucas->setGPA(3.9);
+  // lucas->setMajor("Finance");
+  // lucas->setStanding("Senior");
+  // lucas->setName("Bob Miller");
 
 
+
+
+  w->insert(frank->getId(), frank);
+
+  w->insert(rosie->getId(), rosie);
 
   w->insert(bob->getId(), bob);
 
-  w->insert(frank->getId(), frank);
-  w->insert(rosie->getId(), rosie);
 
-//      _______             __     __     __  _                      __                      __
-//     / ____(_)  __   ____/ /__  / /__  / /_(_)___  ____ _   ____ _/ /_   _________  ____  / /_
-//    / /_  / / |/_/  / __  / _ \/ / _ \/ __/ / __ \/ __ `/  / __ `/ __/  / ___/ __ \/ __ \/ __/
-//   / __/ / />  <   / /_/ /  __/ /  __/ /_/ / / / / /_/ /  / /_/ / /_   / /  / /_/ / /_/ / /_
-//  /_/   /_/_/|_|   \__,_/\___/_/\___/\__/_/_/ /_/\__, /   \__,_/\__/  /_/   \____/\____/\__/
-//                                                /____/
+
   w->printTree(w->getRoot());
 
-  cout << "printing the doubly"<< endl;
-  w->printStudent();
 
+  w->printStudent();
 
 
 

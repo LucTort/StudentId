@@ -21,6 +21,7 @@ class Person
         //for faculty
         string level;
         string department;
+        DoublyLinkedList *advisees;
         // SOMETYPE OF LINKED LISST advisees;
 
     public:

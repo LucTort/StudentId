@@ -7,7 +7,7 @@ Person::Person()
 
 }
 
-Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, int advisorIn)
+Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, string advisorIn)
 {
     id = idIn;
     name = nameIn;
@@ -15,6 +15,14 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
     major = majorIn;
     GPA = GPAIn;
     advisor = advisorIn;
+}
+Person::Person(int idIn, string nameIn, string departmentIn, string levelIn,  DoublyLinkedList *adviseeIn)
+{
+    id = idIn;
+    name = nameIn;
+    department = departmentIn;
+    level = levelIn;
+    advisee = adviseeIn;
 }
 
         void Person::setId(int IDIn)
@@ -42,7 +50,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             GPA = GPAIn;
         }
 
-        void Person::setAdvisor(int advisorIn)
+        void Person::setAdvisor(string advisorIn)
         {
             advisor = advisorIn;
         }
@@ -75,7 +83,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             return GPA;
         }
 
-        int Person::getAdvisor()
+        string Person::getAdvisor()
         {
             return advisor;
         }
@@ -97,5 +105,5 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
 
         Person::~Person()
         {
-            
+
         }

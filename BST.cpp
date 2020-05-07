@@ -34,23 +34,38 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
 template<typename T>
 void BST<T>::printStudent(){
   TreeNode<Person*> *studNode= new TreeNode<Person*>();
-  // Person *studNode = new Person();
-
+  Person *currentStud = new Person();
   int peeker = 0;
   double GPA = 0;
+  string major = "";
+  string standing = "";
+  string name = "";
   myDoubly->printList();
-  peeker = myDoubly->removeFront();
-  cout << "peeker " << peeker << endl;
 
-  studNode = searchNode(peeker);
+  while (myDoubly->getSize() != 0){
 
-  Person *currentStud = new Person();
+    peeker = myDoubly->removeFront();
 
-  currentStud = studNode->getNodeData();
+    studNode = searchNode(peeker);
+
+    currentStud = studNode->getNodeData();
 
     GPA = currentStud->getGPA();
+    major = currentStud->getMajor();
+    standing = currentStud ->getStanding();
+    name = currentStud->getName();
 
-    cout << "GPA: " << GPA << endl;
+    cout << " " << endl;
+    // cout << "Name: "<< name << endl;
+    // cout << "ID: " << peeker << endl;
+    // cout << "GPA: " << GPA << endl;
+    // cout << "Major: "<< major<<endl;
+    // cout << "Standing: "<< standing<< endl;
+
+    currentStud->printStudData();
+  }
+
+
 
 
 
@@ -163,6 +178,10 @@ template<typename T>
             //tree not empty :P
             TreeNode<T> *current = root;
 
+            if (root->key == value){
+              return current;
+            }
+
             while(current->key != value)
             {
                 if(value < current->key)
@@ -207,6 +226,10 @@ template <typename T>
             //tree not empty :P
             TreeNode<T> *current = root;
 
+            if (root->key == value){
+              return current;
+            }
+
             while(current->key != value)
             {
                 if(value < current->key)
@@ -225,7 +248,7 @@ template <typename T>
                     }
 
                 if(current == NULL)
-                    {cout << "The node doesn't exist"<< endl;}
+                    {cout << "The node doesn't exist."<< endl;}
 
             }
             cout << "The node doesn't exist"<< endl;
