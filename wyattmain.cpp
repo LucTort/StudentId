@@ -44,6 +44,7 @@ int main(){
   rosie->setMajor("Accounting");
   rosie->setStanding("Senior");
   rosie->setName("Rosie O Donald");
+  rosie->setAdvisor(50);
 
   Person *frank = new Person();
   frank->setId(30);
@@ -51,6 +52,7 @@ int main(){
   frank->setMajor("CompSci");
   frank->setStanding("Junior");
   frank->setName("Frank Azark");
+  frank->setAdvisor(20);
 
   Person *bob = new Person();
   bob->setId(40);
@@ -58,6 +60,7 @@ int main(){
   bob->setMajor("Finance");
   bob->setStanding("Senior");
   bob->setName("Bob Miller");
+  bob->setAdvisor(70);
 
 //for every faculty memeber a doubly linked list must be created
   Person *lucas = new Person();
@@ -163,7 +166,7 @@ int main(){
       cout << "That ID does not exist please restart"<< endl;
     }
   }
-  
+
   if (option == 5){
     cout << "Enter the ID of the students "<< endl;
     cin >> studInput1;
@@ -203,6 +206,72 @@ int main(){
     cout << "That Id does not exist, please restart"<< endl;
   }
 }
+if (option == 6){
+  cout << "well get back to this"<< endl;
+}
+if (option == 7){
+  string name1 = "";
+  double gpa1 = 0;
+  int id1 = 0;
+  string major1= "";
+  string standing1 = "";
+  int advisor1 = 0;
+
+  cout<< "Please enter information for the following fields "<< endl;
+  cout<< "Name? "<< endl;
+  std::getline(std::cin >> std::ws, name1);
+  cout<< "ID? "<< endl;
+  cin>>id1;
+  cout<< "GPA? "<< endl;
+  cin>>gpa1;
+  cout<< "Major? "<< endl;
+  std::getline(std::cin >> std::ws, major);
+  cout<< "Standing? "<< endl;
+  cin>>standing1;
+  cout<< "Advisor? "<< endl;
+  cin>> advisor1;
+
+  int trueCheck1= 0;
+  trueCheck1 = fac->search(advisor1);
+
+  //CHECKING FOR THE CORRECT DATA TYPES
+
+  // while (trueCheck1 == 0){
+  //   cout << "That advisor does not exist, please enter one that does"<< endl;
+  //   cout<< "Advisor? "<<endl;
+  //   cin>> advisor1;
+  //   trueCheck1 = fac->search(advisor1);
+  // }
+  Person *renee = new Person();
+  renee->setId(id1);
+  renee->setGPA(gpa1);
+  renee->setMajor(major1);
+  renee->setStanding(standing1);
+  renee->setName(name1);
+  renee->setAdvisor(advisor1);
+
+  w->insert(renee->getId(), renee);
+
+  cout << "You added this new student"<< endl;
+
+  int trueCheck2 = 0;
+  trueCheck2 = w->search(id1);
+  if (trueCheck2 == 1){
+    cout << " "<< endl;
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *studPrinter = new Person();
+    person = w->searchNode(id1);
+
+    studPrinter = person->getNodeData();
+
+    studPrinter->printStudData();
+  }else{
+    cout << "This ID does not exist"<< endl;
+  }
+
+
+}
+
 
 
 

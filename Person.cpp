@@ -7,7 +7,7 @@ Person::Person()
 
 }
 
-Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, string advisorIn)  //for the students
+Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, int advisorIn)  //for the students
 {
     id = idIn;
     name = nameIn;
@@ -51,7 +51,7 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
             GPA = GPAIn;
         }
 
-        void Person::setAdvisor(string advisorIn)
+        void Person::setAdvisor(int advisorIn)
         {
             advisor = advisorIn;
         }

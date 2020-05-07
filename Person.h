@@ -17,7 +17,7 @@ class Person
         string standing;
         string major;
         double GPA;
-        string advisor;
+        int advisor;
 
         //for faculty
         string level;
@@ -28,7 +28,7 @@ class Person
 
     public:
         Person(); //default constructor
-        Person(int id, string name, string standing, string major, double GPA, string advisor);  //constructor for students
+        Person(int id, string name, string standing, string major, double GPA, int advisor);  //constructor for students
         //Person(int id, string name, string department, string level,  DoublyLinkedList<int>* advisees);  //for the faculty
         // Person(int id, string name, string standing, string level, string department, SOMETYPE OF LINKED LISST advisees;);  //constructor for students
 
@@ -45,7 +45,7 @@ class Person
         void setStanding(string standing);
         void setMajor(string major);
         void setGPA(double GPA);
-        void setAdvisor(string advisor);
+        void setAdvisor(int advisor);
         void setLevel(string levelIn);
         void setDepartment(string departmentIn);
         void setAdvisees(DoublyLinkedList<int> *adviseesIn);
