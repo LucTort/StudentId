@@ -17,7 +17,7 @@ public:
   void insertBack(T data);
   T removeFront();
   T removeBack();
-  T search(T val);//will return the value or position of node depending on implementation
+  bool search(T val);//will return the value or position of node depending on implementation
   T removeAtPos(int pos);
   T remove (T val);
   T peekDoubly();

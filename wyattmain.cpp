@@ -37,6 +37,10 @@ int main(){
   DoublyLinkedList<int> *adv1 = new DoublyLinkedList<int>();
   DoublyLinkedList<int> *adv2 = new DoublyLinkedList<int>();
   DoublyLinkedList<int> *adv3 = new DoublyLinkedList<int>();
+  // Queue<BST<Person*>> *rollbackStud = new Queue<BST<Person*>>();
+  // Queue<BST<Person*>> *rollbackFac = new Queue<BST<Person*>>();
+
+
 
   Person *rosie = new Person();
   rosie->setId(35);
@@ -119,6 +123,7 @@ int main(){
     // WORKNG PRINT STUDENT ASCENDING
     w->printTree(w->getRoot());
     w->printStudent();
+    // rollbackStud->insertStack(*w);
   }
 
   if (option ==2){
@@ -306,7 +311,7 @@ if (option == 7){
   w->insert(renee->getId(), renee);
 
   cout << "\nYou added this new student"<< endl;
-
+//printing the new student
   int trueCheck2 = 0;
   trueCheck2 = w->search(id1);
   if (trueCheck2 == 1){
@@ -394,13 +399,314 @@ if (option == 8){
       facPrinter->printFacData();
     }
 
-    
+
   }else{
     cout << "That ID does not exist please restart 2 "<< endl;
   }
 
 }
 
+if (option==9){
+  string name1 = "";
+  string level1 = "";
+  int id11 = 0;
+  string department1= "";
+  int advisee0=0;
+  string answer = "";
+  DoublyLinkedList<int> *advisee11 = new DoublyLinkedList<int>();
+
+
+  cout<< "Please enter information for the following fields "<< endl;
+  cout<< "Name? "<< endl;
+  std::getline(std::cin >> std::ws, name1);
+  cout<< "ID? (Must be an integer)"<< endl;
+  cin>>id11;
+  cout<< "Level? "<< endl;
+  std::getline(std::cin >> std::ws, level1);
+  cout<< "Department? "<< endl;
+  std::getline(std::cin >> std::ws, department1);
+
+  while (answer != "no" || answer != "n" || answer != "No"||answer != "NO"){
+    int advisee0=0;
+    cout<< "Enter an advisee ID "<< endl;
+    cin>> advisee0;
+
+
+    int trueCheck1= 0;
+    trueCheck1 = w->search(advisee0);
+
+    while (trueCheck1 == 0){
+      cout << "That student does not exist, please enter one that does"<< endl;
+      cout<< "Enter an advisee ID "<<endl;
+      cin>> advisee0;
+      trueCheck1 = w->search(advisee0);
+    }
+
+    advisee11->insertBack(advisee0);
+    cout << "Would you like to enter another advisee? (yes/no)"<< endl;
+    cin>> answer;
+    if (answer == "no" ||answer == "n"|| answer == "No" || answer == "NO"){
+      break;
+    }
+  }
+  advisee11->printList();
+
+  Person *m = new Person();
+  m->setId(id11);
+  m->setDepartment(department1);
+  m->setLevel(level1);
+  m->setName(name1);
+  m->setAdvisees(advisee11);
+
+  fac->insert(m->getId(),m);
+
+  cout << "\nYou added this new faculty member"<<endl;
+
+  int trueCheck2 = 0;
+  trueCheck2 = fac->search(id11);
+  if (trueCheck2 == 1){
+    cout << " "<< endl;
+    TreeNode<Person*> *facPerson= new TreeNode<Person*>();
+    Person *facPrinter = new Person();
+    facPerson = fac->searchNode(id11);
+    facPrinter = facPerson->getNodeData();
+    facPrinter->printFacData();
+  }else {
+    cout << "That ID does not exist please restart"<< endl;
+  }
+
+  //FROM HERE GO INTO STUDENT AND CHANGE WHO THEY ARE BEING ADVISED BY?
+
+}
+
+if (option == 10){
+  int trueCheck2 = 0;
+  int idInput1 = 0;
+  int trueCheck3 = 0;
+  DoublyLinkedList<int> *getTheFac = new DoublyLinkedList<int>();
+  cout << "Enter the ID of the faculty that you would like to delete "<< endl;
+  cin >> idInput1;
+
+  trueCheck2 = fac->search(idInput1);
+  //can potentially wrap these in while loops
+  if (trueCheck2 == 1){
+    cout << " "<< endl;
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *studPrinter = new Person();
+
+    cout << "Tree Before Deletion "<< endl;
+
+    fac->printTree(fac->getRoot());
+
+    person = fac->searchNode(idInput1);
+
+    studPrinter =person->getNodeData();
+
+    getTheFac = studPrinter->getAdvisees();
+
+    //here we have all the id's of who the faculties advisees were
+
+    //deleting the faculty once I have their advisees
+
+    fac->deleteNode(idInput1);
+
+    cout << "Tree After Deletion "<< endl;
+
+    fac->printTree(fac->getRoot());
+
+    cout << "Here is their students" << endl;
+    getTheFac->printList();
+
+    //now that we have the advisees we have to go into the students and delete their faculty advisor
+    int doublyPuller = 0;
+    int advSize=0;
+    advSize=getTheFac->getSize();
+
+    for (int i=1;i<=advSize;++i){
+      int trueCheck4 = 0;
+      doublyPuller = getTheFac->removeFront();
+      trueCheck4 = w->search(doublyPuller);
+      if (trueCheck4 ==1){
+        cout << " "<< endl;
+        TreeNode<Person*> *person= new TreeNode<Person*>();
+        Person *studPrinter = new Person();
+        person = w->searchNode(doublyPuller);
+
+        studPrinter = person->getNodeData();
+
+        if (studPrinter->getAdvisor()==idInput1){
+          studPrinter->setAdvisor(0);
+        }
+        studPrinter->printStudData();
+      }else{
+        cout << "This student wasnt found for some odd reason"<< endl;
+      }
+    }
+  }
+}
+if (option == 11){
+  int studId0 = 0;
+  int facID = 0;
+  cout << "Please enter the Students ID that you would like to modify"<< endl;
+  cin >> studId0;
+
+  int trueCheck1= 0;
+  trueCheck1 = w->search(studId0);
+  //error checking to see if the student exists
+  while (trueCheck1 == 0){
+    cout << "That student does not exist, please enter one that does"<< endl;
+    cout<< "Enter a student ID "<<endl;
+    cin>> studId0;
+    trueCheck1 = w->search(studId0);
+  }
+
+
+  cout << "Enter the new faculty ID"<< endl;
+  cin >> facID;
+
+  int trueCheck2= 0;
+  trueCheck2 = fac->search(facID);
+  //error checking to see if the fac exists
+  while (trueCheck2 == 0){
+    cout << "That faculty does not exist, please enter one that does"<< endl;
+    cout<< "Enter a faculty ID "<<endl;
+    cin>> facID;
+    trueCheck2 = fac->search(facID);
+  }
+
+  //from here I must go into the student and change the advisor
+
+  cout << " "<< endl;
+  TreeNode<Person*> *person= new TreeNode<Person*>();
+  Person *studPrinter = new Person();
+  person = w->searchNode(studId0);
+
+  studPrinter = person->getNodeData();
+
+  cout << "\nStudents data before the change"<< endl;
+  studPrinter->printStudData();
+
+  studPrinter->setAdvisor(facID);
+
+  cout << "\nStudents data after the change"<< endl;
+  studPrinter->printStudData();
+
+  //and go into the faculty and change the student?
+
+  cout << " "<< endl;
+  TreeNode<Person*> *facPerson= new TreeNode<Person*>();
+  Person *facPrinter = new Person();
+  DoublyLinkedList <int> *modAdv = new DoublyLinkedList<int>();
+  facPerson = fac->searchNode(facID);
+
+  facPrinter = facPerson->getNodeData();
+
+  cout << "\nFaculty data before the change"<< endl;
+  facPrinter->printFacData();
+
+  modAdv = facPrinter->getAdvisees();
+
+  cout << "\nA list of the current advisees of this faculty member"<< endl;
+
+  modAdv->printList();
+
+  modAdv->insertBack(studId0);
+
+  facPrinter->setAdvisees(modAdv);
+
+  cout << "\nFaculty data after the change"<< endl;
+  facPrinter->printFacData();
+
+  //STILL HAVE TO COME IN AND CHANGE THE FACULTY WHO WAS REPLACED
+
+}if (option == 12){
+  int studId0 = 0;
+  int facID = 0;
+
+  cout << "Enter the faculty ID you wish to modify"<< endl;
+  cin >> facID;
+
+  int trueCheck2= 0;
+  trueCheck2 = fac->search(facID);
+  //error checking to see if the fac exists
+  while (trueCheck2 == 0){
+    cout << "That faculty does not exist, please enter one that does"<< endl;
+    cout<< "Enter a faculty ID "<<endl;
+    cin>> facID;
+    trueCheck2 = fac->search(facID);
+  }
+
+  cout << " "<< endl;
+  TreeNode<Person*> *facPerson= new TreeNode<Person*>();
+  Person *facPrinter = new Person();
+  DoublyLinkedList <int> *modAdv = new DoublyLinkedList<int>();
+  int sizeOf = 0;
+  int idremoved1 =0;
+  facPerson = fac->searchNode(facID);
+
+  facPrinter = facPerson->getNodeData();
+
+  modAdv = facPrinter->getAdvisees();
+
+  cout << "\nA list of the current advisees of this faculty member"<< endl;
+
+  modAdv->printList();
+
+  //Student portion, checking if the student the entered is one of their advisees
+
+  cout << "\nEnter the advisees ID that you would like to remove"<< endl;
+  cin >> studId0;
+
+  int trueCheck1= 0;
+  trueCheck1 = modAdv->search(studId0);
+  //error checking to see if the student exists
+  while (trueCheck1 == 0){
+    cout << "That advisee is not one of this faculties advisees"<< endl;
+    cout<< "Enter a valid advisee ID "<<endl;
+    cin>> studId0;
+    trueCheck1 = modAdv->search(studId0);
+  }
+
+  cout << "\nFaculty data before the change"<< endl;
+  facPrinter->printFacData();
+
+  sizeOf = modAdv->getSize();
+
+  for (int i = 1; i<=sizeOf; ++i){
+    idremoved1=modAdv->removeBack();
+    if (idremoved1 != studId0){
+      modAdv->insertFront(idremoved1);
+    }
+  }
+
+  facPrinter->setAdvisees(modAdv);
+
+  cout << "\nFaculty data after the change"<< endl;
+  facPrinter->printFacData();
+
+
+
+  //from here I must go into the student and change the advisor
+
+  cout << " "<< endl;
+  TreeNode<Person*> *person= new TreeNode<Person*>();
+  Person *studPrinter = new Person();
+  person = w->searchNode(studId0);
+
+  studPrinter = person->getNodeData();
+
+  cout << "\nStudents data before the change"<< endl;
+  studPrinter->printStudData();
+
+  studPrinter->setAdvisor(0);
+
+  cout << "\nStudents data after the change"<< endl;
+  studPrinter->printStudData();
+
+}
+if (option == 13){
+  cout << "you have chosen the Rollback function "<< endl;
+}
 
 
 

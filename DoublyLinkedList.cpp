@@ -195,17 +195,17 @@ T DoublyLinkedList<T>::remove(T val){
 }
 
 template <class T>
-T DoublyLinkedList<T>::search(T value){
+bool DoublyLinkedList<T>::search(T value){
   ListNode<T> *curr = front;
     while(curr != NULL)
     {
         if(curr->data == value)
-            return value;
+            return true;
         curr = curr->next;
     }
 
     std::cerr << "No such element in the list \n";
-    return NULL;
+    return false;
 
 }
 
