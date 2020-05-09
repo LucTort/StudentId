@@ -43,7 +43,7 @@ void BST<T>::printStudent(){
   string name = "";
   myDoubly->printList();
 
-  cout << "Its size: " <<myDoubly->getSize() << endl;
+//   cout << "Its size: " <<myDoubly->getSize() << endl;
 
   while (myDoubly->getSize() != 0){
 
@@ -67,7 +67,7 @@ void BST<T>::printStudent(){
 
   myDoubly = placeHolderList;
 
-  cout << "Its size: " <<myDoubly->getSize() << endl;
+//   cout << "Its size: " <<myDoubly->getSize() << endl;
 }
 
 template<typename T>
@@ -81,7 +81,6 @@ void BST<T>::printFac(){
 
   tempDoubly->printList();
 
-  cout << "Its size: " << tempDoubly->getSize() << endl;
 
   while (tempDoubly->getSize() != 0){
 
@@ -97,7 +96,6 @@ void BST<T>::printFac(){
 
   }
 
-  cout << "Its size: " << myDoubly->getSize() << endl;
 }//end of PrintFac
 
 template<typename T>
@@ -456,12 +454,15 @@ template<typename T>
 
 template<typename T>
 DoublyLinkedList<T> BST<T>::getListOfNodes(){
+    // cout << "YEETHAW" << endl;
   TreeNode<T> *studTreeNode = new TreeNode<T>();
   Person *studPersonNode = new Person();
   DoublyLinkedList<int> *tempNodeIds = new DoublyLinkedList<int>;
   DoublyLinkedList<T> *returnedNodes = new DoublyLinkedList<T>;
   *tempNodeIds = myDoubly->getSelf();
   int currentStudId;
+
+//   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
 
   while (tempNodeIds->getSize() > 0){
 
@@ -472,6 +473,9 @@ DoublyLinkedList<T> BST<T>::getListOfNodes(){
 
     returnedNodes->insertFront(studPersonNode);
   }
+
+//   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
+//   cout << "Size of returned nodes: " << returnedNodes->getSize()<< endl;
 
   return *returnedNodes;
 }
