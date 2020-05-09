@@ -43,7 +43,7 @@ int main(){
 //  /____/\___/\_,_/\_,_/ /_/ /_/  \___/_/_/_/ /_/ /_/_/\__/ 
 //                                                           
 
-  *w = myFileManager->getStudData();
+  // *w = myFileManager->getStudData();
   // *fac = myFileManager->getFacData();
 
   // w->printStudent();
