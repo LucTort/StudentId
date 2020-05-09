@@ -37,8 +37,14 @@ int main(){
   BST<Person*> *w = new BST<Person*>();
   BST<Person*> *fac = new BST<Person*>();
 
+//     __                __  ____                 _____ __   
+//    / /  ___  ___ ____/ / / __/______  __ _    / __(_) /__ 
+//   / /__/ _ \/ _ `/ _  / / _// __/ _ \/  ' \  / _// / / -_)
+//  /____/\___/\_,_/\_,_/ /_/ /_/  \___/_/_/_/ /_/ /_/_/\__/ 
+//                                                           
+
   *w = myFileManager->getStudData();
-  *fac = myFileManager->getFacData();
+  // *fac = myFileManager->getFacData();
 
   // w->printStudent();
 
@@ -50,67 +56,67 @@ int main(){
 
 
 
-//   Person *rosie = new Person();
-//   rosie->setId(35);
-//   rosie->setGPA(3.8);
-//   rosie->setMajor("Accounting");
-//   rosie->setStanding("Senior");
-//   rosie->setName("Rosie O Donald");
-//   rosie->setAdvisor(50);
+  Person *rosie = new Person();
+  rosie->setId(35);
+  rosie->setGPA(3.8);
+  rosie->setMajor("Accounting");
+  rosie->setStanding("Senior");
+  rosie->setName("Rosie O Donald");
+  rosie->setAdvisor(50);
 
-//   Person *frank = new Person();
-//   frank->setId(30);
-//   frank->setGPA(1.2);
-//   frank->setMajor("CompSci");
-//   frank->setStanding("Junior");
-//   frank->setName("Frank Azark");
-//   frank->setAdvisor(20);
+  Person *frank = new Person();
+  frank->setId(30);
+  frank->setGPA(1.2);
+  frank->setMajor("CompSci");
+  frank->setStanding("Junior");
+  frank->setName("Frank Azark");
+  frank->setAdvisor(20);
 
-//   Person *bob = new Person();
-//   bob->setId(40);
-//   bob->setGPA(3.29);
-//   bob->setMajor("Finance");
-//   bob->setStanding("Senior");
-//   bob->setName("Bob Miller");
-//   bob->setAdvisor(70);
+  Person *bob = new Person();
+  bob->setId(40);
+  bob->setGPA(3.29);
+  bob->setMajor("Finance");
+  bob->setStanding("Senior");
+  bob->setName("Bob Miller");
+  bob->setAdvisor(70);
 
-// // for every faculty memeber a doubly linked list must be created
-//   Person *lucas = new Person();
-//   lucas->setId(50);
-//   lucas->setName("Lucas Torti");
-//   lucas->setLevel("Lecturer");//Lecturer, assistant professor, associate professor
-//   lucas->setDepartment("Keck Center");
-//   adv1->insertBack(35);
-//   lucas->setAdvisees(adv1);//starting to delimeter and then create a new doubly linked list and add everything in between, pass in doubly linked list to set advisee
+// for every faculty memeber a doubly linked list must be created
+  Person *lucas = new Person();
+  lucas->setId(50);
+  lucas->setName("Lucas Torti");
+  lucas->setLevel("Lecturer");//Lecturer, assistant professor, associate professor
+  lucas->setDepartment("Keck Center");
+  adv1->insertBack(35);
+  lucas->setAdvisees(adv1);//starting to delimeter and then create a new doubly linked list and add everything in between, pass in doubly linked list to set advisee
 
-//   Person *wyatt = new Person();
-//   wyatt->setId(20);
-//   wyatt->setName("wyatt miller");
-//   wyatt->setLevel("professor");//Lecturer, assistant professor, associate professor
-//   wyatt->setDepartment("Argyros");
-//   adv2->insertBack(30);
-//   wyatt->setAdvisees(adv2);
+  Person *wyatt = new Person();
+  wyatt->setId(20);
+  wyatt->setName("wyatt miller");
+  wyatt->setLevel("professor");//Lecturer, assistant professor, associate professor
+  wyatt->setDepartment("Argyros");
+  adv2->insertBack(30);
+  wyatt->setAdvisees(adv2);
 
-//   Person *chris = new Person();
-//   chris->setId(70);
-//   chris->setName("chris change");
-//   chris->setLevel("assistant professor");//Lecturer, assistant professor, associate professor
-//   chris->setDepartment("dance school");
-//   adv3->insertBack(40);
-//   chris->setAdvisees(adv3);
+  Person *chris = new Person();
+  chris->setId(70);
+  chris->setName("chris change");
+  chris->setLevel("assistant professor");//Lecturer, assistant professor, associate professor
+  chris->setDepartment("dance school");
+  adv3->insertBack(40);
+  chris->setAdvisees(adv3);
 
 
-//   w->insert(frank->getId(), frank);
+  w->insert(frank->getId(), frank);
 
-//   w->insert(rosie->getId(), rosie);
+  w->insert(rosie->getId(), rosie);
 
-//   w->insert(bob->getId(), bob);
+  w->insert(bob->getId(), bob);
 
-//   fac->insert(lucas->getId(), lucas);
+  fac->insert(lucas->getId(), lucas);
 
-//   fac->insert(wyatt->getId(), wyatt);
+  fac->insert(wyatt->getId(), wyatt);
 
-//   fac->insert(chris->getId(), chris);
+  fac->insert(chris->getId(), chris);
 
 
 
@@ -719,6 +725,7 @@ int main(){
 
 
   //saves the data
+
   myFileManager->saveFacFile(fac->getListOfNodes());
   myFileManager->saveStudFile(w->getListOfNodes());
   // cout << "Test" << endl;

@@ -72,46 +72,32 @@ void BST<T>::printStudent(){
 
 template<typename T>
 void BST<T>::printFac(){
-  TreeNode<Person*> *facNode= new TreeNode<Person*>();
+  TreeNode<T> *facNode= new TreeNode<T>();
   Person *currentFac = new Person();
-  DoublyLinkedList<int> *placeHolderList = new DoublyLinkedList<int>;
+  DoublyLinkedList<int> *tempDoubly = new DoublyLinkedList<int>;
+  *tempDoubly = myDoubly->getSelf();
   int peeker = 0;
-  string level = "";
-  string department = "";
   // DoublyLinkedList *advisees;//?????????
-  string name = "";
-  myDoubly->printList();
 
-  cout << "Its size: " <<myDoubly->getSize() << endl;
+  tempDoubly->printList();
 
-  while (myDoubly->getSize() != 0){
+  cout << "Its size: " << tempDoubly->getSize() << endl;
 
-    peeker = myDoubly->removeFront();
+  while (tempDoubly->getSize() != 0){
+
+    peeker = tempDoubly->removeFront();
 
     facNode = searchNode(peeker);
 
     currentFac = facNode->getNodeData();
 
-    // GPA = currentFac->getGPA();
-    // major = currentFac->getMajor();
-    // standing = currentFac ->getStanding();
-    // name = currentFac->getName();
-
     cout << " " << endl;
-    // cout << "Name: "<< name << endl;
-    // cout << "ID: " << peeker << endl;
-    // cout << "GPA: " << GPA << endl;
-    // cout << "Major: "<< major<<endl;
-    // cout << "Standing: "<< standing<< endl;
 
     currentFac->printFacData();
 
-    placeHolderList->insertBack(peeker);
   }
 
-  myDoubly = placeHolderList;
-
-  cout << "Its size: " <<myDoubly->getSize() << endl;
+  cout << "Its size: " << myDoubly->getSize() << endl;
 }//end of PrintFac
 
 template<typename T>
@@ -470,24 +456,21 @@ template<typename T>
 
 template<typename T>
 DoublyLinkedList<T> BST<T>::getListOfNodes(){
-  TreeNode<Person*> *studNode = new TreeNode<Person*>();
-  DoublyLinkedList<int> *savedNodes = new DoublyLinkedList<int>;
-  DoublyLinkedList<Person*> *returnedNodes = new DoublyLinkedList<Person*>;
-    Person *personStud = new Person();
+  TreeNode<T> *studTreeNode = new TreeNode<T>();
+  Person *studPersonNode = new Person();
+  DoublyLinkedList<int> *tempNodeIds = new DoublyLinkedList<int>;
+  DoublyLinkedList<T> *returnedNodes = new DoublyLinkedList<T>;
+  *tempNodeIds = myDoubly->getSelf();
   int currentStudId;
 
-  cout << "Size of stuff: "<<myDoubly->getSize();
+  while (tempNodeIds->getSize() > 0){
 
-  while (myDoubly->getSize() > 0){
+    currentStudId = tempNodeIds->removeFront();
 
-    currentStudId = myDoubly->removeFront();
-    savedNodes->insertBack(currentStudId); //might want to change this to insert front
+    studTreeNode = searchNode(currentStudId);
+    studPersonNode = studTreeNode->getNodeData();
 
-    studNode = searchNode(currentStudId);
-    personStud = studNode->getNodeData();
-
-    cout << "Test: " << endl;
-    returnedNodes->insertFront(personStud);
+    returnedNodes->insertFront(studPersonNode);
   }
 
   return *returnedNodes;

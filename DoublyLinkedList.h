@@ -22,6 +22,7 @@ public:
   T remove (T val);
   T peekDoubly();
   void clearList();
+  DoublyLinkedList<T> getSelf();
 
   unsigned int getSize();
   bool isEmpty();

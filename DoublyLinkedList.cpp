@@ -217,3 +217,18 @@ void DoublyLinkedList<T>::clearList(){
   }
 
 }
+
+template <class T>
+DoublyLinkedList<T> DoublyLinkedList<T>::getSelf()
+{
+    ListNode<T> *curr = front;
+    DoublyLinkedList<T> *copiedList = new DoublyLinkedList<T>();
+
+    while(curr != NULL)
+    {
+        copiedList->insertBack(curr->data);
+        curr = curr->next;
+    }
+
+    return *copiedList;
+}

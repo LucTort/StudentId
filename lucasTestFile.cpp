@@ -112,16 +112,30 @@ int main(int argc, char **argv)
 //  /_/  \___/____/\__/  
 //                                                 
 
+    DoublyLinkedList<int> *dogs = new DoublyLinkedList<int>;
+
+    dogs->insertFront(1);
+    dogs->insertFront(2);
+    dogs->insertFront(3);
+    dogs->printList();
+
+    DoublyLinkedList<int> *birds = new DoublyLinkedList<int>;
+
+    *birds = dogs->getSelf();
+    birds->printList();
+    dogs->printList();
+
+
 
     //testManager->saveStudFile(*studStack);
-    testManager->getStudData();
-    //testManager->saveFacFile(*facStack);
-    myFac = testManager->getFacData();
-    myStuds = testManager->getStudData();
+    // testManager->getStudData();
+    // //testManager->saveFacFile(*facStack);
+    // myFac = testManager->getFacData();
+    // myStuds = testManager->getStudData();
 
-    myFac->printTree(myFac->getRoot());
+    // myFac->printTree(myFac->getRoot());
 
-    myStuds->printTree(myStuds->getRoot());
+    // myStuds->printTree(myStuds->getRoot());
 
 
 
