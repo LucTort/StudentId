@@ -29,7 +29,7 @@ class Person
     public:
         Person(); //default constructor
         Person(int id, string name, string standing, string major, double GPA, int advisor);  //constructor for students
-        //Person(int id, string name, string department, string level,  DoublyLinkedList<int>* advisees);  //for the faculty
+        Person(int id, string name, string department, string level,  DoublyLinkedList<int>* advisees);  //for the faculty
         // Person(int id, string name, string standing, string level, string department, SOMETYPE OF LINKED LISST advisees;);  //constructor for students
 
         //all person functions

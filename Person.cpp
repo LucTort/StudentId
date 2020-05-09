@@ -17,6 +17,15 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
     advisor = advisorIn;
 }
 
+Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, DoublyLinkedList<int>* adviseesIn)  //for the students
+{
+    id = idIn;
+    name = nameIn;
+    level = levelIn;
+    department = departmentIn;
+    advisees = adviseesIn;
+}
+
 // Person::Person(int idIn, string nameIn, string departmentIn, string levelIn,  DoublyLinkedList<int>* adviseesIn)  //for the faculty
 // {
 //     id = idIn;

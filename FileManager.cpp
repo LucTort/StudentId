@@ -28,19 +28,19 @@ FileManager::FileManager(string studData, string facData)
 //  /___/\_,_/|___/\__/ /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
 //  Save Functions                                     
 
-void FileManager::saveStudFile(DoublyLinkedList<Person> studNodes)
+void FileManager::saveStudFile(DoublyLinkedList<Person*> studNodes)
 {
     ofstream myFile;
     myFile.open(studDataFile, std::ofstream::out | std::ofstream::trunc);
 
      Person *currentStud = new Person();
 
-    myFile << studNodes.getSize() << endl;
+    myFile << studNodes.getSize() << endl;  //puts number of students at top of file
 
     while (studNodes.getSize() > 0)
     {
 
-        *currentStud = studNodes.removeFront();
+        currentStud = studNodes.removeFront();
 
         myFile << currentStud->getId() << endl;
         myFile << currentStud->getName() << endl;
@@ -56,39 +56,42 @@ void FileManager::saveStudFile(DoublyLinkedList<Person> studNodes)
 
 }
 
-void FileManager::saveFacFile(DoublyLinkedList<Person> facNodes)
+void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
 {
     ofstream myFile;
     myFile.open(facDataFile, std::ofstream::out | std::ofstream::trunc);
 
-     Person *currentFac = new Person();
+    Person *currentFac = new Person();
+
+    myFile << facNodes.getSize() << endl;  //puts number of faculty at top of file
 
     while (facNodes.getSize() > 0)
     {
 
-        *currentFac = facNodes.removeFront();
+        currentFac = facNodes.removeFront();
 
         myFile << currentFac->getId() << endl;
         myFile << currentFac->getName() << endl;
         myFile << currentFac->getLevel() << endl;
-        myFile << "Test" << endl;
         myFile << currentFac->getDepartment() << endl;
 
         DoublyLinkedList<int> *advisees = new DoublyLinkedList<int>();
         advisees = currentFac->getAdvisees();
         int currentAdvisee = 0;
-        bool needEndl = false;
+        // bool needEndl = false;
 
-        myFile << facNodes.getSize() << endl;
+        myFile << advisees->getSize() << endl;
+
+        // cout << advisees->getSize() << endl;
 
         while(advisees->getSize() > 0)
         {
             currentAdvisee = advisees->removeFront();
-            myFile << currentAdvisee << ",";
-            needEndl = true;
+            myFile << currentAdvisee << endl;
+            // needEndl = true;
         }
         
-        if (needEndl) {myFile << endl;}
+        // if (needEndl) {myFile << endl;}
         myFile << endl;
     }
 
@@ -100,7 +103,7 @@ void FileManager::saveFacFile(DoublyLinkedList<Person> facNodes)
 //   / /__/ _ \/ _ `/ _  / / _// // / _ \/ __/ __/ / _ \/ _ \(_-<
 //  /____/\___/\_,_/\_,_/ /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
 //  Load Functions
-BST<Person> FileManager::getStudData()
+BST<Person*> FileManager::getStudData()
 {
     ifstream myFile;
     myFile.open(studDataFile);
@@ -109,7 +112,7 @@ BST<Person> FileManager::getStudData()
         cout << "File didn't open properly" << endl;
     }
 
-    BST<Person> *treeFromFile = new BST<Person>();
+    BST<Person*> *treeFromFile = new BST<Person*>();
 
     string stringDataPoints;
     getline(myFile, stringDataPoints);
@@ -122,35 +125,35 @@ BST<Person> FileManager::getStudData()
         string fileData;
 
         getline(myFile, fileData);
-        cout << fileData << endl;
+        cout << "ID: " <<fileData << endl;
         int ID = stoi(fileData);
 
         getline(myFile, fileData);
-        cout << fileData << endl;
+        cout << "Name: " <<fileData << endl;
         string name = fileData;
 
         getline(myFile, fileData);
-        cout << fileData << endl;
+        cout << "Standing: " <<fileData << endl;
         string standing = fileData;
 
         getline(myFile, fileData);
-        cout << fileData << endl;
+        cout << "GPA: " <<fileData << endl;
         double GPA = stod(fileData);
 
         getline(myFile, fileData);
-        cout << fileData << endl;
+        cout << "Major: " <<fileData << endl;
         string major = fileData;
 
         getline(myFile, fileData);
-        cout << fileData << endl;
+        cout << "Advisor: " <<fileData << endl;
         int advisor = stoi(fileData);
 
         getline(myFile, fileData);//space between data
-        cout << fileData << endl;
+        cout << "No data: " <<fileData << endl;
 
         Person *newStud = new Person(ID, name, standing, major, GPA, advisor);
 
-        treeFromFile->insert(newStud->getId(), *newStud);
+        treeFromFile->insert(newStud->getId(), newStud);
 
     }
 
@@ -158,6 +161,79 @@ BST<Person> FileManager::getStudData()
     
 
     myFile.close();
+
+    return *treeFromFile;
+
+}//end getStudData
+
+
+BST<Person*> FileManager::getFacData()
+{
+    ifstream myFile;
+    myFile.open(facDataFile);
+    if (!myFile.is_open()) //makes sure file opens correctly
+    {
+        cout << "File didn't open properly" << endl;
+    }
+
+    BST<Person*> *treeFromFile = new BST<Person*>();
+
+    string stringDataPoints;
+    getline(myFile, stringDataPoints);
+    // int numDataPoints = (int) stringDataPoints;
+    int numDataPoints = stoi(stringDataPoints);
+    
+
+    for(int x = 0; x < numDataPoints; x++)
+    {
+        string fileData;
+
+        getline(myFile, fileData);
+        // cout << "ID: " << fileData << endl;
+        int ID = stoi(fileData);
+
+        getline(myFile, fileData);
+        // cout << "Name: " << fileData << endl;
+        string name = fileData;
+
+        getline(myFile, fileData);
+        // cout << "Level: " << fileData << endl;
+        string level = fileData;
+
+        getline(myFile, fileData);
+        // cout << "Department: " << fileData << endl;
+        string department = fileData;
+
+
+        getline(myFile, fileData);
+        cout << fileData << endl;
+        int numAdvisees = stoi(fileData);
+
+        DoublyLinkedList<int> *facAdvisees = new DoublyLinkedList<int>();
+
+        for(int x = 0; x < numAdvisees; ++x)
+        {
+            getline(myFile, fileData);
+            // cout << fileData << endl;
+            int advisee = stoi(fileData);
+            facAdvisees->insertFront(advisee);
+        }
+
+
+        getline(myFile, fileData);//space between data
+
+        Person *newFac = new Person(ID, name, department, level, facAdvisees);
+
+        treeFromFile->insert(newFac->getId(), newFac);
+
+    }
+
+    treeFromFile->printTree(treeFromFile->getRoot());
+    
+
+    myFile.close();
+
+    return *treeFromFile;
 
 }//end getStudData
 

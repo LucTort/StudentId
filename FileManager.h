@@ -12,11 +12,11 @@ class FileManager
         FileManager(string studData, string facData);
 
 
-        void saveStudFile(DoublyLinkedList<Person> treeToSave);
-        void saveFacFile(DoublyLinkedList<Person> treeToSave);
+        void saveStudFile(DoublyLinkedList<Person*> treeToSave);
+        void saveFacFile(DoublyLinkedList<Person*> treeToSave);
 
-        BST<Person> getStudData();
-        BST<Person> getFacData();
+        BST<Person*> getStudData();
+        BST<Person*> getFacData();
 
       ~FileManager();
 };

@@ -33,14 +33,17 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
 
 template<typename T>
 void BST<T>::printStudent(){
-  TreeNode<Person*> *studNode= new TreeNode<Person*>();
+  TreeNode<T> *studNode = new TreeNode<T>();
   Person *currentStud = new Person();
+  DoublyLinkedList<int> *placeHolderList = new DoublyLinkedList<int>;
   int peeker = 0;
   double GPA = 0;
   string major = "";
   string standing = "";
   string name = "";
   myDoubly->printList();
+
+  cout << "Its size: " <<myDoubly->getSize() << endl;
 
   while (myDoubly->getSize() != 0){
 
@@ -57,20 +60,29 @@ void BST<T>::printStudent(){
 
     cout << " " << endl;
 
+    placeHolderList->insertBack(peeker);
+
     currentStud->printStudData();
   }
+
+  myDoubly = placeHolderList;
+
+  cout << "Its size: " <<myDoubly->getSize() << endl;
 }
 
 template<typename T>
 void BST<T>::printFac(){
   TreeNode<Person*> *facNode= new TreeNode<Person*>();
   Person *currentFac = new Person();
+  DoublyLinkedList<int> *placeHolderList = new DoublyLinkedList<int>;
   int peeker = 0;
   string level = "";
   string department = "";
   // DoublyLinkedList *advisees;//?????????
   string name = "";
   myDoubly->printList();
+
+  cout << "Its size: " <<myDoubly->getSize() << endl;
 
   while (myDoubly->getSize() != 0){
 
@@ -93,8 +105,14 @@ void BST<T>::printFac(){
     // cout << "Standing: "<< standing<< endl;
 
     currentFac->printFacData();
+
+    placeHolderList->insertBack(peeker);
   }
-}
+
+  myDoubly = placeHolderList;
+
+  cout << "Its size: " <<myDoubly->getSize() << endl;
+}//end of PrintFac
 
 template<typename T>
 TreeNode<T>* BST<T>::getMax()
@@ -429,3 +447,48 @@ template<typename T>
 
         return successor;
     }//end of get successor
+
+
+
+// template<typename T>
+// DoublyLinkedList<T> BST<T>::getListOfNodes(DoublyLinkedList<int> nodes){
+//   TreeNode<Person*> *studNode = new TreeNode<Person*>();
+//   DoublyLinkedList<int> *tempNodes = new DoublyLinkedList<int>;
+//   Person *currentStud = new Person();
+//   int peeker = 0;
+
+//   while (nodes->getSize() > 0){
+//     //   tempNodes
+//     peeker = myDoubly->removeFront();
+
+//     studNode = searchNode(peeker);
+
+//     listOfTreeNodes->insertFront(studNode->getNodeData());
+//     cout << studNode->getNodeData() << endl;
+//   }
+// }
+
+template<typename T>
+DoublyLinkedList<T> BST<T>::getListOfNodes(){
+  TreeNode<Person*> *studNode = new TreeNode<Person*>();
+  DoublyLinkedList<int> *savedNodes = new DoublyLinkedList<int>;
+  DoublyLinkedList<Person*> *returnedNodes = new DoublyLinkedList<Person*>;
+    Person *personStud = new Person();
+  int currentStudId;
+
+  cout << "Size of stuff: "<<myDoubly->getSize();
+
+  while (myDoubly->getSize() > 0){
+
+    currentStudId = myDoubly->removeFront();
+    savedNodes->insertBack(currentStudId); //might want to change this to insert front
+
+    studNode = searchNode(currentStudId);
+    personStud = studNode->getNodeData();
+
+    cout << "Test: " << endl;
+    returnedNodes->insertFront(personStud);
+  }
+
+  return *returnedNodes;
+}

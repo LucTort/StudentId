@@ -25,6 +25,9 @@ class BST{
         void printTree(TreeNode<T> *node);
 
 
+        DoublyLinkedList<T> getListOfNodes();
+
+
 
 
         // void returnNode(TreeNode<T> *node);
