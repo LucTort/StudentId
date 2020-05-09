@@ -38,14 +38,14 @@ int main(){
   BST<Person*> *fac = new BST<Person*>();
 
   //Rollback Files
-  // Queue<BST<Person*>> *rollbackStud = new Queue<BST<Person*>>();
-  // Queue<BST<Person*>> *rollbackFac = new Queue<BST<Person*>>();
+  DoublyLinkedList<BST<Person*>> *rollbackStud = new DoublyLinkedList<BST<Person*>>();
+  DoublyLinkedList<BST<Person*>> *rollbackFac = new DoublyLinkedList<BST<Person*>>();
 
-//     __                __  ____                 _____ __   
-//    / /  ___  ___ ____/ / / __/______  __ _    / __(_) /__ 
+//     __                __  ____                 _____ __
+//    / /  ___  ___ ____/ / / __/______  __ _    / __(_) /__
 //   / /__/ _ \/ _ `/ _  / / _// __/ _ \/  ' \  / _// / / -_)
-//  /____/\___/\_,_/\_,_/ /_/ /_/  \___/_/_/_/ /_/ /_/_/\__/ 
-//                                                           
+//  /____/\___/\_,_/\_,_/ /_/ /_/  \___/_/_/_/ /_/ /_/_/\__/
+//
 
   *w = myFileManager->getStudData();
   *fac = myFileManager->getFacData();
@@ -132,7 +132,7 @@ int main(){
 
   while(option != 14)
   {
-  
+
 
     printOptions();
 
@@ -142,6 +142,7 @@ int main(){
       // WORKNG PRINT STUDENT ASCENDING
       w->printTree(w->getRoot());
       w->printStudent();
+
       // rollbackStud->insertStack(*w);
     }
 
@@ -284,6 +285,8 @@ int main(){
 
   }
   if (option == 7){
+    rollbackFac->insertFront(*fac);
+    rollbackStud->insertFront(*w);
     string name1 = "";
     double gpa1 = 0;
     int id1 = 0;
@@ -347,6 +350,8 @@ int main(){
     }
   }
   if (option == 8){
+    rollbackFac->insertFront(*fac);
+    rollbackStud->insertFront(*w);
     int trueCheck2 = 0;
     int idInput1 = 0;
     int trueCheck3 = 0;
@@ -426,6 +431,8 @@ int main(){
   }
 
   if (option==9){
+    rollbackFac->insertFront(*fac);
+    rollbackStud->insertFront(*w);
     string name1 = "";
     string level1 = "";
     int id11 = 0;
@@ -499,6 +506,8 @@ int main(){
   }
 
   if (option == 10){
+    rollbackFac->insertFront(*fac);
+    rollbackStud->insertFront(*w);
     int trueCheck2 = 0;
     int idInput1 = 0;
     int trueCheck3 = 0;
@@ -564,6 +573,8 @@ int main(){
     }
   }
   if (option == 11){
+    rollbackFac->insertFront(*fac);
+    rollbackStud->insertFront(*w);
     int studId0 = 0;
     int facID = 0;
     cout << "Please enter the Students ID that you would like to modify"<< endl;
@@ -639,6 +650,8 @@ int main(){
     //STILL HAVE TO COME IN AND CHANGE THE FACULTY WHO WAS REPLACED
 
   }if (option == 12){
+    rollbackFac->insertFront(*fac);
+    rollbackStud->insertFront(*w);
     int studId0 = 0;
     int facID = 0;
 
@@ -725,17 +738,25 @@ int main(){
   }
   if (option == 13){
     cout << "you have chosen the Rollback function "<< endl;
+    BST<Person*> *studBackButton = new BST<Person*>();
+    BST<Person*> *facBackButton = new BST<Person*>();
+
+    studBackButton = rollbackStud->removeFront();
+    facBackButton = rollbackFac->removeFront();
+
+    studBackButton->printTree(studBackButton->getRoot());
+    facBackButton->printTree(facBackButton->getRoot());
   }
 
 
   //saves the data
 
-//     _____                     ____        __       
+//     _____                     ____        __
 //    / ___/____ __   _____     / __ \____ _/ /_____ _
 //    \__ \/ __ `/ | / / _ \   / / / / __ `/ __/ __ `/
-//   ___/ / /_/ /| |/ /  __/  / /_/ / /_/ / /_/ /_/ / 
-//  /____/\__,_/ |___/\___/  /_____/\__,_/\__/\__,_/  
-//                                                    
+//   ___/ / /_/ /| |/ /  __/  / /_/ / /_/ / /_/ /_/ /
+//  /____/\__,_/ |___/\___/  /_____/\__,_/\__/\__,_/
+//
 
   myFileManager->saveFacFile(fac->getListOfNodes());
   myFileManager->saveStudFile(w->getListOfNodes());
