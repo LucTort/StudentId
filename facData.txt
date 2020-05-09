@@ -1,0 +1,19 @@
+70
+chris change
+assistant professor
+Test
+dance school
+2,1,
+
+20
+wyatt miller
+professor
+Test
+Argyros
+
+50
+Lucas Torti
+Lecturer
+Test
+Keck Center
+

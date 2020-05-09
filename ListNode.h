@@ -10,11 +10,11 @@ template <class T>
 
 class ListNode{
 public:
-  int data;
+  T data;
   ListNode<T> *next;
   ListNode<T> *prev;
 
   ListNode();//default
-  ListNode(int d);//overloaded
+  ListNode(T d);//overloaded
   ~ListNode();
 };

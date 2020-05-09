@@ -94,7 +94,7 @@ void DoublyLinkedList<T>::insertBack(T d){
 template <class T>
 T DoublyLinkedList<T>::removeFront(){
   ListNode<T> *node = front;
-  int temp = front -> data;
+  T temp = front -> data;
 
   if (front ->next == NULL){
     //we have one node in the list

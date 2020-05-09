@@ -1,3 +1,4 @@
+#include "BST.cpp"
 
 
 class FileManager
@@ -9,11 +10,13 @@ class FileManager
     public:
         FileManager(); //default constructor
         FileManager(string studData, string facData);
-        void saveStudFile(BST treeToSave);
-        void saveFacFile(BST treeToSave);
 
-        BST getStudData();
-        BST getFacData();
+
+        void saveStudFile(DoublyLinkedList<Person> treeToSave);
+        void saveFacFile(DoublyLinkedList<Person> treeToSave);
+
+        BST<Person> getStudData();
+        BST<Person> getFacData();
 
       ~FileManager();
 };
