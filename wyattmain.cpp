@@ -166,15 +166,15 @@ int filesEnabled = true;
     if (option == 1){
       // WORKNG PRINT STUDENT ASCENDING
       w->printTree(w->getRoot());
-      w->printStudent();
+      w->printStudent(w->getRoot());
 
       // rollbackStud->insertStack(*w);
     }
 
-    if (option ==2){
+    if (option == 2){
       //PRINT FACULTY ASCENDING
       fac->printTree(fac->getRoot());
-      fac->printFac();
+      fac->printFac(fac->getRoot());
     }
 
 
@@ -311,7 +311,9 @@ int filesEnabled = true;
   }
   if (option == 7){
     rollbackFac->insertFront(*fac);
+    w->printTree(w->getRoot());
     rollbackStud->insertFront(*w);
+
     string name1 = "";
     double gpa1 = 0;
     int id1 = 0;
@@ -376,7 +378,9 @@ int filesEnabled = true;
   }
   if (option == 8){
     rollbackFac->insertFront(*fac);
+    w->printTree(w->getRoot());
     rollbackStud->insertFront(*w);
+
     int trueCheck2 = 0;
     int idInput1 = 0;
     int trueCheck3 = 0;
@@ -459,6 +463,7 @@ int filesEnabled = true;
 
   if (option==9){
     rollbackFac->insertFront(*fac);
+    w->printTree(w->getRoot());
     rollbackStud->insertFront(*w);
     string name1 = "";
     string level1 = "";
@@ -534,7 +539,9 @@ int filesEnabled = true;
 
   if (option == 10){
     rollbackFac->insertFront(*fac);
+    w->printTree(w->getRoot());
     rollbackStud->insertFront(*w);
+
     int trueCheck2 = 0;
     int idInput1 = 0;
     int trueCheck3 = 0;
@@ -577,7 +584,6 @@ int filesEnabled = true;
       int advSize=0;
       advSize=getTheFac->getSize();
 
-  cout << "YEEETHAW : " << advSize << endl << endl;
       for (int i=1;i<=advSize;++i){
         int trueCheck4 = 0;
         doublyPuller = getTheFac->removeFront();
@@ -599,11 +605,12 @@ int filesEnabled = true;
         }
       }
     }
-    cout << "YEEETHAW" << endl << endl;
   }
   if (option == 11){
     rollbackFac->insertFront(*fac);
+    w->printTree(w->getRoot());
     rollbackStud->insertFront(*w);
+
     int studId0 = 0;
     int facID = 0;
     cout << "Please enter the Students ID that you would like to modify"<< endl;
@@ -680,7 +687,9 @@ int filesEnabled = true;
 
   }if (option == 12){
     rollbackFac->insertFront(*fac);
+    w->printTree(w->getRoot());
     rollbackStud->insertFront(*w);
+
     int studId0 = 0;
     int facID = 0;
 
@@ -766,7 +775,7 @@ int filesEnabled = true;
 
   }
   if (option == 13){
-    cout << "you have chosen the Rollback function "<< endl;
+    cout << "You have chosen the Rollback function "<< endl;
     BST<Person*> *studBackButton = new BST<Person*>();
     BST<Person*> *facBackButton = new BST<Person*>();
 
@@ -776,19 +785,49 @@ int filesEnabled = true;
       {
         *studBackButton = rollbackStud->removeFront();
         *facBackButton = rollbackFac->removeFront();
+
+        // cout << "Fac back button: " << endl;
+
+        //   studBackButton->printTree();
+        //   cout << endl;
+        // cout << "Stud back button: " << endl;
+        //   facBackButton->printTree();
+        //   cout << endl;
+        //   cout << endl;
+
+        w = studBackButton;
+        fac = facBackButton;
+        DoublyLinkedList<int> *studTreeIds = new DoublyLinkedList<int>();
+        DoublyLinkedList<int> *facTreeIds = new DoublyLinkedList<int>();
+        *studTreeIds = studBackButton->getTreeNodeIds();
+        *facTreeIds = facBackButton->getTreeNodeIds();
+        w->setTreeNodeIds(studTreeIds);
+        fac->setTreeNodeIds(facTreeIds);
+
+
+            cout << endl;
+    cout << "Actual" << endl;
+    cout << "Student tree: " << endl;
+    w->printTree(w->getRoot());
+    cout << "Fac tree: " << endl;
+    fac->printTree(fac->getRoot());
+    cout << endl;
+
+    cout << endl;
+
+    cout << "Placeholder" << endl;
+    cout << "Student tree: " << endl;
+    facBackButton->printTree(w->getRoot());
+    cout << "Fac tree: " << endl;
+    facBackButton->printTree(fac->getRoot());
+    cout << endl;
+
       }
     else
     {
       cout << "No changes to roll back" << endl;
     }
-
-    cout << "Student tree: " << endl;
-    studBackButton->printTree(studBackButton->getRoot());
-    cout << "Fac tree: " << endl;
-    facBackButton->printTree(facBackButton->getRoot());
-
-    w = studBackButton;
-  }
+  }//end of rollback
 
 
   //saves the data
@@ -820,11 +859,8 @@ int filesEnabled = true;
 if(filesEnabled)
 {
   w->printTree(w->getRoot());
-  cout << "YEEETHAW Fac" << endl << endl;
   myFileManager->saveFacFile(fac->getListOfNodes());
-  cout << "YEEETHAW Stud" << endl << endl;
   myFileManager->saveStudFile(w->getListOfNodes());
-  cout << "YEEETHAW" << endl << endl;
 }
 
   return 0;

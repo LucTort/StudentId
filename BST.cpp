@@ -32,64 +32,44 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
 }
 
 template<typename T>
-void BST<T>::printStudent(){
-  TreeNode<T> *studNode = new TreeNode<T>();
-  Person *currentStud = new Person();
-  DoublyLinkedList<int> *placeHolderList = new DoublyLinkedList<int>;
-  *placeHolderList = treeNodeIds->getSelf();
-  int peeker = 0;
-  double GPA = 0;
-  string major = "";
-  string standing = "";
-  string name = "";
+void BST<T>::printStudent(TreeNode<T> *node){   //This seems to be working
 
+    if (node == NULL)
+        {return;}
 
-  while (placeHolderList->getSize() > 0){
+    printStudent(node->left);
+        
+    printStudent(node->right);
 
-    peeker = placeHolderList->removeFront();
+    TreeNode<T> *studNode = new TreeNode<T>();
+    Person *currentStud = new Person();
 
-    studNode = searchNode(peeker);
+    studNode = node;
 
-    currentStud = studNode->getNodeData();
-
-    GPA = currentStud->getGPA();
-    major = currentStud->getMajor();
-    standing = currentStud ->getStanding();
-    name = currentStud->getName();
+    currentStud = studNode->getNodeData();    
 
     cout << " " << endl;
-
     currentStud->printStudData();
-  }
-
-//   cout << "Its size: " <<treeNodeIds->getSize() << endl;
 }
 
 template<typename T>
-void BST<T>::printFac(){
-  TreeNode<T> *facNode= new TreeNode<T>();
-  Person *currentFac = new Person();
-  DoublyLinkedList<int> *tempDoubly = new DoublyLinkedList<int>;
-  *tempDoubly = treeNodeIds->getSelf();
-  int peeker = 0;
-  // DoublyLinkedList *advisees;//?????????
+void BST<T>::printFac(TreeNode<T> *node){   //This seems to be working
+    if (node == NULL)
+        {return;}
 
-  tempDoubly->printList();
+    printFac(node->left);
+        
+    printFac(node->right);
 
+    TreeNode<T> *facNode = new TreeNode<T>();
+    Person *currentFac = new Person();
 
-  while (tempDoubly->getSize() != 0){
+    facNode = node;
 
-    peeker = tempDoubly->removeFront();
-
-    facNode = searchNode(peeker);
-
-    currentFac = facNode->getNodeData();
+    currentFac = facNode->getNodeData();    
 
     cout << " " << endl;
-
-    currentFac->printFacData();
-
-  }
+    currentFac->printStudData();
 
 }//end of PrintFac
 
@@ -143,12 +123,12 @@ template<typename T>
 void BST<T>::insert(int value, T nodeValue)
 {
     TreeNode<T> *node = new TreeNode<T>(value, nodeValue); //value is also the key
+    treeNodeIds->insertFront(value);
 
     if(root == NULL)
     {
         //we have an empty tree
         root = node;
-        treeNodeIds->insertFront(value);
     }
     else
     {
@@ -168,7 +148,6 @@ void BST<T>::insert(int value, T nodeValue)
                 if(curr == NULL)
                 {
                     parent->left = node;
-                    treeNodeIds->insertFront(value);
                     break;
                 }
             }
@@ -180,7 +159,6 @@ void BST<T>::insert(int value, T nodeValue)
                 {
                     //we found the nodes home
                     parent->right = node;
-                    treeNodeIds->insertFront(value);
                     break;
                 }
             }
@@ -446,26 +424,20 @@ DoublyLinkedList<T> BST<T>::getListOfNodes(){
   int currentStudId;
 
 //   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
-    cout << "Try me" << endl;
   while (tempNodeIds->getSize() > 0){
 
 
-      cout << "Size: " <<tempNodeIds->getSize() << endl <<"Temp node ids: "<< endl;
       tempNodeIds->printList();
 
-    cout << "Before remove front" << endl;
     currentStudId = tempNodeIds->removeFront();
-    cout << "After remove front" << endl;
+
 
     studTreeNode = searchNode(currentStudId);
     studPersonNode = studTreeNode->getNodeData();
     cout << studPersonNode->getId() << endl;
-    cout << "Before print node" << endl;
 
     returnedNodes->insertFront(studPersonNode);
-    cout << "After insert" << endl;
   }
-    cout << "Blah" << endl;
 //   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
 //   cout << "Size of returned nodes: " << returnedNodes->getSize()<< endl;
 
@@ -476,4 +448,16 @@ template<typename T>
 void BST<T>::insertTreeNodeIds(int d)
 {
     treeNodeIds->insertFront(d);
+}
+
+template<typename T>
+void BST<T>::setTreeNodeIds(DoublyLinkedList<int> *doublyList)
+{
+    treeNodeIds = doublyList;
+}
+
+template<typename T>
+DoublyLinkedList<int> BST<T>::getTreeNodeIds()
+{
+    return *treeNodeIds;
 }

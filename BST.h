@@ -13,8 +13,9 @@ class BST{
         bool search(int value); //which in this example is also our key
         TreeNode<T>* searchNode(int value);
         bool deleteNode(int k);
-        void printStudent();
-        void printFac();
+        // void printStudent();
+        void printStudent(TreeNode<T> *node);
+        void printFac(TreeNode<T> *node);;
 
         bool isEmpty();
         TreeNode<T>* getMin();
@@ -28,6 +29,11 @@ class BST{
         DoublyLinkedList<T> getListOfNodes();
 
         void insertTreeNodeIds(int);
+
+        void setTreeNodeIds(DoublyLinkedList<int> *doublyList);
+        DoublyLinkedList<int> getTreeNodeIds();
+
+        
 
 
 

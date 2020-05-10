@@ -93,41 +93,43 @@ void DoublyLinkedList<T>::insertBack(T d){
 
 template <class T>
 T DoublyLinkedList<T>::removeFront(){
-  ListNode<T> *node = front;
-  T temp = front -> data;
+  if (!(isEmpty())){
+    ListNode<T> *node = front;
+    T temp = front -> data;
 
-  if (front ->next == NULL){
-    //we have one node in the list
-    back = NULL;
-  }else{
-    //there is more than one node in the list
-    front -> next->prev = NULL;
+    if (front ->next == NULL){
+      //we have one node in the list
+      back = NULL;
+    }else{
+      //there is more than one node in the list
+      front -> next->prev = NULL;
+    }
+    front = front -> next;
+    node -> next = NULL;
+
+    delete node;
+    size--;
+    return temp;
   }
-  front = front -> next;
-  node -> next = NULL;
-
-  delete node;
-  size--;
-  return temp;
 }
 
 template <class T>
 T DoublyLinkedList<T>::removeBack(){
-  ListNode<T> *node = back;
-  int temp = back -> data;
-  if (back -> prev == NULL){
-    front = NULL;
-  }else{
-    back -> prev -> next = NULL;
+  if (!(isEmpty())){
+    ListNode<T> *node = back;
+    int temp = back -> data;
+    if (back -> prev == NULL){
+      front = NULL;
+    }else{
+      back -> prev -> next = NULL;
+    }
+    back = back -> prev;
+    node -> prev = NULL;
+
+    delete node;
+    size--;
+    return temp;
   }
-  back = back -> prev;
-  node -> prev = NULL;
-
-  delete node;
-  size--;
-  return temp;
-
-
 }
 
 template <class T>
@@ -213,21 +215,21 @@ void DoublyLinkedList<T>::clearList(){
 
   while(size > 0){
     removeFront();
+    size--;
   }
 
 }
 
 template <class T>
-DoublyLinkedList<T> DoublyLinkedList<T>::getSelf()
+DoublyLinkedList<T> DoublyLinkedList<T>::getSelf() //this seems to work properly
 {
-    ListNode<T> *curr = front;
+    ListNode<T> *curr = back;
+    T currData;
     DoublyLinkedList<T> *copiedList = new DoublyLinkedList<T>();
 
-    while(curr != NULL)
-    {
-        copiedList->insertBack(curr->data);
-        curr = curr->next;
-    }
-
-    return *copiedList;
+  while (curr != NULL){
+    copiedList->insertFront(curr -> data);
+    curr = curr -> prev;
+  }
+  return *copiedList;
 }
