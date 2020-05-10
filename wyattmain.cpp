@@ -786,6 +786,8 @@ int filesEnabled = true;
     studBackButton->printTree(studBackButton->getRoot());
     cout << "Fac tree: " << endl;
     facBackButton->printTree(facBackButton->getRoot());
+
+    w = studBackButton;
   }
 
 
