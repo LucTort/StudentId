@@ -1,11 +1,4 @@
-4
-80
-Yeah
-Not
-2.3
-Derping
-21
-
+3
 40
 Bob Miller
 Senior
@@ -26,3 +19,4 @@ Junior
 1.2
 CompSci
 20
+

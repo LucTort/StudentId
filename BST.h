@@ -27,6 +27,8 @@ class BST{
 
         DoublyLinkedList<T> getListOfNodes();
 
+        void insertTreeNodeIds(int);
+
 
 
 
@@ -36,6 +38,5 @@ class BST{
 
     private:
         TreeNode<T> *root;
-        DoublyLinkedList<int> *myDoubly = new DoublyLinkedList<int>();
-        // int size = myQueue->getSize();
+        DoublyLinkedList<int> *treeNodeIds = new DoublyLinkedList<int>();
 };

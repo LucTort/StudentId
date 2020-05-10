@@ -21,11 +21,11 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
   if (node == NULL)
       {return;}
 
-  if (node->key == root->key && myDoubly->getSize()>0){
-    myDoubly->clearList();
+  if (node->key == root->key && treeNodeIds->getSize()>0){
+    // treeNodeIds->clearList();
   }
     printTree(node->left);
-    myDoubly->insertBack(node->key);
+    // treeNodeIds->insertBack(node->key);
     cout << node->key << endl;
     printTree(node->right);
 
@@ -36,18 +36,17 @@ void BST<T>::printStudent(){
   TreeNode<T> *studNode = new TreeNode<T>();
   Person *currentStud = new Person();
   DoublyLinkedList<int> *placeHolderList = new DoublyLinkedList<int>;
+  *placeHolderList = treeNodeIds->getSelf();
   int peeker = 0;
   double GPA = 0;
   string major = "";
   string standing = "";
   string name = "";
-  myDoubly->printList();
 
-//   cout << "Its size: " <<myDoubly->getSize() << endl;
 
-  while (myDoubly->getSize() != 0){
+  while (placeHolderList->getSize() > 0){
 
-    peeker = myDoubly->removeFront();
+    peeker = placeHolderList->removeFront();
 
     studNode = searchNode(peeker);
 
@@ -60,14 +59,10 @@ void BST<T>::printStudent(){
 
     cout << " " << endl;
 
-    placeHolderList->insertBack(peeker);
-
     currentStud->printStudData();
   }
 
-  myDoubly = placeHolderList;
-
-//   cout << "Its size: " <<myDoubly->getSize() << endl;
+//   cout << "Its size: " <<treeNodeIds->getSize() << endl;
 }
 
 template<typename T>
@@ -75,7 +70,7 @@ void BST<T>::printFac(){
   TreeNode<T> *facNode= new TreeNode<T>();
   Person *currentFac = new Person();
   DoublyLinkedList<int> *tempDoubly = new DoublyLinkedList<int>;
-  *tempDoubly = myDoubly->getSelf();
+  *tempDoubly = treeNodeIds->getSelf();
   int peeker = 0;
   // DoublyLinkedList *advisees;//?????????
 
@@ -149,11 +144,11 @@ void BST<T>::insert(int value, T nodeValue)
 {
     TreeNode<T> *node = new TreeNode<T>(value, nodeValue); //value is also the key
 
-
     if(root == NULL)
     {
         //we have an empty tree
         root = node;
+        treeNodeIds->insertFront(value);
     }
     else
     {
@@ -173,6 +168,7 @@ void BST<T>::insert(int value, T nodeValue)
                 if(curr == NULL)
                 {
                     parent->left = node;
+                    treeNodeIds->insertFront(value);
                     break;
                 }
             }
@@ -184,6 +180,7 @@ void BST<T>::insert(int value, T nodeValue)
                 {
                     //we found the nodes home
                     parent->right = node;
+                    treeNodeIds->insertFront(value);
                     break;
                 }
             }
@@ -281,6 +278,7 @@ template <typename T>
 template <typename T>
     bool BST<T>::deleteNode(int k)
     {
+        cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
         if(isEmpty())
         {
             return false;
@@ -327,15 +325,19 @@ template <typename T>
             {
                 if(current == root)
                 {
+                    // cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
                     root = NULL;
+                    
                 }
                 else if(isLeft)
                 {
-                    // cout << parent->left->key<<endl;
+                    // cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
                     parent->left = NULL;
+                    
                 }
                 else
                 {
+                    
                     parent->right = NULL;
                 }
 
@@ -402,9 +404,9 @@ template <typename T>
 
                 successor->left = current->left;
 
+                // cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
                 return true;
             }
-
     }
 
 template<typename T>
@@ -432,26 +434,6 @@ template<typename T>
         return successor;
     }//end of get successor
 
-
-
-// template<typename T>
-// DoublyLinkedList<T> BST<T>::getListOfNodes(DoublyLinkedList<int> nodes){
-//   TreeNode<Person*> *studNode = new TreeNode<Person*>();
-//   DoublyLinkedList<int> *tempNodes = new DoublyLinkedList<int>;
-//   Person *currentStud = new Person();
-//   int peeker = 0;
-
-//   while (nodes->getSize() > 0){
-//     //   tempNodes
-//     peeker = myDoubly->removeFront();
-
-//     studNode = searchNode(peeker);
-
-//     listOfTreeNodes->insertFront(studNode->getNodeData());
-//     cout << studNode->getNodeData() << endl;
-//   }
-// }
-
 template<typename T>
 DoublyLinkedList<T> BST<T>::getListOfNodes(){
     // cout << "YEETHAW" << endl;
@@ -459,23 +441,39 @@ DoublyLinkedList<T> BST<T>::getListOfNodes(){
   Person *studPersonNode = new Person();
   DoublyLinkedList<int> *tempNodeIds = new DoublyLinkedList<int>;
   DoublyLinkedList<T> *returnedNodes = new DoublyLinkedList<T>;
-  *tempNodeIds = myDoubly->getSelf();
+  *tempNodeIds = treeNodeIds->getSelf();
+//   cout << "Nodes in BST: " <<tempNodeIds->getSize() << endl;
   int currentStudId;
 
 //   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
-
+    cout << "Try me" << endl;
   while (tempNodeIds->getSize() > 0){
 
+
+      cout << "Size: " <<tempNodeIds->getSize() << endl <<"Temp node ids: "<< endl;
+      tempNodeIds->printList();
+
+    cout << "Before remove front" << endl;
     currentStudId = tempNodeIds->removeFront();
+    cout << "After remove front" << endl;
 
     studTreeNode = searchNode(currentStudId);
     studPersonNode = studTreeNode->getNodeData();
+    cout << studPersonNode->getId() << endl;
+    cout << "Before print node" << endl;
 
     returnedNodes->insertFront(studPersonNode);
+    cout << "After insert" << endl;
   }
-
+    cout << "Blah" << endl;
 //   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
 //   cout << "Size of returned nodes: " << returnedNodes->getSize()<< endl;
 
   return *returnedNodes;
+}
+
+template<typename T>
+void BST<T>::insertTreeNodeIds(int d)
+{
+    treeNodeIds->insertFront(d);
 }

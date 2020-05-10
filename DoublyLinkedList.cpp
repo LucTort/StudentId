@@ -167,8 +167,7 @@ T DoublyLinkedList<T>::remove(T val){
     //keep iterating till we find our value
     curr = curr->next;
     if (curr==NULL){
-      return NULL;//maybe have to return 0 or -1
-
+      return 0;
     }
   }
   //we found the val, now lets delete it
