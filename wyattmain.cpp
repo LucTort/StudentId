@@ -23,14 +23,14 @@ int main(){
 
   FileManager *myFileManager = new FileManager();
 
-//      ______            __    __        _______ __         
+//      ______            __    __        _______ __
 //     / ____/___  ____ _/ /_  / /__     / ____(_) /__  _____
 //    / __/ / __ \/ __ `/ __ \/ / _ \   / /_  / / / _ \/ ___/
-//   / /___/ / / / /_/ / /_/ / /  __/  / __/ / / /  __(__  ) 
-//  /_____/_/ /_/\__,_/_.___/_/\___/  /_/   /_/_/\___/____/  
-//                  
+//   / /___/ / / / /_/ / /_/ / /  __/  / __/ / / /  __(__  )
+//  /_____/_/ /_/\__,_/_.___/_/\___/  /_/   /_/_/\___/____/
+//
 
-int filesEnabled = false;
+int filesEnabled = true;
 
 //    ______          __     _____ __            __   ______
 //   /_  __/__  _____/ /_   / ___// /___  ______/ /  /_  __/_______  ___
@@ -48,7 +48,7 @@ int filesEnabled = false;
   int trueCheck = -1;
   int studInput1 = 0;
   int facGetter = 0;
-  
+
   BST<Person*> *w = new BST<Person*>();
   BST<Person*> *fac = new BST<Person*>();
 
@@ -63,7 +63,7 @@ int filesEnabled = false;
 //
 
   if(filesEnabled)
-  { 
+  {
     *w = myFileManager->getStudData();
     *fac = myFileManager->getFacData();
   }
@@ -73,7 +73,7 @@ int filesEnabled = false;
 
   // w->printStudent();
 
-  if(filesEnabled)
+  if(!filesEnabled)
   {
       DoublyLinkedList<int> *adv1 = new DoublyLinkedList<int>();
       DoublyLinkedList<int> *adv2 = new DoublyLinkedList<int>();
@@ -767,7 +767,7 @@ int filesEnabled = false;
   }
   if (option == 13){
     cout << "you have chosen the Rollback function "<< endl;
-    BST<Person*> *studBackButton = new BST<Person*>(); 
+    BST<Person*> *studBackButton = new BST<Person*>();
     BST<Person*> *facBackButton = new BST<Person*>();
 
 
@@ -781,7 +781,7 @@ int filesEnabled = false;
     {
       cout << "No changes to roll back" << endl;
     }
-    
+
     cout << "Student tree: " << endl;
     studBackButton->printTree(studBackButton->getRoot());
     cout << "Fac tree: " << endl;
@@ -799,22 +799,31 @@ int filesEnabled = false;
 //
 
 
-  if(filesEnabled)
-  { 
-    w->printTree(w->getRoot());
-    cout << "YEEETHAW Fac" << endl << endl;
-    myFileManager->saveFacFile(fac->getListOfNodes());
-    cout << "YEEETHAW Stud" << endl << endl;
-    myFileManager->saveStudFile(w->getListOfNodes());
-    cout << "YEEETHAW" << endl << endl;
-  }
+  // if(filesEnabled)
+  // {
+  //   w->printTree(w->getRoot());
+  //   cout << "YEEETHAW Fac" << endl << endl;
+  //   myFileManager->saveFacFile(fac->getListOfNodes());
+  //   cout << "YEEETHAW Stud" << endl << endl;
+  //   myFileManager->saveStudFile(w->getListOfNodes());
+  //   cout << "YEEETHAW" << endl << endl;
+  // }
+
   // cout << "Fac tree" << endl;
   // fac->printTree(fac->getRoot());
   // cout << "Test" << endl;
 
 }//end of while
 
-
+if(filesEnabled)
+{
+  w->printTree(w->getRoot());
+  cout << "YEEETHAW Fac" << endl << endl;
+  myFileManager->saveFacFile(fac->getListOfNodes());
+  cout << "YEEETHAW Stud" << endl << endl;
+  myFileManager->saveStudFile(w->getListOfNodes());
+  cout << "YEEETHAW" << endl << endl;
+}
 
   return 0;
 }

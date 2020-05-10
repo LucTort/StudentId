@@ -4,7 +4,7 @@
 //https://stackoverflow.com/questions/7663709/how-can-i-convert-a-stdstring-to-int
 #include "FileManager.h"
 
-//    _____              __               __             
+//    _____              __               __
 //   / ___/__  ___  ___ / /_______ ______/ /____  _______
 //  / /__/ _ \/ _ \(_-</ __/ __/ // / __/ __/ _ \/ __(_-<
 //  \___/\___/_//_/___/\__/_/  \_,_/\__/\__/\___/_/ /___/
@@ -22,11 +22,11 @@ FileManager::FileManager(string studData, string facData)
     facDataFile = facData;
 }
 
-//     ____                ____              __  _             
+//     ____                ____              __  _
 //    / __/__ __  _____   / __/_ _____  ____/ /_(_)__  ___  ___
 //   _\ \/ _ `/ |/ / -_) / _// // / _ \/ __/ __/ / _ \/ _ \(_-<
 //  /___/\_,_/|___/\__/ /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
-//  Save Functions                                     
+//  Save Functions
 
 void FileManager::saveStudFile(DoublyLinkedList<Person*> studNodes)
 {
@@ -48,7 +48,7 @@ void FileManager::saveStudFile(DoublyLinkedList<Person*> studNodes)
         myFile << currentStud->getGPA() << endl;
         myFile << currentStud->getMajor() << endl;
         myFile << currentStud->getAdvisor() << endl;
-        
+
         myFile << endl;
     }
 
@@ -79,6 +79,8 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
         int currentAdvisee = 0;
         // bool needEndl = false;
 
+        cout << "Here is the size: " <<advisees->getSize() << endl;
+
         myFile << advisees->getSize() << endl;
 
         // cout << advisees->getSize() << endl;
@@ -96,7 +98,7 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
     myFile.close();
 }
 
-//     __                __  ____              __  _             
+//     __                __  ____              __  _
 //    / /  ___  ___ ____/ / / __/_ _____  ____/ /_(_)__  ___  ___
 //   / /__/ _ \/ _ `/ _  / / _// // / _ \/ __/ __/ / _ \/ _ \(_-<
 //  /____/\___/\_,_/\_,_/ /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
@@ -116,7 +118,7 @@ BST<Person*> FileManager::getStudData()
     getline(myFile, stringDataPoints);
     // int numDataPoints = (int) stringDataPoints;
     int numDataPoints = stoi(stringDataPoints);
-    
+
 
     for(int x = 0; x < numDataPoints; x++)
     {
@@ -156,7 +158,7 @@ BST<Person*> FileManager::getStudData()
     }
 
     // treeFromFile->printTree(treeFromFile->getRoot());
-    
+
 
     myFile.close();
 
@@ -182,7 +184,7 @@ BST<Person*> FileManager::getFacData()
     getline(myFile, stringDataPoints);
     // int numDataPoints = (int) stringDataPoints;
     int numDataPoints = stoi(stringDataPoints);
-    
+
     // cout<< "Reading from fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" << stringDataPoints << endl;
 
     for(int x = 0; x < numDataPoints; ++x)
@@ -232,7 +234,7 @@ BST<Person*> FileManager::getFacData()
     }
 
     // treeFromFile->printTree(treeFromFile->getRoot());
-    
+
 
     myFile.close();
 
@@ -240,13 +242,13 @@ BST<Person*> FileManager::getFacData()
 
 }//end getStudData
 
-//     ___          __               __          
+//     ___          __               __
 //    / _ \___ ___ / /_______ ______/ /____  ____
 //   / // / -_|_-</ __/ __/ // / __/ __/ _ \/ __/
-//  /____/\__/___/\__/_/  \_,_/\__/\__/\___/_/   
+//  /____/\__/___/\__/_/  \_,_/\__/\__/\___/_/
 //   Destructor
 
 FileManager::~FileManager()
 {
-    
+
 }
