@@ -3,8 +3,7 @@
 chris change
 assistant professor
 dance school
-1
-40
+0
 
 50
 Lucas Torti
@@ -17,6 +16,5 @@ Keck Center
 wyatt miller
 professor
 Argyros
-1
-30
+0
 

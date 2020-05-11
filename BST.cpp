@@ -69,7 +69,7 @@ void BST<T>::printFac(TreeNode<T> *node){   //This seems to be working
     currentFac = facNode->getNodeData();    
 
     cout << " " << endl;
-    currentFac->printStudData();
+    currentFac->printFacData();
 
 }//end of PrintFac
 
@@ -415,6 +415,8 @@ template<typename T>
 template<typename T>
 DoublyLinkedList<T> BST<T>::getListOfNodes(){
     // cout << "YEETHAW" << endl;
+    cout << "Size of treeNodeIds: " << treeNodeIds->getSize() <<endl;
+    
   TreeNode<T> *studTreeNode = new TreeNode<T>();
   Person *studPersonNode = new Person();
   DoublyLinkedList<int> *tempNodeIds = new DoublyLinkedList<int>;
@@ -424,7 +426,7 @@ DoublyLinkedList<T> BST<T>::getListOfNodes(){
   int currentStudId;
 
 //   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
-  while (tempNodeIds->getSize() > 0){
+  while (!(tempNodeIds->isEmpty())){
 
 
       tempNodeIds->printList();
@@ -438,11 +440,60 @@ DoublyLinkedList<T> BST<T>::getListOfNodes(){
 
     returnedNodes->insertFront(studPersonNode);
   }
-//   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
-//   cout << "Size of returned nodes: " << returnedNodes->getSize()<< endl;
+
+    returnedNodes->printList();
 
   return *returnedNodes;
 }
+
+template<typename T>
+void BST<T>::loadFromListOfNodes(DoublyLinkedList<Person*> *listOfNodes){
+    
+    BST<Person*> *newTree = new BST<Person*>();
+
+    while(!(listOfNodes->isEmpty()))
+    {
+        Person *tempPer = new Person();
+        tempPer = listOfNodes->removeFront();
+        newTree->insert(tempPer->getId(), tempPer);
+    }
+
+
+    *this = *newTree;
+}
+
+
+
+
+
+// template<typename T>
+// void BST<T>::addNodesToDoublyLinkedList(TreeNode<T*> *node, DoublyLinkedList<T*> *doublyList){//come back
+    
+//   if (node == NULL)
+//       {return;}
+
+//     addNodesToDoublyLinkedList(node->left, *doublyList);
+//     addNodesToDoublyLinkedList(node->right, *doublyList);
+
+//     T *tempNode = new T();
+//     *tempNode = node->getNodeData();
+
+//     doublyList.insertFront(*tempNode);
+// }
+
+// template<typename T>
+// DoublyLinkedList<T> BST<T>::getListOfNodes(){
+//    DoublyLinkedList<T> *doublyList = new DoublyLinkedList<T>();
+
+//     addNodesToDoublyLinkedList(root, doublyList);
+
+//     cout << "Doubly List: " << endl;
+//     doublyList->printList();
+
+//   return doublyList;
+// }
+
+
 
 template<typename T>
 void BST<T>::insertTreeNodeIds(int d)

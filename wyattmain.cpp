@@ -1,4 +1,12 @@
+//https://www.tutorialspoint.com/cplusplus/cpp_switch_statement.htm
+
 #include "FileManager.cpp"
+
+
+// void rollbackSave(int &rollBackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w);
+
+
+// void rollbackLoad(int &rollBackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w);
 
 void printOptions(){
 
@@ -21,7 +29,24 @@ void printOptions(){
 
 int main(){
 
-  FileManager *myFileManager = new FileManager();
+
+  // FileManager *rollback0 = new FileManager("studRollback0.txt", "facRollback0.txt");
+  // FileManager *rollback1 = new FileManager("studRollback1.txt", "facRollback1.txt");
+  // FileManager *rollback2 = new FileManager("studRollback2.txt", "facRollback2.txt");
+  // FileManager *rollback3 = new FileManager("studRollback3.txt", "facRollback3.txt");
+  // FileManager *rollback4 = new FileManager("studRollback4.txt", "facRollback4.txt");
+
+  
+  // int rollbackFront = 0;
+  // int rollbackBack = 0;
+
+
+
+
+
+
+    FileManager *myFileManager = new FileManager();
+
 
 //      ______            __    __        _______ __
 //     / ____/___  ____ _/ /_  / /__     / ____(_) /__  _____
@@ -52,9 +77,19 @@ int filesEnabled = true;
   BST<Person*> *w = new BST<Person*>();
   BST<Person*> *fac = new BST<Person*>();
 
-  //Rollback Files
-  DoublyLinkedList<BST<Person*>> *rollbackStud = new DoublyLinkedList<BST<Person*>>();
-  DoublyLinkedList<BST<Person*>> *rollbackFac = new DoublyLinkedList<BST<Person*>>();
+  // Rollback Files
+  // DoublyLinkedList<BST<Person*>> *rollbackStud = new DoublyLinkedList<BST<Person*>>();
+  // DoublyLinkedList<BST<Person*>> *rollbackFac = new DoublyLinkedList<BST<Person*>>();
+  // DoublyLinkedList<DoublyLinkedList<int>> *rollbackStudDoubly = new DoublyLinkedList<DoublyLinkedList<int>>();
+  // DoublyLinkedList<DoublyLinkedList<int>> *rollbackFacDoubly = new DoublyLinkedList<DoublyLinkedList<int>>();
+
+
+
+  DoublyLinkedList<DoublyLinkedList<Person*>> *prevStudTrees = new DoublyLinkedList<DoublyLinkedList<Person*>>();
+  DoublyLinkedList<DoublyLinkedList<Person*>> *prevFacTrees = new DoublyLinkedList<DoublyLinkedList<Person*>>();
+
+
+
 
 //     __                __  ____                 _____ __
 //    / /  ___  ___ ____/ / / __/______  __ _    / __(_) /__
@@ -310,9 +345,17 @@ int filesEnabled = true;
 
   }
   if (option == 7){
-    rollbackFac->insertFront(*fac);
-    w->printTree(w->getRoot());
-    rollbackStud->insertFront(*w);
+    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
+    
+    
+    // rollbackFac->insertFront(*fac);
+    // rollbackStud->insertFront(*w);
+    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
+    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
+    prevStudTrees->insertFront(w->getListOfNodes());
+    prevFacTrees->insertFront(fac->getListOfNodes());
+
 
     string name1 = "";
     double gpa1 = 0;
@@ -377,9 +420,17 @@ int filesEnabled = true;
     }
   }
   if (option == 8){
-    rollbackFac->insertFront(*fac);
-    w->printTree(w->getRoot());
-    rollbackStud->insertFront(*w);
+    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
+    
+    
+    // rollbackFac->insertFront(*fac);
+    // rollbackStud->insertFront(*w);
+    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
+    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
+
+    prevStudTrees->insertFront(w->getListOfNodes());
+    prevFacTrees->insertFront(fac->getListOfNodes());
 
     int trueCheck2 = 0;
     int idInput1 = 0;
@@ -462,9 +513,17 @@ int filesEnabled = true;
   }
 
   if (option==9){
-    rollbackFac->insertFront(*fac);
-    w->printTree(w->getRoot());
-    rollbackStud->insertFront(*w);
+    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
+    
+    
+    // rollbackFac->insertFront(*fac);
+    // rollbackStud->insertFront(*w);
+    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
+    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
+    prevStudTrees->insertFront(w->getListOfNodes());
+    prevFacTrees->insertFront(fac->getListOfNodes());
+
     string name1 = "";
     string level1 = "";
     int id11 = 0;
@@ -538,9 +597,16 @@ int filesEnabled = true;
   }
 
   if (option == 10){
-    rollbackFac->insertFront(*fac);
-    w->printTree(w->getRoot());
-    rollbackStud->insertFront(*w);
+    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
+    
+    
+    // rollbackFac->insertFront(*fac);
+    // rollbackStud->insertFront(*w);
+    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
+    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
+    prevStudTrees->insertFront(w->getListOfNodes());
+    prevFacTrees->insertFront(fac->getListOfNodes());
 
     int trueCheck2 = 0;
     int idInput1 = 0;
@@ -607,9 +673,16 @@ int filesEnabled = true;
     }
   }
   if (option == 11){
-    rollbackFac->insertFront(*fac);
-    w->printTree(w->getRoot());
-    rollbackStud->insertFront(*w);
+    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
+    
+    
+    // rollbackFac->insertFront(*fac);
+    // rollbackStud->insertFront(*w);
+    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
+    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
+    prevStudTrees->insertFront(w->getListOfNodes());
+    prevFacTrees->insertFront(fac->getListOfNodes());
 
     int studId0 = 0;
     int facID = 0;
@@ -686,9 +759,16 @@ int filesEnabled = true;
     //STILL HAVE TO COME IN AND CHANGE THE FACULTY WHO WAS REPLACED
 
   }if (option == 12){
-    rollbackFac->insertFront(*fac);
-    w->printTree(w->getRoot());
-    rollbackStud->insertFront(*w);
+    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
+    
+    
+    // rollbackFac->insertFront(*fac);
+    // rollbackStud->insertFront(*w);
+    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
+    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
+    prevStudTrees->insertFront(w->getListOfNodes());
+    prevFacTrees->insertFront(fac->getListOfNodes());
 
     int studId0 = 0;
     int facID = 0;
@@ -776,57 +856,76 @@ int filesEnabled = true;
   }
   if (option == 13){
     cout << "You have chosen the Rollback function "<< endl;
-    BST<Person*> *studBackButton = new BST<Person*>();
-    BST<Person*> *facBackButton = new BST<Person*>();
+
+    DoublyLinkedList<Person*> *studLoad = new DoublyLinkedList<Person*>;
+    DoublyLinkedList<Person*> *facLoad = new DoublyLinkedList<Person*>;
+
+    *studLoad = prevStudTrees->removeFront();
+    *facLoad = prevFacTrees->removeFront();
+
+    w->loadFromListOfNodes(studLoad);
+    fac->loadFromListOfNodes(facLoad);
+
+    // rollbackLoad(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
 
 
 
-    if (!(rollbackFac->isEmpty()) && !(rollbackStud->isEmpty()))
-      {
-        *studBackButton = rollbackStud->removeFront();
-        *facBackButton = rollbackFac->removeFront();
 
-        // cout << "Fac back button: " << endl;
-
-        //   studBackButton->printTree();
-        //   cout << endl;
-        // cout << "Stud back button: " << endl;
-        //   facBackButton->printTree();
-        //   cout << endl;
-        //   cout << endl;
-
-        w = studBackButton;
-        fac = facBackButton;
-        DoublyLinkedList<int> *studTreeIds = new DoublyLinkedList<int>();
-        DoublyLinkedList<int> *facTreeIds = new DoublyLinkedList<int>();
-        *studTreeIds = studBackButton->getTreeNodeIds();
-        *facTreeIds = facBackButton->getTreeNodeIds();
-        w->setTreeNodeIds(studTreeIds);
-        fac->setTreeNodeIds(facTreeIds);
+    // BST<Person*> *studBackButton = new BST<Person*>();
+    // BST<Person*> *facBackButton = new BST<Person*>();
+    // DoublyLinkedList<int> *studBackButtonDoubly = new DoublyLinkedList<int>();
+    // DoublyLinkedList<int> *facBackButtonDoubly = new DoublyLinkedList<int>();
 
 
-            cout << endl;
-    cout << "Actual" << endl;
-    cout << "Student tree: " << endl;
-    w->printTree(w->getRoot());
-    cout << "Fac tree: " << endl;
-    fac->printTree(fac->getRoot());
-    cout << endl;
 
-    cout << endl;
+    // if (!(rollbackFac->isEmpty()) && !(rollbackStud->isEmpty()))
+    //   {
+    //     *studBackButton = rollbackStud->removeFront();
+    //     *facBackButton = rollbackFac->removeFront();
+    //     *studBackButtonDoubly = rollbackStudDoubly->removeFront();
+    //     *facBackButtonDoubly = rollbackFacDoubly->removeFront();
 
-    cout << "Placeholder" << endl;
-    cout << "Student tree: " << endl;
-    facBackButton->printTree(w->getRoot());
-    cout << "Fac tree: " << endl;
-    facBackButton->printTree(fac->getRoot());
-    cout << endl;
+    //     // cout << "Fac back button: " << endl;
 
-      }
-    else
-    {
-      cout << "No changes to roll back" << endl;
-    }
+    //     //   studBackButton->printTree();
+    //     //   cout << endl;
+    //     // cout << "Stud back button: " << endl;
+    //     //   facBackButton->printTree();
+    //     //   cout << endl;
+    //     //   cout << endl;
+
+    //     w = studBackButton;
+    //     fac = facBackButton;
+    //     DoublyLinkedList<int> *studTreeIds = new DoublyLinkedList<int>();
+    //     DoublyLinkedList<int> *facTreeIds = new DoublyLinkedList<int>();
+    //     *studTreeIds = studBackButton->getTreeNodeIds();
+    //     *facTreeIds = facBackButton->getTreeNodeIds();
+    //     w->setTreeNodeIds(studBackButtonDoubly);
+    //     fac->setTreeNodeIds(facBackButtonDoubly);
+
+
+    //         cout << endl;
+    // cout << "Actual" << endl;
+    // cout << "Student tree: " << endl;
+    // w->printTree(w->getRoot());
+    // cout << "Fac tree: " << endl;
+    // fac->printTree(fac->getRoot());
+    // cout << endl;
+
+    // cout << endl;
+
+    // cout << "Placeholder" << endl;
+    // cout << "Student tree: " << endl;
+    // facBackButton->printTree(w->getRoot());
+    // cout << "Fac tree: " << endl;
+    // facBackButton->printTree(fac->getRoot());
+    // cout << endl;
+
+    //   }
+    // else
+    // {
+    //   cout << "No changes to roll back" << endl;
+    // }
   }//end of rollback
 
 
@@ -840,19 +939,14 @@ int filesEnabled = true;
 //
 
 
-  // if(filesEnabled)
-  // {
-  //   w->printTree(w->getRoot());
-  //   cout << "YEEETHAW Fac" << endl << endl;
-  //   myFileManager->saveFacFile(fac->getListOfNodes());
-  //   cout << "YEEETHAW Stud" << endl << endl;
-  //   myFileManager->saveStudFile(w->getListOfNodes());
-  //   cout << "YEEETHAW" << endl << endl;
-  // }
 
-  // cout << "Fac tree" << endl;
-  // fac->printTree(fac->getRoot());
-  // cout << "Test" << endl;
+        cout << endl << endl;
+        DoublyLinkedList<int> *studTreeIds = new DoublyLinkedList<int>();
+        DoublyLinkedList<int> *facTreeIds = new DoublyLinkedList<int>();
+        *studTreeIds = w->getTreeNodeIds();
+        *facTreeIds = fac->getTreeNodeIds();
+        cout << "Stud node num ids: " << studTreeIds->getSize() << endl;
+        cout << "Fac node num ids: " << facTreeIds->getSize() << endl;
 
 }//end of while
 
@@ -865,3 +959,76 @@ if(filesEnabled)
 
   return 0;
 }
+
+//      ______                 __  _                 
+//     / ____/_  ______  _____/ /_(_)___  ____  _____
+//    / /_  / / / / __ \/ ___/ __/ / __ \/ __ \/ ___/
+//   / __/ / /_/ / / / / /__/ /_/ / /_/ / / / (__  ) 
+//  /_/    \__,_/_/ /_/\___/\__/_/\____/_/ /_/____/  
+//                                                   
+
+
+// void rollbackSave(int &rollbackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w){
+//   switch(rollbackFront) 
+//   {
+//     case 0  :
+//         file0.saveStudFile(w.getListOfNodes());
+//       break; //optional
+//     case 1  :
+//       file1.saveStudFile(w.getListOfNodes());
+//       break; //optional
+//     case 2  :
+//       file2.saveStudFile(w.getListOfNodes());
+//       break; //optional
+//     case 3  :
+//       file3.saveStudFile(w.getListOfNodes());
+//       break; //optional
+//     case 4  :
+//       file4.saveStudFile(w.getListOfNodes());
+//       break; //optional
+//   }
+
+//   rollbackFront++;
+//       if (rollbackFront > 4) {rollbackFront = 0;}
+//       cout << "Front on: " << rollbackFront << endl;
+// }//end rollbackSave
+
+// void rollbackLoad(int &rollbackFront, int &rollbackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4, BST<Person*> w){
+//     if (rollbackFront == rollbackBack) {return;}
+
+//     else
+//     {
+//       switch(rollbackBack) 
+//         {
+//           case 0  :
+//           {
+//             cout << "Test" << endl << "Test" << endl;
+//             BST<Person*> *tempTree = new BST<Person*>();
+//             *tempTree = file0.getStudData();
+//             w = *tempTree;
+//             break; //optional
+//           }
+//           case 1  :
+//             w = file1.getStudData();
+//             break; //optional
+//           case 2  :
+//             w = file2.getStudData();
+//             break; //optional
+//           case 3  :
+//             w = file3.getStudData();
+//             break; //optional
+//           case 4  :
+//             w = file4.getStudData();
+//             break; //optional
+            
+//             rollbackFront++;
+//             if (rollbackFront > 4) {rollbackFront = 0;}
+//         }
+//     }
+    
+//       rollbackBack++;
+//       if (rollbackFront > 4) {rollbackFront = 0;}
+
+//       cout << "Back on: " << rollbackBack << endl;
+
+// }//end rollbackLoad

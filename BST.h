@@ -32,6 +32,8 @@ class BST{
 
         void setTreeNodeIds(DoublyLinkedList<int> *doublyList);
         DoublyLinkedList<int> getTreeNodeIds();
+        void loadFromListOfNodes(DoublyLinkedList<Person*> *listOfNodes);
+        // void addNodesToDoublyLinkedList(TreeNode<T*> *node, DoublyLinkedList<T*> *doublyList);
 
         
 
