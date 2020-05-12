@@ -2,12 +2,13 @@
 
 #include "Person.h"
 
+//default constructor
 Person::Person()
 {
-
 }
 
-Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, int advisorIn)  //for the students
+//for students
+Person::Person(int idIn, string nameIn, string standingIn, string majorIn, double GPAIn, int advisorIn)
 {
     id = idIn;
     name = nameIn;
@@ -17,7 +18,8 @@ Person::Person(int idIn, string nameIn, string standingIn, string majorIn, doubl
     advisor = advisorIn;
 }
 
-Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, DoublyLinkedList<int>* adviseesIn)  //for the students
+//for faculty
+Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, DoublyLinkedList<int>* adviseesIn)
 {
     id = idIn;
     name = nameIn;
@@ -26,15 +28,16 @@ Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, Dou
     advisees = adviseesIn;
 }
 
-// Person::Person(int idIn, string nameIn, string departmentIn, string levelIn,  DoublyLinkedList<int>* adviseesIn)  //for the faculty
-// {
-//     id = idIn;
-//     name = nameIn;
-//     department = departmentIn;
-//     level = levelIn;
-//     advisees = adviseesIn;
-// }
 
+
+//     _____      __  __                
+//    / ___/___  / /_/ /____  __________
+//    \__ \/ _ \/ __/ __/ _ \/ ___/ ___/
+//   ___/ /  __/ /_/ /_/  __/ /  (__  ) 
+//  /____/\___/\__/\__/\___/_/  /____/  
+//                                      
+
+//does what it says on the tin. Very basic stuff
         void Person::setId(int IDIn)
         {
             id = IDIn;
@@ -81,10 +84,14 @@ Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, Dou
         }
 
 
+//     ______     __  __                
+//    / ____/__  / /_/ /____  __________
+//   / / __/ _ \/ __/ __/ _ \/ ___/ ___/
+//  / /_/ /  __/ /_/ /_/  __/ /  (__  ) 
+//  \____/\___/\__/\__/\___/_/  /____/  
+//                                      
 
-
-
-
+//not much to it, really
         int Person::getId()
         {
             return id;
@@ -94,7 +101,6 @@ Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, Dou
         {
             return name;
         }
-
 
         string Person::getStanding()
         {
@@ -132,6 +138,16 @@ Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, Dou
         }
 
 
+//      ____       _       __                
+//     / __ \_____(_)___  / /____  __________
+//    / /_/ / ___/ / __ \/ __/ _ \/ ___/ ___/
+//   / ____/ /  / / / / / /_/  __/ /  (__  ) 
+//  /_/   /_/  /_/_/ /_/\__/\___/_/  /____/  
+//
+
+//if you're looking for a good quality printer, Brother makes some good products. Oh, and these print their respective data
+
+//this is for *drumroll* students! Who would'a guessed
         void Person::printStudData()
         {
             cout << "ID: " << id << endl;
@@ -142,6 +158,7 @@ Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, Dou
             cout << "Advisor: " << advisor << endl;
         }
 
+//and this is for *disheartened sobbing* faculty! It's almost as if it does what the function says...
         void Person::printFacData()
         {
             cout << "ID: " << id << endl;
@@ -154,10 +171,8 @@ Person::Person(int idIn, string nameIn, string departmentIn, string levelIn, Dou
         }
 
 
-
-
-
+//it's a destructor. Don't overthink it
         Person::~Person()
         {
-
+            delete advisees;
         }

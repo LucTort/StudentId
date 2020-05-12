@@ -3,11 +3,13 @@
 #include "FileManager.cpp"
 #include "CatInHat.cpp"
 
+//this file is for testing only. It's pretty boring
+
 int main(int argc, char **argv)
 
 {
 
-    CatInHat *cat = new CatInHat();
+    CatInHat *cat = new CatInHat();//who doesn't like the cat in the hat?
     cat->printCat();
 //     FileManager *testManager = new FileManager();
 

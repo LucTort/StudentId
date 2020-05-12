@@ -2,6 +2,7 @@
 #include <unistd.h>
 
 
+//used to save to and load from files
 class FileManager
 {
     private:
@@ -10,15 +11,16 @@ class FileManager
 
     public:
         FileManager(); //default constructor
-        FileManager(string studData, string facData);
+        FileManager(string studData, string facData);   //overloaded constructor
 
-
+    //saving to a file
         void saveStudFile(DoublyLinkedList<Person*> treeToSave);
         void saveFacFile(DoublyLinkedList<Person*> treeToSave);
 
+    //getting data from file
         BST<Person*> getStudData();
         BST<Person*> getFacData();
 
-
+    //destructor
       ~FileManager();
 };

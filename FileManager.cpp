@@ -14,6 +14,7 @@
 //  \___/\___/_//_/___/\__/_/  \_,_/\__/\__/\___/_/ /___/
 //   Constructors
 
+//default constructor
 FileManager::FileManager()
 {
     studDataFile = "studData.txt";
@@ -48,6 +49,8 @@ FileManager::FileManager()
         }
 }
 
+//overloaded constructor for using different file names
+//If going to use this need to add code to create a file if there aren't any
 FileManager::FileManager(string studData, string facData)
 {
     studDataFile = studData;
@@ -60,6 +63,7 @@ FileManager::FileManager(string studData, string facData)
 //  /___/\_,_/|___/\__/ /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
 //  Save Functions
 
+//saves a DoublyLinkedList of students to a specified file
 void FileManager::saveStudFile(DoublyLinkedList<Person*> studNodes)
 {
     ofstream myFile;
@@ -88,6 +92,7 @@ void FileManager::saveStudFile(DoublyLinkedList<Person*> studNodes)
 
 }
 
+//saves a DoublyLinkedList of students to a specified file
 void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
 {
     ofstream myFile;
@@ -135,6 +140,8 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
 //   / /__/ _ \/ _ `/ _  / / _// // / _ \/ __/ __/ / _ \/ _ \(_-<
 //  /____/\___/\_,_/\_,_/ /_/  \_,_/_//_/\__/\__/_/\___/_//_/___/
 //  Load Functions
+
+//takes a file of students and outputs its data as a binary search tree of type person
 BST<Person*> FileManager::getStudData()
 {
     ifstream myFile;
@@ -148,49 +155,37 @@ BST<Person*> FileManager::getStudData()
 
     string stringDataPoints;
     getline(myFile, stringDataPoints);
-    // int numDataPoints = (int) stringDataPoints;
     int numDataPoints = stoi(stringDataPoints);
-
 
     for(int x = 0; x < numDataPoints; x++)
     {
         string fileData;
 
         getline(myFile, fileData);
-        // cout << "ID: " <<fileData << endl;
         int ID = stoi(fileData);
 
         getline(myFile, fileData);
-        // cout << "Name: " <<fileData << endl;
         string name = fileData;
 
         getline(myFile, fileData);
-        // cout << "Standing: " <<fileData << endl;
         string standing = fileData;
 
         getline(myFile, fileData);
-        // cout << "GPA: " <<fileData << endl;
         double GPA = stod(fileData);
 
         getline(myFile, fileData);
-        // cout << "Major: " <<fileData << endl;
         string major = fileData;
 
         getline(myFile, fileData);
-        // cout << "Advisor: " <<fileData << endl;
         int advisor = stoi(fileData);
 
         getline(myFile, fileData);//space between data
-        // cout << "No data: " <<fileData << endl;
 
         Person *newStud = new Person(ID, name, standing, major, GPA, advisor);
 
         treeFromFile->insert(newStud->getId(), newStud);
 
     }
-
-    // treeFromFile->printTree(treeFromFile->getRoot());
-
 
     myFile.close();
 
@@ -199,6 +194,7 @@ BST<Person*> FileManager::getStudData()
 }//end getStudData
 
 
+//takes a file of faculty and outputs its data as a binary search tree of type person
 BST<Person*> FileManager::getFacData()
 {
     ifstream myFile;
@@ -208,8 +204,6 @@ BST<Person*> FileManager::getFacData()
         cout << "File didn't open properly" << endl;
     }
 
-    // cout<< "Reading from fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" << endl;
-
     BST<Person*> *treeFromFile = new BST<Person*>();
 
     string stringDataPoints;
@@ -217,33 +211,25 @@ BST<Person*> FileManager::getFacData()
     // int numDataPoints = (int) stringDataPoints;
     int numDataPoints = stoi(stringDataPoints);
 
-    // cout<< "Reading from fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" << stringDataPoints << endl;
-
     for(int x = 0; x < numDataPoints; ++x)
     {
-    // cout<< "Reading from fileeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" << endl;
 
         string fileData;
 
         getline(myFile, fileData);
-        // cout << "ID: " << fileData << endl;
         int ID = stoi(fileData);
 
         getline(myFile, fileData);
-        // cout << "Name: " << fileData << endl;
         string name = fileData;
 
         getline(myFile, fileData);
-        // cout << "Level: " << fileData << endl;
         string level = fileData;
 
         getline(myFile, fileData);
-        // cout << "Department: " << fileData << endl;
         string department = fileData;
 
 
         getline(myFile, fileData);
-        // cout << fileData << endl;
         int numAdvisees = stoi(fileData);
 
         DoublyLinkedList<int> *facAdvisees = new DoublyLinkedList<int>();
@@ -251,7 +237,6 @@ BST<Person*> FileManager::getFacData()
         for(int x = 0; x < numAdvisees; ++x)
         {
             getline(myFile, fileData);
-            // cout << fileData << endl;
             int advisee = stoi(fileData);
             facAdvisees->insertFront(advisee);
         }
@@ -265,9 +250,6 @@ BST<Person*> FileManager::getFacData()
 
     }
 
-    // treeFromFile->printTree(treeFromFile->getRoot());
-
-
     myFile.close();
 
     return *treeFromFile;
@@ -280,7 +262,8 @@ BST<Person*> FileManager::getFacData()
 //  /____/\__/___/\__/_/  \_,_/\__/\__/\___/_/
 //   Destructor
 
+//destructor
 FileManager::~FileManager()
 {
-
+    //variables are deleted automatically, so we're good
 }
