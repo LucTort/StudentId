@@ -27,8 +27,13 @@ void printOptions(){
   cout << "12) Remove an advisee from a faculty member given the ids " << endl;
   cout << "13) Rollback " << endl;
   cout << "14) Exit" << endl;
+  cout << "---Extras---" << endl;
   cout << "15) Cat in the Hat " << endl;
-  cout << "16) Given a student" << endl;
+  cout << "16) Given a student id, change their GPA" << endl;
+  cout << "17) Given a student id, change their major" << endl;
+  cout << "18) Given a student id, change their standing" << endl;
+  cout << "19) Given a faculty id, change their level" << endl;
+  cout << "20) Given a faculty id, change their department" << endl;
 }
 
 int main(){
@@ -914,6 +919,198 @@ int filesEnabled = true;
     cat->printCat();
   }
 
+//     ________
+//    <  / ___/
+//    / / __ \ 
+//   / / /_/ / 
+//  /_/\____/  
+//             
+
+if (option == 16)
+{
+    int studId0 = 0;
+    cout << "Please enter the ID of the student you would like to modify"<< endl;
+    cin >> studId0;
+
+    //error checking to see if the student exists
+    while (!(w->search(studId0)))
+    {
+      cout << "That student does not exist, please enter one that does"<< endl;
+      cout<< "Enter a student ID "<<endl;
+      cin >> studId0;
+    }
+
+    cout << "Enter the new GPA"<< endl;
+    int userChange = 0;
+    cin >> userChange;
+
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *studPrinter = new Person();
+    person = w->searchNode(studId0);
+    studPrinter = person->getNodeData();
+    studPrinter->setGPA(userChange);
+
+    cout << "\nStudents data before the change"<< endl;
+    studPrinter->printStudData();
+
+    cout << "\nStudents data after the change"<< endl;
+    studPrinter->printStudData();
+
+    
+}
+//     ________
+//    <  /__  /
+//    / /  / / 
+//   / /  / /  
+//  /_/  /_/   
+//             
+if (option == 17)
+{
+    int studId0 = 0;
+    cout << "Please enter the ID of the student you would like to modify"<< endl;
+    cin >> studId0;
+
+    //error checking to see if the student exists
+    while (!(w->search(studId0)))
+    {
+      cout << "That student does not exist, please enter one that does"<< endl;
+      cout<< "Enter a student ID "<<endl;
+      cin >> studId0;
+    }
+
+    cout << "Enter the new major"<< endl;
+    string userChange = "";
+    cin >> userChange;
+
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *studPrinter = new Person();
+    person = w->searchNode(studId0);
+    studPrinter = person->getNodeData();
+    studPrinter->setMajor(userChange);
+
+    cout << "\nStudents data before the change"<< endl;
+    studPrinter->printStudData();
+
+    cout << "\nStudents data after the change"<< endl;
+    studPrinter->printStudData();
+
+    
+}
+//     _______ 
+//    <  ( __ )
+//    / / __  |
+//   / / /_/ / 
+//  /_/\____/  
+//             
+if (option == 18)
+{
+    int studId0 = 0;
+    cout << "Please enter the ID of the student you would like to modify"<< endl;
+    cin >> studId0;
+
+    //error checking to see if the student exists
+    while (!(w->search(studId0)))
+    {
+      cout << "That student does not exist, please enter one that does"<< endl;
+      cout<< "Enter a student ID "<<endl;
+      cin >> studId0;
+    }
+
+    cout << "Enter the new standing"<< endl;
+    string userChange = "";
+    cin >> userChange;
+
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *studPrinter = new Person();
+    person = w->searchNode(studId0);
+    studPrinter = person->getNodeData();
+    studPrinter->setStanding(userChange);
+
+    cout << "\nStudents data before the change"<< endl;
+    studPrinter->printStudData();
+
+    cout << "\nStudents data after the change"<< endl;
+    studPrinter->printStudData();
+
+    
+}
+//     _______ 
+//    <  / __ \
+//    / / /_/ /
+//   / /\__, / 
+//  /_//____/  
+//             
+if (option == 19)
+{
+    int facId = 0;
+    cout << "Please enter the ID of the faculty you would like to modify"<< endl;
+    cin >> facId;
+
+    //error checking to see if the student exists
+    while (!(fac->search(facId)))
+    {
+      cout << "That faculty does not exist, please enter one that does"<< endl;
+      cout<< "Enter a faculty ID "<<endl;
+      cin >> facId;
+    }
+
+    cout << "Enter the new level"<< endl;
+    string userChange = "";
+    cin >> userChange;
+
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *facPrinter = new Person();
+    person = fac->searchNode(facId);
+    facPrinter = person->getNodeData();
+    facPrinter->setLevel(userChange);
+
+    cout << "\nFaculty's data before the change"<< endl;
+    facPrinter->printFacData();
+
+    cout << "\nFaculty's data after the change"<< endl;
+    facPrinter->printFacData();
+
+    
+}
+//     ___   ____ 
+//    |__ \ / __ \
+//    __/ // / / /
+//   / __// /_/ / 
+//  /____/\____/  
+//                
+if (option == 20)
+{
+    int facId = 0;
+    cout << "Please enter the ID of the faculty you would like to modify"<< endl;
+    cin >> facId;
+
+    //error checking to see if the student exists
+    while (!(fac->search(facId)))
+    {
+      cout << "That faculty does not exist, please enter one that does"<< endl;
+      cout<< "Enter a faculty ID "<<endl;
+      cin >> facId;
+    }
+
+    cout << "Enter the new department"<< endl;
+    string userChange = "";
+    cin >> userChange;
+
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *facPrinter = new Person();
+    person = fac->searchNode(facId);
+    facPrinter = person->getNodeData();
+    facPrinter->setDepartment(userChange);
+
+    cout << "\nFaculty's data before the change"<< endl;
+    facPrinter->printFacData();
+
+    cout << "\nFaculty's data after the change"<< endl;
+    facPrinter->printFacData();
+
+    
+}
+
 
   //saves the data
 
@@ -936,7 +1133,7 @@ int filesEnabled = true;
 
 }//end of while
 
-if(filesEnabled)
+if (filesEnabled)
 {
   w->printTree(w->getRoot());
   myFileManager->saveFacFile(fac->getListOfNodes());

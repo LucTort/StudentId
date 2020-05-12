@@ -1,12 +1,13 @@
-//References Stud class from assignment 4
 
 #include "CatInHat.h"
 
+//no data to add
 CatInHat::CatInHat()
 {
 
 }
 
+//no data to remove
 CatInHat::~CatInHat()  //for the students
 {
 
@@ -14,7 +15,7 @@ CatInHat::~CatInHat()  //for the students
 
 
 
-
+//just prints out some ascii art
 void CatInHat::printCat()
 {
 
