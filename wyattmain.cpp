@@ -8,6 +8,8 @@
 
 // void rollbackLoad(int &rollBackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w);
 
+
+//printing out all of the options
 void printOptions(){
 
   cout << "\nWhat would you like to do?\n"<<endl;
@@ -121,7 +123,7 @@ int filesEnabled = true;
 
 
 
-
+//creating people
       Person *rosie = new Person();
       rosie->setId(35);
       rosie->setGPA(3.8);
@@ -171,7 +173,7 @@ int filesEnabled = true;
       adv3->insertBack(40);
       chris->setAdvisees(adv3);
 
-
+//inserting them into their respective trees
       w->insert(frank->getId(), frank);
 
       w->insert(rosie->getId(), rosie);
@@ -184,17 +186,9 @@ int filesEnabled = true;
 
       fac->insert(chris->getId(), chris);
   }
-
-
-
-  // WORKNG PRINT STUDENT ASCENDING
-  // w->printTree(w->getRoot());
-  // w->printStudent();
-
   int option = 0;
 
-
-
+// the big while loop
   while(option != 14)
   {
 
@@ -203,6 +197,7 @@ int filesEnabled = true;
 
     cin >> option;
 
+//option 1
     if (option == 1){
       // WORKNG PRINT STUDENT ASCENDING
       w->printTree(w->getRoot());
@@ -210,27 +205,30 @@ int filesEnabled = true;
 
       // rollbackStud->insertStack(*w);
     }
-
+  //option 2
     if (option == 2){
       //PRINT FACULTY ASCENDING
       fac->printTree(fac->getRoot());
       fac->printFac(fac->getRoot());
     }
 
-
+//option 3
     if (option == 3){
+      //getting the input
       cout << "Enter the ID that you would like to print the information "<< endl;
       cin >> idInput;
 
+// checking to see if the input was actually in the tree
       trueCheck = w->search(idInput);
 
-      //error checking to see if the fac exists
+      //error checking to see if the student exists
       while (trueCheck == 0){
         cout << "That student does not exist, please enter one that does"<< endl;
         cout<< "Enter a student ID "<<endl;
         cin>> idInput;
         trueCheck = w->search(idInput);
       }
+      //printing the student data
       if (trueCheck == 1){
         cout << " "<< endl;
         TreeNode<Person*> *person= new TreeNode<Person*>();
@@ -244,6 +242,7 @@ int filesEnabled = true;
         cout << "That ID does not exist please restart"<< endl;
       }
     }
+    //option 4
     if (option == 4){
       cout << "Enter the ID that you would like to print the information "<< endl;
       cin >> facIdInput;
@@ -256,7 +255,7 @@ int filesEnabled = true;
         cin>> facIdInput;
         trueCheck = fac->search(facIdInput);
       }
-
+      //printing the fac data
       if (trueCheck == 1){
         cout << " "<< endl;
         TreeNode<Person*> *facPerson= new TreeNode<Person*>();
@@ -270,20 +269,21 @@ int filesEnabled = true;
         cout << "That ID does not exist please restart"<< endl;
       }
     }
-
+    //option 5
     if (option == 5){
+      //getting the input
       cout << "Enter the ID of the students "<< endl;
       cin >> studInput1;
-
+      //searching the tree
       trueCheck = w->search(studInput1);
-      //error checking to see if the fac exists
+      //error checking to see if the stud exists
       while (trueCheck == 0){
         cout << "That student does not exist, please enter one that does"<< endl;
         cout<< "Enter a student ID "<<endl;
         cin>> studInput1;
         trueCheck = w->search(studInput1);
       }
-
+      //getting the advisor of the student
       if (trueCheck == 1){
         cout << " "<< endl;
         TreeNode<Person*> *studPerson= new TreeNode<Person*>();
@@ -298,7 +298,7 @@ int filesEnabled = true;
         int trueCheck1= 0;
 
         trueCheck1 = fac->search(facGetter);
-
+        //finding the students advisor in the fac tree and printing fac data
         if (trueCheck1 == 1){
           cout << " "<< endl;
           TreeNode<Person*> *facPerson= new TreeNode<Person*>();
@@ -317,11 +317,13 @@ int filesEnabled = true;
       cout << "That Id does not exist, please restart"<< endl;
     }
   }
+  //option 6
   if (option == 6){
     int trueCheck2 = 0;
     int facIdInput1 = 0;
     int listSize = 0;
     int idRemoved = 0;
+    //getting input
     cout << "Enter a faculty ID "<< endl;
     cin >> facIdInput1;
     //checking if id exists
@@ -335,7 +337,7 @@ int filesEnabled = true;
       cin>> facIdInput1;
       trueCheck2 = fac->search(facIdInput1);
     }
-
+    //getting all the advisees of that fac
     if (trueCheck2 == 1){
       cout << " "<< endl;
       TreeNode<Person*> *facPerson= new TreeNode<Person*>();
@@ -352,9 +354,7 @@ int filesEnabled = true;
       advisee1->printList();
 
       listSize = advisee1->getSize();
-
-      cout <<  "List size: "<< listSize<<endl;
-
+      //iterating through all advisees and print all of them
       for (int i= 1; i<=listSize; ++i){
         //pull of the id from the doubly linked list, then print the information
         idRemoved = advisee1->removeBack();
@@ -380,18 +380,11 @@ int filesEnabled = true;
     }
 
   }
+  //option 7
   if (option == 7){
-    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-
-
-    // rollbackFac->insertFront(*fac);
-    // rollbackStud->insertFront(*w);
-    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
-    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
 
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
-
 
     string name1 = "";
     double gpa1 = 0;
@@ -402,6 +395,7 @@ int filesEnabled = true;
     string gpaType = "";
     string idType = "";
 
+  //getting all the required info
     cout<< "Please enter information for the following fields "<< endl;
     cout<< "Name? "<< endl;
     //https://stackoverflow.com/questions/5838711/stdcin-input-with-spaces
@@ -417,11 +411,13 @@ int filesEnabled = true;
     cout<< "Advisor? "<< endl;
     cin>> advisor1;
 
+    //searching to see if the advisor exists
+
     int trueCheck1= 0;
     string answer1 = "";
     trueCheck1 = fac->search(advisor1);
 
-    // CHECKING FOR THE CORRECT DATA TYPES
+    // error checking to see if advisor exists and giving the option to continue regardless
 
     while (trueCheck1 == 0){
       cout << "That advisor does not exist, would you like to continue anyway? (yes/no)"<< endl;
@@ -433,6 +429,7 @@ int filesEnabled = true;
       cin>> advisor1;
       trueCheck1 = fac->search(advisor1);
     }
+    //setting the values
     Person *renee = new Person();
     renee->setId(id1);
     renee->setGPA(gpa1);
@@ -440,13 +437,14 @@ int filesEnabled = true;
     renee->setStanding(standing1);
     renee->setName(name1);
     renee->setAdvisor(advisor1);
-
+//inserting the values in the tree
     w->insert(renee->getId(), renee);
 
     cout << "\nYou added this new student"<< endl;
   //printing the new student
     int trueCheck2 = 0;
     trueCheck2 = w->search(id1);
+    //searching for this student in the tree and printing their data
     if (trueCheck2 == 1){
       cout << " "<< endl;
       TreeNode<Person*> *person= new TreeNode<Person*>();
@@ -461,7 +459,7 @@ int filesEnabled = true;
     }
   }
   if (option == 8){
-
+    //rollback functionality
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
 
@@ -469,10 +467,11 @@ int filesEnabled = true;
     int idInput1 = 0;
     int trueCheck3 = 0;
     int getTheFac =0;
+    //getting input
     cout << "Enter the ID of the student that you would like to delete "<< endl;
     cin >> idInput1;
 
-
+    //search tree
     trueCheck2 = w->search(idInput1);
     //error checking to see if the fac exists
     while (trueCheck2 == 0){
@@ -481,7 +480,7 @@ int filesEnabled = true;
       cin>> idInput1;
       trueCheck2 = w->search(idInput1);
     }
-    //can potentially wrap these in while loops
+    //deleting them out of the tree
     if (trueCheck2 == 1){
       cout << " "<< endl;
       TreeNode<Person*> *person= new TreeNode<Person*>();
@@ -495,9 +494,12 @@ int filesEnabled = true;
 
       studPrinter =person->getNodeData();
 
+      //getting their fac memeber befroe the deletion so we can delete the student out of advisees
+
       getTheFac = studPrinter->getAdvisor();
 
       cout << "Here is their faculty member: "<< getTheFac << endl;
+
       //deleting the student once I have their advisor
 
       w->deleteNode(idInput1);
@@ -506,7 +508,7 @@ int filesEnabled = true;
 
       w->printTree(w->getRoot());
 
-      //have the advisor, ow going to delete the student out of the advisees
+      //have the advisor, now going to delete the student out of the advisees
 
       int trueCheck4 = 0;
       trueCheck4 = fac->search(getTheFac);
@@ -530,7 +532,7 @@ int filesEnabled = true;
         advisee1 = facPrinter->getAdvisees();
 
         listSize1 = advisee1->getSize();
-
+        //iterating through all advisees to find the right student to take out
         for (int i = 1; i<=listSize1; ++i){
           cout << "Ye";
           idremoved1=advisee1->removeBack();
@@ -552,9 +554,9 @@ int filesEnabled = true;
     }
 
   }
-
+//option 9
   if (option==9){
-
+//rollback
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
 
@@ -566,7 +568,7 @@ int filesEnabled = true;
     string answer = "";
     DoublyLinkedList<int> *advisee11 = new DoublyLinkedList<int>();
 
-
+//getting the required fields
     cout<< "Please enter information for the following fields "<< endl;
     cout<< "Name? "<< endl;
     std::getline(std::cin >> std::ws, name1);
@@ -576,6 +578,8 @@ int filesEnabled = true;
     std::getline(std::cin >> std::ws, level1);
     cout<< "Department? "<< endl;
     std::getline(std::cin >> std::ws, department1);
+
+    //while loop so they can add as many advisees as they would like
 
     while (answer != "no" || answer != "n" || answer != "No"||answer != "NO"){
       int advisee0=0;
@@ -587,6 +591,8 @@ int filesEnabled = true;
       string answer1 = "";
       trueCheck1 = w->search(advisee0);
 
+      //error checking to see if advisee exists
+
       while (trueCheck1 == 0){
         cout << "That student does not exist, would you like to continue anyway?"<< endl;
         cin>> answer1;
@@ -597,7 +603,7 @@ int filesEnabled = true;
         cin>> advisee0;
         trueCheck1 = w->search(advisee0);
       }
-
+      //while loop breaker
       advisee11->insertBack(advisee0);
       cout << "Would you like to enter another advisee? (yes/no)"<< endl;
       cin>> answer;
@@ -606,14 +612,14 @@ int filesEnabled = true;
       }
     }
     advisee11->printList();
-
+//creating new person
     Person *m = new Person();
     m->setId(id11);
     m->setDepartment(department1);
     m->setLevel(level1);
     m->setName(name1);
     m->setAdvisees(advisee11);
-
+//inserting them in the fac
     fac->insert(m->getId(),m);
 
     cout << "\nYou added this new faculty member"<<endl;
@@ -637,7 +643,7 @@ int filesEnabled = true;
 
   if (option == 10){
 
-
+//rollback
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
 
@@ -645,6 +651,7 @@ int filesEnabled = true;
     int idInput1 = 0;
     int trueCheck3 = 0;
     DoublyLinkedList<int> *getTheFac = new DoublyLinkedList<int>();
+    //geting input
     cout << "Enter the ID of the faculty that you would like to delete "<< endl;
     cin >> idInput1;
 
@@ -657,7 +664,7 @@ int filesEnabled = true;
       cin>> idInput1;
       trueCheck2 = fac->search(idInput1);
     }
-    //can potentially wrap these in while loops
+    // finding the fac member and deleting
     if (trueCheck2 == 1){
       cout << " "<< endl;
       TreeNode<Person*> *person= new TreeNode<Person*>();
@@ -673,7 +680,7 @@ int filesEnabled = true;
 
       getTheFac = studPrinter->getAdvisees();
 
-      //here we have all the id's of who the faculties advisees were
+      //here we have all the id's of who the faculties advisees were, so we can delete this fac out of advisor
 
       //deleting the faculty once I have their advisees
 
@@ -690,6 +697,8 @@ int filesEnabled = true;
       int doublyPuller = 0;
       int advSize=0;
       advSize=getTheFac->getSize();
+
+      //going through all advisees and changing their advisor
 
       for (int i=1;i<=advSize;++i){
         int trueCheck4 = 0;
@@ -713,14 +722,9 @@ int filesEnabled = true;
       }
     }
   }
+  //option 11
   if (option == 11){
-    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-
-
-    // rollbackFac->insertFront(*fac);
-    // rollbackStud->insertFront(*w);
-    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
-    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+//rollback
 
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
@@ -771,7 +775,7 @@ int filesEnabled = true;
     cout << "\nStudents data after the change"<< endl;
     studPrinter->printStudData();
 
-    //and go into the faculty and change the student?
+    //and go into the faculty and change the student
 
     cout << " "<< endl;
     TreeNode<Person*> *facPerson= new TreeNode<Person*>();
@@ -797,23 +801,15 @@ int filesEnabled = true;
     cout << "\nFaculty data after the change"<< endl;
     facPrinter->printFacData();
 
-    //STILL HAVE TO COME IN AND CHANGE THE FACULTY WHO WAS REPLACED
 
   }if (option == 12){
-    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-
-
-    // rollbackFac->insertFront(*fac);
-    // rollbackStud->insertFront(*w);
-    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
-    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
-
+//rollback
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
 
     int studId0 = 0;
     int facID = 0;
-
+//input
     cout << "Enter the faculty ID you wish to modify"<< endl;
     cin >> facID;
 
@@ -863,6 +859,8 @@ int filesEnabled = true;
 
     sizeOf = modAdv->getSize();
 
+    //removing the student if that student equals the input otherwise inserting him back into the doubly, to later renew the doubly link list and reinsert
+
     for (int i = 1; i<=sizeOf; ++i){
       idremoved1=modAdv->removeBack();
       if (idremoved1 != studId0){
@@ -895,6 +893,8 @@ int filesEnabled = true;
     studPrinter->printStudData();
 
   }
+
+  //Roll back functionality
   if (option == 13){
     cout << "You have chosen the Rollback function "<< endl;
 
