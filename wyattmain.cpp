@@ -38,7 +38,7 @@ int main(){
   // FileManager *rollback3 = new FileManager("studRollback3.txt", "facRollback3.txt");
   // FileManager *rollback4 = new FileManager("studRollback4.txt", "facRollback4.txt");
 
-  
+
   // int rollbackFront = 0;
   // int rollbackBack = 0;
 
@@ -223,6 +223,14 @@ int filesEnabled = true;
       cin >> idInput;
 
       trueCheck = w->search(idInput);
+
+      //error checking to see if the fac exists
+      while (trueCheck == 0){
+        cout << "That student does not exist, please enter one that does"<< endl;
+        cout<< "Enter a student ID "<<endl;
+        cin>> idInput;
+        trueCheck = w->search(idInput);
+      }
       if (trueCheck == 1){
         cout << " "<< endl;
         TreeNode<Person*> *person= new TreeNode<Person*>();
@@ -241,6 +249,13 @@ int filesEnabled = true;
       cin >> facIdInput;
       //checking if id exists
       trueCheck = fac->search(facIdInput);
+      //error checking to see if the fac exists
+      while (trueCheck == 0){
+        cout << "That faculty does not exist, please enter one that does"<< endl;
+        cout<< "Enter a faculty ID "<<endl;
+        cin>> facIdInput;
+        trueCheck = fac->search(facIdInput);
+      }
 
       if (trueCheck == 1){
         cout << " "<< endl;
@@ -261,6 +276,13 @@ int filesEnabled = true;
       cin >> studInput1;
 
       trueCheck = w->search(studInput1);
+      //error checking to see if the fac exists
+      while (trueCheck == 0){
+        cout << "That student does not exist, please enter one that does"<< endl;
+        cout<< "Enter a student ID "<<endl;
+        cin>> studInput1;
+        trueCheck = w->search(studInput1);
+      }
 
       if (trueCheck == 1){
         cout << " "<< endl;
@@ -304,6 +326,15 @@ int filesEnabled = true;
     cin >> facIdInput1;
     //checking if id exists
     trueCheck2 = fac->search(facIdInput1);
+
+
+    //error checking to see if the fac exists
+    while (trueCheck2 == 0){
+      cout << "That faculty does not exist, please enter one that does"<< endl;
+      cout<< "Enter a faculty ID "<<endl;
+      cin>> facIdInput1;
+      trueCheck2 = fac->search(facIdInput1);
+    }
 
     if (trueCheck2 == 1){
       cout << " "<< endl;
@@ -351,8 +382,8 @@ int filesEnabled = true;
   }
   if (option == 7){
     // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-    
-    
+
+
     // rollbackFac->insertFront(*fac);
     // rollbackStud->insertFront(*w);
     // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
@@ -387,12 +418,17 @@ int filesEnabled = true;
     cin>> advisor1;
 
     int trueCheck1= 0;
+    string answer1 = "";
     trueCheck1 = fac->search(advisor1);
 
     // CHECKING FOR THE CORRECT DATA TYPES
 
     while (trueCheck1 == 0){
-      cout << "That advisor does not exist, please enter one that does"<< endl;
+      cout << "That advisor does not exist, would you like to continue anyway? (yes/no)"<< endl;
+      cin>> answer1;
+      if (answer1 == "yes"){
+        break;
+      }
       cout<< "Advisor? "<<endl;
       cin>> advisor1;
       trueCheck1 = fac->search(advisor1);
@@ -425,14 +461,6 @@ int filesEnabled = true;
     }
   }
   if (option == 8){
-    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-    
-    
-    // rollbackFac->insertFront(*fac);
-    // rollbackStud->insertFront(*w);
-    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
-    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
-
 
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
@@ -444,7 +472,15 @@ int filesEnabled = true;
     cout << "Enter the ID of the student that you would like to delete "<< endl;
     cin >> idInput1;
 
+
     trueCheck2 = w->search(idInput1);
+    //error checking to see if the fac exists
+    while (trueCheck2 == 0){
+      cout << "That student does not exist, please enter one that does"<< endl;
+      cout<< "Enter a Student ID "<<endl;
+      cin>> idInput1;
+      trueCheck2 = w->search(idInput1);
+    }
     //can potentially wrap these in while loops
     if (trueCheck2 == 1){
       cout << " "<< endl;
@@ -518,13 +554,6 @@ int filesEnabled = true;
   }
 
   if (option==9){
-    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-    
-    
-    // rollbackFac->insertFront(*fac);
-    // rollbackStud->insertFront(*w);
-    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
-    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
 
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
@@ -555,10 +584,15 @@ int filesEnabled = true;
 
 
       int trueCheck1= 0;
+      string answer1 = "";
       trueCheck1 = w->search(advisee0);
 
       while (trueCheck1 == 0){
-        cout << "That student does not exist, please enter one that does"<< endl;
+        cout << "That student does not exist, would you like to continue anyway?"<< endl;
+        cin>> answer1;
+        if (answer1 == "yes" || answer1 == "y" || answer1 == "Yes"){
+          break;
+        }
         cout<< "Enter an advisee ID "<<endl;
         cin>> advisee0;
         trueCheck1 = w->search(advisee0);
@@ -602,13 +636,7 @@ int filesEnabled = true;
   }
 
   if (option == 10){
-    // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-    
-    
-    // rollbackFac->insertFront(*fac);
-    // rollbackStud->insertFront(*w);
-    // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
-    // rollbackStudDoubly->insertFront(w->getTreeNodeIds());
+
 
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
@@ -621,6 +649,14 @@ int filesEnabled = true;
     cin >> idInput1;
 
     trueCheck2 = fac->search(idInput1);
+
+    //error checking to see if the fac exists
+    while (trueCheck2 == 0){
+      cout << "That faculty does not exist, please enter one that does"<< endl;
+      cout<< "Enter a faculty ID "<<endl;
+      cin>> idInput1;
+      trueCheck2 = fac->search(idInput1);
+    }
     //can potentially wrap these in while loops
     if (trueCheck2 == 1){
       cout << " "<< endl;
@@ -679,8 +715,8 @@ int filesEnabled = true;
   }
   if (option == 11){
     // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-    
-    
+
+
     // rollbackFac->insertFront(*fac);
     // rollbackStud->insertFront(*w);
     // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
@@ -765,8 +801,8 @@ int filesEnabled = true;
 
   }if (option == 12){
     // rollbackSave(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
-    
-    
+
+
     // rollbackFac->insertFront(*fac);
     // rollbackStud->insertFront(*w);
     // rollbackFacDoubly->insertFront(fac->getTreeNodeIds());
@@ -871,66 +907,7 @@ int filesEnabled = true;
     w->loadFromListOfNodes(studLoad);
     fac->loadFromListOfNodes(facLoad);
 
-    // rollbackLoad(rollbackFront, rollbackBack, *rollback0, *rollback1, *rollback2, *rollback3, *rollback4, *w);
 
-
-
-
-    // BST<Person*> *studBackButton = new BST<Person*>();
-    // BST<Person*> *facBackButton = new BST<Person*>();
-    // DoublyLinkedList<int> *studBackButtonDoubly = new DoublyLinkedList<int>();
-    // DoublyLinkedList<int> *facBackButtonDoubly = new DoublyLinkedList<int>();
-
-
-
-    // if (!(rollbackFac->isEmpty()) && !(rollbackStud->isEmpty()))
-    //   {
-    //     *studBackButton = rollbackStud->removeFront();
-    //     *facBackButton = rollbackFac->removeFront();
-    //     *studBackButtonDoubly = rollbackStudDoubly->removeFront();
-    //     *facBackButtonDoubly = rollbackFacDoubly->removeFront();
-
-    //     // cout << "Fac back button: " << endl;
-
-    //     //   studBackButton->printTree();
-    //     //   cout << endl;
-    //     // cout << "Stud back button: " << endl;
-    //     //   facBackButton->printTree();
-    //     //   cout << endl;
-    //     //   cout << endl;
-
-    //     w = studBackButton;
-    //     fac = facBackButton;
-    //     DoublyLinkedList<int> *studTreeIds = new DoublyLinkedList<int>();
-    //     DoublyLinkedList<int> *facTreeIds = new DoublyLinkedList<int>();
-    //     *studTreeIds = studBackButton->getTreeNodeIds();
-    //     *facTreeIds = facBackButton->getTreeNodeIds();
-    //     w->setTreeNodeIds(studBackButtonDoubly);
-    //     fac->setTreeNodeIds(facBackButtonDoubly);
-
-
-    //         cout << endl;
-    // cout << "Actual" << endl;
-    // cout << "Student tree: " << endl;
-    // w->printTree(w->getRoot());
-    // cout << "Fac tree: " << endl;
-    // fac->printTree(fac->getRoot());
-    // cout << endl;
-
-    // cout << endl;
-
-    // cout << "Placeholder" << endl;
-    // cout << "Student tree: " << endl;
-    // facBackButton->printTree(w->getRoot());
-    // cout << "Fac tree: " << endl;
-    // facBackButton->printTree(fac->getRoot());
-    // cout << endl;
-
-    //   }
-    // else
-    // {
-    //   cout << "No changes to roll back" << endl;
-    // }
   }//end of rollback
 
   if (option == 15){
@@ -969,16 +946,16 @@ if(filesEnabled)
   return 0;
 }
 
-//      ______                 __  _                 
+//      ______                 __  _
 //     / ____/_  ______  _____/ /_(_)___  ____  _____
 //    / /_  / / / / __ \/ ___/ __/ / __ \/ __ \/ ___/
-//   / __/ / /_/ / / / / /__/ /_/ / /_/ / / / (__  ) 
-//  /_/    \__,_/_/ /_/\___/\__/_/\____/_/ /_/____/  
-//                                                   
+//   / __/ / /_/ / / / / /__/ /_/ / /_/ / / / (__  )
+//  /_/    \__,_/_/ /_/\___/\__/_/\____/_/ /_/____/
+//
 
 
 // void rollbackSave(int &rollbackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w){
-//   switch(rollbackFront) 
+//   switch(rollbackFront)
 //   {
 //     case 0  :
 //         file0.saveStudFile(w.getListOfNodes());
@@ -1007,7 +984,7 @@ if(filesEnabled)
 
 //     else
 //     {
-//       switch(rollbackBack) 
+//       switch(rollbackBack)
 //         {
 //           case 0  :
 //           {
@@ -1029,12 +1006,12 @@ if(filesEnabled)
 //           case 4  :
 //             w = file4.getStudData();
 //             break; //optional
-            
+
 //             rollbackFront++;
 //             if (rollbackFront > 4) {rollbackFront = 0;}
 //         }
 //     }
-    
+
 //       rollbackBack++;
 //       if (rollbackFront > 4) {rollbackFront = 0;}
 
