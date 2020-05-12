@@ -34,6 +34,8 @@ void printOptions(){
   cout << "18) Given a student id, change their standing" << endl;
   cout << "19) Given a faculty id, change their level" << endl;
   cout << "20) Given a faculty id, change their department" << endl;
+  cout << "21) Given a student id, change their name" << endl;
+  cout << "22) Given a faculty id, change their name" << endl;
 }
 
 int main(){
@@ -944,16 +946,21 @@ if (option == 16)
     int userChange = 0;
     cin >> userChange;
 
+    //sets up objects to change the GPA
     TreeNode<Person*> *person= new TreeNode<Person*>();
     Person *studPrinter = new Person();
     person = w->searchNode(studId0);
     studPrinter = person->getNodeData();
-    studPrinter->setGPA(userChange);
 
-    cout << "\nStudents data before the change"<< endl;
+    //prints data before changing it
+    cout << "\nStudent's data before the change"<< endl;
     studPrinter->printStudData();
 
-    cout << "\nStudents data after the change"<< endl;
+    //changes the data
+    studPrinter->setGPA(userChange);
+
+    //prints data after changing it
+    cout << "\nStudent's data after the change"<< endl;
     studPrinter->printStudData();
 
     
@@ -982,15 +989,20 @@ if (option == 17)
     string userChange = "";
     cin >> userChange;
 
+    //sets up objects to change the major
     TreeNode<Person*> *person= new TreeNode<Person*>();
     Person *studPrinter = new Person();
     person = w->searchNode(studId0);
     studPrinter = person->getNodeData();
-    studPrinter->setMajor(userChange);
-
+    
+    //prints data before changing it
     cout << "\nStudents data before the change"<< endl;
     studPrinter->printStudData();
 
+    //actually changes it
+    studPrinter->setMajor(userChange);
+
+    //prints data after changing it
     cout << "\nStudents data after the change"<< endl;
     studPrinter->printStudData();
 
@@ -1020,15 +1032,20 @@ if (option == 18)
     string userChange = "";
     cin >> userChange;
 
+    //sets up objects to change the standing
     TreeNode<Person*> *person= new TreeNode<Person*>();
     Person *studPrinter = new Person();
     person = w->searchNode(studId0);
     studPrinter = person->getNodeData();
-    studPrinter->setStanding(userChange);
 
+    //prints data before changing it
     cout << "\nStudents data before the change"<< endl;
     studPrinter->printStudData();
 
+    //actually changes it
+    studPrinter->setStanding(userChange);
+
+    //prints data after changing it
     cout << "\nStudents data after the change"<< endl;
     studPrinter->printStudData();
 
@@ -1058,15 +1075,20 @@ if (option == 19)
     string userChange = "";
     cin >> userChange;
 
+    //sets up objects to change the standing
     TreeNode<Person*> *person= new TreeNode<Person*>();
     Person *facPrinter = new Person();
     person = fac->searchNode(facId);
     facPrinter = person->getNodeData();
-    facPrinter->setLevel(userChange);
-
+    
+    //prints data before changing it
     cout << "\nFaculty's data before the change"<< endl;
     facPrinter->printFacData();
 
+    //actually changes it
+    facPrinter->setLevel(userChange);
+
+    //prints data after changing it
     cout << "\nFaculty's data after the change"<< endl;
     facPrinter->printFacData();
 
@@ -1096,20 +1118,98 @@ if (option == 20)
     string userChange = "";
     cin >> userChange;
 
+    //sets up objects to change the standing
     TreeNode<Person*> *person= new TreeNode<Person*>();
     Person *facPrinter = new Person();
     person = fac->searchNode(facId);
     facPrinter = person->getNodeData();
-    facPrinter->setDepartment(userChange);
-
+    
+    //prints data before changing it
     cout << "\nFaculty's data before the change"<< endl;
     facPrinter->printFacData();
 
+    //actually changes it
+    facPrinter->setDepartment(userChange);
+
+    //prints data after changing it
     cout << "\nFaculty's data after the change"<< endl;
     facPrinter->printFacData();
 
+}//end option 20
+
+if (option == 21)
+{
+    int studId = 0;
+    cout << "Please enter the ID of the student you would like to modify"<< endl;
+    cin >> studId;
+
+    //error checking to see if the student exists
+    while (!(w->search(studId)))
+    {
+      cout << "That student does not exist, please enter one that does"<< endl;
+      cout<< "Enter a student ID "<<endl;
+      cin >> studId;
+    }
+
+    cout << "Enter the new name"<< endl;
+    string userChange = "";
+    std::getline(std::cin >> std::ws, userChange);
+
+    //sets up objects to change the standing
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *studPrinter = new Person();
+    person = w->searchNode(studId);
+    studPrinter = person->getNodeData();
     
-}
+    //prints data before changing it
+    cout << "\nStudent's data before the change"<< endl;
+    studPrinter->printStudData();
+
+    //actually changes it
+    studPrinter->setName(userChange);
+
+    //prints data after changing it
+    cout << "\nStudent's data after the change"<< endl;
+    studPrinter->printStudData();
+
+}//end option 21
+
+if (option == 22)
+{
+    int facId = 0;
+    cout << "Please enter the ID of the faculty you would like to modify"<< endl;
+    cin >> facId;
+
+    //error checking to see if the student exists
+    while (!(fac->search(facId)))
+    {
+      cout << "That faculty does not exist, please enter one that does"<< endl;
+      cout<< "Enter a faculty ID "<<endl;
+      cin >> facId;
+    }
+
+    cout << "Enter the new name"<< endl;
+    string userChange = "";
+    std::getline(std::cin >> std::ws, userChange);
+
+    //sets up objects to change the standing
+    TreeNode<Person*> *person= new TreeNode<Person*>();
+    Person *facPrinter = new Person();
+    person = fac->searchNode(facId);
+    facPrinter = person->getNodeData();
+    
+    //prints data before changing it
+    cout << "\nFaculty's data before the change"<< endl;
+    facPrinter->printFacData();
+
+    //actually changes it
+    facPrinter->setName(userChange);
+
+    //prints data after changing it
+    cout << "\nFaculty's data after the change"<< endl;
+    facPrinter->printFacData();
+
+}//end option 21
 
 
   //saves the data

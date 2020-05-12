@@ -31,8 +31,9 @@ void BST<T>::printTree(TreeNode<T> *node)   //create function silimar to this to
 
 }
 
+//Goes through all the objects in a tree and prints them out in a student format
 template<typename T>
-void BST<T>::printStudent(TreeNode<T> *node){   //This seems to be working
+void BST<T>::printStudent(TreeNode<T> *node){ 
 
     if (node == NULL)
         {return;}
@@ -52,8 +53,9 @@ void BST<T>::printStudent(TreeNode<T> *node){   //This seems to be working
     currentStud->printStudData();
 }
 
+//Goes through all the objects in a tree and prints them out in a faculty format
 template<typename T>
-void BST<T>::printFac(TreeNode<T> *node){   //This seems to be working
+void BST<T>::printFac(TreeNode<T> *node){
     if (node == NULL)
         {return;}
 
@@ -73,6 +75,7 @@ void BST<T>::printFac(TreeNode<T> *node){   //This seems to be working
 
 }//end of PrintFac
 
+//returns node which is the maximum
 template<typename T>
 TreeNode<T>* BST<T>::getMax()
 {
@@ -86,16 +89,18 @@ TreeNode<T>* BST<T>::getMax()
         curr = curr->right;
     }
 
-    return curr;
+    return curr;// or curr->key to get the value
 
-  } // or curr->key to get the value
+} //end of getMax
 
+//returns root
   template<typename T>
 TreeNode<T>* BST<T>::getRoot()
 {
     return root;
 }
 
+//returns node which is the minimum
 template<typename T>
   TreeNode<T>* BST<T>::getMin()
   {
@@ -109,9 +114,9 @@ template<typename T>
           curr = curr->left;
       }
 
-      return curr;
+      return curr;// or curr->key to get the value
 
-    } // or curr->key to get the value
+    }//end of getMin
 
 template<typename T>
     bool BST<T>::isEmpty()
@@ -166,6 +171,7 @@ void BST<T>::insert(int value, T nodeValue)
     }
 }
 
+
 template<typename T>
     bool BST<T>::search(int value)
     {
@@ -213,6 +219,7 @@ template<typename T>
             return false;
         }
     }//end of search
+
 
 template <typename T>
     TreeNode<T>* BST<T>::searchNode(int value)
@@ -460,55 +467,22 @@ void BST<T>::loadFromListOfNodes(DoublyLinkedList<Person*> *listOfNodes){
 
 
     *this = *newTree;
-}
-
-
-
-
-
-// template<typename T>
-// void BST<T>::addNodesToDoublyLinkedList(TreeNode<T*> *node, DoublyLinkedList<T*> *doublyList){//come back
-    
-//   if (node == NULL)
-//       {return;}
-
-//     addNodesToDoublyLinkedList(node->left, *doublyList);
-//     addNodesToDoublyLinkedList(node->right, *doublyList);
-
-//     T *tempNode = new T();
-//     *tempNode = node->getNodeData();
-
-//     doublyList.insertFront(*tempNode);
-// }
-
-// template<typename T>
-// DoublyLinkedList<T> BST<T>::getListOfNodes(){
-//    DoublyLinkedList<T> *doublyList = new DoublyLinkedList<T>();
-
-//     addNodesToDoublyLinkedList(root, doublyList);
-
-//     cout << "Doubly List: " << endl;
-//     doublyList->printList();
-
-//   return doublyList;
-// }
-
-
+}//end loadFromListOfNodes
 
 template<typename T>
 void BST<T>::insertTreeNodeIds(int d)
 {
     treeNodeIds->insertFront(d);
-}
+}//end insertTreeNodeIds
 
 template<typename T>
 void BST<T>::setTreeNodeIds(DoublyLinkedList<int> *doublyList)
 {
     treeNodeIds = doublyList;
-}
+}//end setTreeNodeIds
 
 template<typename T>
 DoublyLinkedList<int> BST<T>::getTreeNodeIds()
 {
     return *treeNodeIds;
-}
+}//end getTreeNodeIds

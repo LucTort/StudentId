@@ -103,7 +103,6 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
     myFile << facNodes.getSize() << endl;  //puts number of students at top of file
     while (facNodes.getSize() > 0)
     {
-        // cout <<"YEEEEEEEEEEEEEEEEEEEEEEEEEEE" << endl << endl;
         currentFac = facNodes.removeFront();
 
         myFile << currentFac->getId() << endl;
@@ -115,8 +114,6 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
         advisees = currentFac->getAdvisees();
         int currentAdvisee = 0;
         // bool needEndl = false;
-
-        cout << "Here is the size: " <<advisees->getSize() << endl;
 
         myFile << advisees->getSize() << endl;
 
