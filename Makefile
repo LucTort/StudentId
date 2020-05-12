@@ -10,7 +10,7 @@
 EXECUTABLE := assignment5
 
 # the source files to be built
-SOURCES := main.cpp
+SOURCES := wyattmain.cpp
 
 #stuff you don't need to worry about
 INCLUDES := -I ../include

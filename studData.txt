@@ -8,7 +8,7 @@ Finance
 
 35
 Rosie O Donald
-Senior
+poop
 3.8
 Accounting
 50
@@ -17,6 +17,6 @@ Accounting
 Frank Azark
 Junior
 4
-CompSci
+poop
 20
 
