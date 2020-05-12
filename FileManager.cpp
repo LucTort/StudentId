@@ -2,6 +2,10 @@
 //https://stackoverflow.com/questions/17032970/clear-data-inside-text-file-in-c
 //Uses code from assignment 1
 //https://stackoverflow.com/questions/7663709/how-can-i-convert-a-stdstring-to-int
+//https://www.cplusplus.com/forum/general/1796/
+//https://stackoverflow.com/questions/18100391/check-if-a-file-exists-without-opening-it
+//https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
+//https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/rtacc.htm
 #include "FileManager.h"
 
 //    _____              __               __
@@ -14,6 +18,34 @@ FileManager::FileManager()
 {
     studDataFile = "studData.txt";
     facDataFile = "facData.txt";
+
+    const char *facDataFileTest = "facData.txt";
+    const char *studDataFileTest = "studData.txt";
+
+
+    //makes sure that there is some data in the file if there wasn't any previously. Otherwise program would crash
+    if( access( facDataFileTest, F_OK ) != -1 ) //https://stackoverflow.com/questions/230062/whats-the-best-way-to-check-if-a-file-exists-in-c
+        {                                       //https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxbd00/rtacc.htm
+        // file exists
+        } else 
+        {
+            ofstream myFile;
+            myFile.open(facDataFile, std::ofstream::out | std::ofstream::trunc);
+            myFile << "0" << endl;
+            myFile.close();
+        }
+            
+
+        if( access( studDataFileTest, F_OK ) != -1 ) 
+        {
+        // file exists
+        } else 
+        {
+            ofstream myFile;
+            myFile.open(studDataFile, std::ofstream::out | std::ofstream::trunc);
+            myFile << "0" << endl;
+            myFile.close();
+        }
 }
 
 FileManager::FileManager(string studData, string facData)

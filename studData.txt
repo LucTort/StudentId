@@ -1,4 +1,4 @@
-4
+3
 40
 Bob Miller
 Senior
@@ -11,19 +11,12 @@ Rosie O Donald
 Senior
 3.8
 Accounting
-0
+50
 
 30
 Frank Azark
 Junior
-1.2
+4
 CompSci
 20
-
-12
-wyat
-poop
-1.2
-poo
-1
 
