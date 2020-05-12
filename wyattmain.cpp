@@ -1,6 +1,6 @@
 //https://www.tutorialspoint.com/cplusplus/cpp_switch_statement.htm
 
-#include "FileManager.cpp"
+#include "CatInHat.cpp"
 
 
 // void rollbackSave(int &rollBackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w);
@@ -25,6 +25,8 @@ void printOptions(){
   cout << "12) Remove an advisee from a faculty member given the ids " << endl;
   cout << "13) Rollback " << endl;
   cout << "14) Exit" << endl;
+  cout << "15) Cat in the Hat " << endl;
+  cout << "16) Given a student" << endl;
 }
 
 int main(){
@@ -46,6 +48,9 @@ int main(){
 
 
     FileManager *myFileManager = new FileManager();
+
+
+    CatInHat *cat = new CatInHat();
 
 
 //      ______            __    __        _______ __
@@ -927,6 +932,10 @@ int filesEnabled = true;
     //   cout << "No changes to roll back" << endl;
     // }
   }//end of rollback
+
+  if (option == 15){
+    cat->printCat();
+  }
 
 
   //saves the data

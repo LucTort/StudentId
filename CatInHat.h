@@ -1,9 +1,5 @@
 //References Stud class from assignment 4
-
-using namespace std;
-#include <cstdlib>
-#include <stdexcept>
-#include <iostream>
+#include "FileManager.cpp"
 
 
 class CatInHat
