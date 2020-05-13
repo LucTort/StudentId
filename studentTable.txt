@@ -18,5 +18,5 @@ Bob Smith
 Junior
 2
 poop
-70
+50
 

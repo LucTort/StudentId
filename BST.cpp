@@ -263,7 +263,6 @@ template <typename T>
 template <typename T>
     bool BST<T>::deleteNode(int k)
     {
-        // cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
         if(isEmpty())
         {
             return false;

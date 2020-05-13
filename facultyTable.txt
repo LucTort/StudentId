@@ -3,7 +3,8 @@
 Lucas Torti
 Lecturer
 Keck Center
-0
+1
+30
 
 20
 wyatt miller
@@ -15,6 +16,5 @@ Argyros
 Chris Chang
 assistant professor
 poop
-1
-30
+0
 

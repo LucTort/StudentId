@@ -42,7 +42,6 @@ T DoublyLinkedList<T>::peekDoubly(){
 
   if (front == NULL){
     cout << "The Queue is empty"<< endl;
-
   }
   return back->data;
 }
@@ -91,43 +90,6 @@ void DoublyLinkedList<T>::insertBack(T d){
     back = node;
 }
 
-// template<typename T>
-// void DoublyLinkedList<T>::insertFront(T dataToInsert)
-// {
-//     ListNode<T> *node = new ListNode<T>(dataToInsert);
-//     //node.nodeData = dataToInsert;
-
-//     if(isEmpty())
-//     {
-//         back = node;
-//     }else
-//     {
-//         front->prev = node;
-//         node->next = front;
-//     }
-//     front = node;
-
-//     size++;
-// }
-
-// template<typename T>
-// void DoublyLinkedList<T>::insertBack(T dataToInsert)
-// {
-//     ListNode<T> *node = new ListNode<T>(dataToInsert);
-
-//     if(isEmpty())
-//     {
-//         front = node;
-//     }else
-//     {
-//         back->next = node;
-//         node->prev = back;
-//     }
-//     back = node;
-
-//     size++;
-// }
-
 template <class T>
 T DoublyLinkedList<T>::removeFront(){
   if (!(isEmpty())){
@@ -169,6 +131,7 @@ T DoublyLinkedList<T>::removeBack(){
   }
 }
 
+//does what it says it does
 template <class T>
 T DoublyLinkedList<T>::removeAtPos(int pos){
 
@@ -257,8 +220,9 @@ void DoublyLinkedList<T>::clearList(){
 
 }
 
+//simply returns a copt of the doubly linked list
 template <class T>
-DoublyLinkedList<T> DoublyLinkedList<T>::getSelf() //this seems to work properly
+DoublyLinkedList<T> DoublyLinkedList<T>::getSelf()
 {
     ListNode<T> *curr = back;
     T currData;

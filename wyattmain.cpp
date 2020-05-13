@@ -1269,7 +1269,6 @@ if (option == 22)
 
 if (filesEnabled)
 {
-  w->printTree(w->getRoot());
   myFileManager->saveFacFile(fac->getListOfNodes());
   myFileManager->saveStudFile(w->getListOfNodes());
 }

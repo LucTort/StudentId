@@ -99,7 +99,6 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
     myFile.open(facDataFile, std::ofstream::out | std::ofstream::trunc);
 
     Person *currentFac = new Person();
-    // cout << "Its size: "<<facNodes.getSize() << endl;  //puts number of faculty at top of file
     myFile << facNodes.getSize() << endl;  //puts number of students at top of file
     while (facNodes.getSize() > 0)
     {
@@ -117,7 +116,6 @@ void FileManager::saveFacFile(DoublyLinkedList<Person*> facNodes)
 
         myFile << advisees->getSize() << endl;
 
-        // cout << advisees->getSize() << endl;
 
             while(advisees->getSize() > 0)
             {

@@ -33,6 +33,7 @@ r. wyattmain.cpp
 
 3.) Description of any know compile/runtime errors, or bugs
 a. Bug: Rollback does not roll back changes to faculty or student data, but rather their creation and deletion
+b. Bug: Deleting all faculty then trying to delete a student causes and error
 
 4.) References used to complete the assignment
 a. In class resources
