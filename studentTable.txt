@@ -11,12 +11,12 @@ Rosie O Donald
 poop
 3.8
 Accounting
-50
+0
 
 30
 Bob Smith
 Junior
 2
 poop
-20
+70
 

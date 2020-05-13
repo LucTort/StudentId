@@ -791,15 +791,44 @@ int filesEnabled = true;
     cout << "\nFaculty data after the change"<< endl;
     facPrinter->printFacData();
 
-          //go to old advisee and remove the student
-    // facPerson = fac->searchNode(oldAdviseeNum);
-    // facPrinter = facPerson->getNodeData();
-    // DoublyLinkedList <int> *advisees = new DoublyLinkedList<int>();
-    // advisees = facPrinter->getAdvisees();
-    // advisees->remove(oldAdviseeNum);
-    // facPrinter->setAdvisees(advisees);
-    // fac->deleteNode(oldAdviseeNum);
-    // fac->insert(oldAdviseeNum, facPrinter);
+    //and go into the old faculty and remove the student
+
+    //error checking to see if the fac exists
+    if(fac->search(oldAdviseeNum))
+    {
+      TreeNode<Person*> *facPerson= new TreeNode<Person*>();
+      Person *facPrinter = new Person();
+      DoublyLinkedList <int> *modAdv = new DoublyLinkedList<int>();
+      int sizeOf = 0;
+      int idremoved1 = 0;
+      facPerson = fac->searchNode(oldAdviseeNum);
+
+      facPrinter = facPerson->getNodeData();
+
+      modAdv = facPrinter->getAdvisees();
+
+      //Student portion, checking if the student the entered is one of their advisees
+
+
+        cout << "\nFaculty data before the change"<< endl;
+        facPrinter->printFacData();
+
+        sizeOf = modAdv->getSize();
+
+        //removing the student if that student equals the input otherwise inserting him back into the doubly, to later renew the doubly link list and reinsert
+
+        for (int i = 1; i<=sizeOf; ++i){  //go through entire doubly linked list, and remove the student which is the right one
+          idremoved1=modAdv->removeBack();
+          if (idremoved1 != studId0){
+            modAdv->insertFront(idremoved1);
+          }
+        }
+
+        facPrinter->setAdvisees(modAdv);
+
+        cout << "\nFaculty data after the change"<< endl;
+        facPrinter->printFacData();
+    }
 
   }
   
