@@ -54,5 +54,4 @@ n. https://stackoverflow.com/questions/5655142/how-to-check-if-input-is-numeric-
 
 5.) Instructions for running the assignment
 1. Run "make all"
-2. Run SyntaxChecker.exe
-3. If reading from text file, make sure text file is in the same directory
+2. Run assignment5.exe
