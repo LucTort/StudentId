@@ -263,7 +263,7 @@ template <typename T>
 template <typename T>
     bool BST<T>::deleteNode(int k)
     {
-        cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
+        // cout << "removed: " << treeNodeIds->remove(k) << endl << endl << "Look at me"<< endl;
         if(isEmpty())
         {
             return false;
@@ -421,18 +421,14 @@ template<typename T>
 
 template<typename T>
 DoublyLinkedList<T> BST<T>::getListOfNodes(){
-    // cout << "YEETHAW" << endl;
-    cout << "Size of treeNodeIds: " << treeNodeIds->getSize() <<endl;
     
   TreeNode<T> *studTreeNode = new TreeNode<T>();
   Person *studPersonNode = new Person();
   DoublyLinkedList<int> *tempNodeIds = new DoublyLinkedList<int>;
   DoublyLinkedList<T> *returnedNodes = new DoublyLinkedList<T>;
   *tempNodeIds = treeNodeIds->getSelf();
-//   cout << "Nodes in BST: " <<tempNodeIds->getSize() << endl;
   int currentStudId;
 
-//   cout << "Size in getListOfNodes: " << tempNodeIds->getSize()<< endl;
   while (!(tempNodeIds->isEmpty())){
 
 
@@ -443,7 +439,6 @@ DoublyLinkedList<T> BST<T>::getListOfNodes(){
 
     studTreeNode = searchNode(currentStudId);
     studPersonNode = studTreeNode->getNodeData();
-    cout << studPersonNode->getId() << endl;
 
     returnedNodes->insertFront(studPersonNode);
   }

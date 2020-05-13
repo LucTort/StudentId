@@ -1,12 +1,7 @@
 //https://www.tutorialspoint.com/cplusplus/cpp_switch_statement.htm
+//https://stackoverflow.com/questions/5655142/how-to-check-if-input-is-numeric-in-c
 
 #include "CatInHat.cpp"
-
-
-// void rollbackSave(int &rollBackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w);
-
-
-// void rollbackLoad(int &rollBackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w);
 
 
 //printing out all of the options
@@ -41,21 +36,6 @@ void printOptions(){
 int main(){
 
 
-  // FileManager *rollback0 = new FileManager("studRollback0.txt", "facRollback0.txt");
-  // FileManager *rollback1 = new FileManager("studRollback1.txt", "facRollback1.txt");
-  // FileManager *rollback2 = new FileManager("studRollback2.txt", "facRollback2.txt");
-  // FileManager *rollback3 = new FileManager("studRollback3.txt", "facRollback3.txt");
-  // FileManager *rollback4 = new FileManager("studRollback4.txt", "facRollback4.txt");
-
-
-  // int rollbackFront = 0;
-  // int rollbackBack = 0;
-
-
-
-
-
-
     FileManager *myFileManager = new FileManager();
 
 
@@ -78,10 +58,6 @@ int filesEnabled = true;
 //  /_/  \___/____/\__/   /____/\__/\__,_/\__,_/    /_/ /_/   \___/\___/
 //
 
-
-
-
-
   int idInput = 0;
   int facIdInput = 0;
   int trueCheck = -1;
@@ -90,14 +66,6 @@ int filesEnabled = true;
 
   BST<Person*> *w = new BST<Person*>();
   BST<Person*> *fac = new BST<Person*>();
-
-  // Rollback Files
-  // DoublyLinkedList<BST<Person*>> *rollbackStud = new DoublyLinkedList<BST<Person*>>();
-  // DoublyLinkedList<BST<Person*>> *rollbackFac = new DoublyLinkedList<BST<Person*>>();
-  // DoublyLinkedList<DoublyLinkedList<int>> *rollbackStudDoubly = new DoublyLinkedList<DoublyLinkedList<int>>();
-  // DoublyLinkedList<DoublyLinkedList<int>> *rollbackFacDoubly = new DoublyLinkedList<DoublyLinkedList<int>>();
-
-
 
   DoublyLinkedList<DoublyLinkedList<Person*>> *prevStudTrees = new DoublyLinkedList<DoublyLinkedList<Person*>>();
   DoublyLinkedList<DoublyLinkedList<Person*>> *prevFacTrees = new DoublyLinkedList<DoublyLinkedList<Person*>>();
@@ -193,16 +161,27 @@ int filesEnabled = true;
 
       fac->insert(chris->getId(), chris);
   }
+
   int option = 0;
+
 
 // the big while loop
   while(option != 14)
   {
 
-
     printOptions();
 
-    cin >> option;
+    cin >> option;    //https://stackoverflow.com/questions/5655142/how-to-check-if-input-is-numeric-in-c
+    while(!cin) // or if(cin.fail())
+    {
+        cout << "Invalid input. Please try again" << endl;
+        // user didn't input a number
+        cin.clear(); // reset failbit
+        cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //skip bad input
+        // next, request user reinput
+    }
+    
+
 
 //option 1
     if (option == 1){
@@ -519,8 +498,7 @@ int filesEnabled = true;
 
       int trueCheck4 = 0;
       trueCheck4 = fac->search(getTheFac);
-
-      if (trueCheck4 ==1){
+      if (trueCheck4 == 1){
         cout << " "<<endl;
         TreeNode<Person*> *facPerson= new TreeNode<Person*>();
         Person *facPrinter = new Person();
@@ -729,9 +707,14 @@ int filesEnabled = true;
       }
     }
   }
-  //option 11
-  if (option == 11){
-//rollback
+//     ______
+//    <  <  /
+//    / // / 
+//   / // /  
+//  /_//_/   
+//           
+//option 11
+  if (option == 11){//come back
 
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
@@ -745,14 +728,13 @@ int filesEnabled = true;
     trueCheck1 = w->search(studId0);
     //error checking to see if the student exists
     while (trueCheck1 == 0){
-      cout << "That student does not exist, please enter one that does"<< endl;
+      cout << "That student does not exist, please enter one that does"<< endl;//gets student id
       cout<< "Enter a student ID "<<endl;
       cin>> studId0;
       trueCheck1 = w->search(studId0);
     }
 
-
-    cout << "Enter the new faculty ID"<< endl;
+    cout << "Enter the new faculty ID"<< endl;//gets faculty id
     cin >> facID;
 
     int trueCheck2= 0;
@@ -768,7 +750,7 @@ int filesEnabled = true;
     //from here I must go into the student and change the advisor
 
     cout << " "<< endl;
-    TreeNode<Person*> *person= new TreeNode<Person*>();
+    TreeNode<Person*> *person= new TreeNode<Person*>();//sets up for changing advisee
     Person *studPrinter = new Person();
     person = w->searchNode(studId0);
 
@@ -776,6 +758,7 @@ int filesEnabled = true;
 
     cout << "\nStudents data before the change"<< endl;
     studPrinter->printStudData();
+    int oldAdviseeNum = studPrinter->getAdvisor();
 
     studPrinter->setAdvisor(facID);
 
@@ -785,7 +768,7 @@ int filesEnabled = true;
     //and go into the faculty and change the student
 
     cout << " "<< endl;
-    TreeNode<Person*> *facPerson= new TreeNode<Person*>();
+    TreeNode<Person*> *facPerson = new TreeNode<Person*>();
     Person *facPrinter = new Person();
     DoublyLinkedList <int> *modAdv = new DoublyLinkedList<int>();
     facPerson = fac->searchNode(facID);
@@ -808,9 +791,19 @@ int filesEnabled = true;
     cout << "\nFaculty data after the change"<< endl;
     facPrinter->printFacData();
 
+          //go to old advisee and remove the student
+    // facPerson = fac->searchNode(oldAdviseeNum);
+    // facPrinter = facPerson->getNodeData();
+    // DoublyLinkedList <int> *advisees = new DoublyLinkedList<int>();
+    // advisees = facPrinter->getAdvisees();
+    // advisees->remove(oldAdviseeNum);
+    // facPrinter->setAdvisees(advisees);
+    // fac->deleteNode(oldAdviseeNum);
+    // fac->insert(oldAdviseeNum, facPrinter);
 
-  }if (option == 12){
-//rollback
+  }
+  
+  if (option == 12){
     prevStudTrees->insertFront(w->getListOfNodes());
     prevFacTrees->insertFront(fac->getListOfNodes());
 
@@ -854,50 +847,57 @@ int filesEnabled = true;
     int trueCheck1= 0;
     trueCheck1 = modAdv->search(studId0);
     //error checking to see if the student exists
-    while (trueCheck1 == 0){
+    while (trueCheck1 == 0 && !(modAdv->isEmpty())){
       cout << "That advisee is not one of this faculties advisees"<< endl;
       cout<< "Enter a valid advisee ID "<<endl;
       cin>> studId0;
       trueCheck1 = modAdv->search(studId0);
     }
 
-    cout << "\nFaculty data before the change"<< endl;
-    facPrinter->printFacData();
+    if (modAdv->isEmpty())
+    {
+      cout << endl <<"Oop, it looks like that faculty doesn't have any advisees." << endl << endl;
+    } 
+    else{
 
-    sizeOf = modAdv->getSize();
+      cout << "\nFaculty data before the change"<< endl;
+      facPrinter->printFacData();
 
-    //removing the student if that student equals the input otherwise inserting him back into the doubly, to later renew the doubly link list and reinsert
+      sizeOf = modAdv->getSize();
 
-    for (int i = 1; i<=sizeOf; ++i){
-      idremoved1=modAdv->removeBack();
-      if (idremoved1 != studId0){
-        modAdv->insertFront(idremoved1);
+      //removing the student if that student equals the input otherwise inserting him back into the doubly, to later renew the doubly link list and reinsert
+
+      for (int i = 1; i<=sizeOf; ++i){
+        idremoved1=modAdv->removeBack();
+        if (idremoved1 != studId0){
+          modAdv->insertFront(idremoved1);
+        }
       }
+
+      facPrinter->setAdvisees(modAdv);
+
+      cout << "\nFaculty data after the change"<< endl;
+      facPrinter->printFacData();
+
+
+
+      //from here I must go into the student and change the advisor
+
+      cout << " "<< endl;
+      TreeNode<Person*> *person= new TreeNode<Person*>();
+      Person *studPrinter = new Person();
+      person = w->searchNode(studId0);
+
+      studPrinter = person->getNodeData();
+
+      cout << "\nStudents data before the change"<< endl;
+      studPrinter->printStudData();
+
+      studPrinter->setAdvisor(0);
+
+      cout << "\nStudents data after the change"<< endl;
+      studPrinter->printStudData();
     }
-
-    facPrinter->setAdvisees(modAdv);
-
-    cout << "\nFaculty data after the change"<< endl;
-    facPrinter->printFacData();
-
-
-
-    //from here I must go into the student and change the advisor
-
-    cout << " "<< endl;
-    TreeNode<Person*> *person= new TreeNode<Person*>();
-    Person *studPrinter = new Person();
-    person = w->searchNode(studId0);
-
-    studPrinter = person->getNodeData();
-
-    cout << "\nStudents data before the change"<< endl;
-    studPrinter->printStudData();
-
-    studPrinter->setAdvisor(0);
-
-    cout << "\nStudents data after the change"<< endl;
-    studPrinter->printStudData();
 
   }
 
@@ -911,8 +911,15 @@ int filesEnabled = true;
     *studLoad = prevStudTrees->removeFront();
     *facLoad = prevFacTrees->removeFront();
 
-    w->loadFromListOfNodes(studLoad);
-    fac->loadFromListOfNodes(facLoad);
+    if(!(prevStudTrees->isEmpty() || prevStudTrees->isEmpty()))
+    {
+      w->loadFromListOfNodes(studLoad);
+      fac->loadFromListOfNodes(facLoad);
+      cout << endl <<"Changes rolled back" << endl;
+    }else 
+    {
+      cout << endl <<"No changes to roll back!" << endl;
+    }
 
 
   }//end of rollback
@@ -943,7 +950,7 @@ if (option == 16)
     }
 
     cout << "Enter the new GPA"<< endl;
-    int userChange = 0;
+    double userChange = 0;
     cin >> userChange;
 
     //sets up objects to change the GPA
@@ -1228,8 +1235,6 @@ if (option == 22)
         DoublyLinkedList<int> *facTreeIds = new DoublyLinkedList<int>();
         *studTreeIds = w->getTreeNodeIds();
         *facTreeIds = fac->getTreeNodeIds();
-        cout << "Stud node num ids: " << studTreeIds->getSize() << endl;
-        cout << "Fac node num ids: " << facTreeIds->getSize() << endl;
 
 }//end of while
 
@@ -1242,76 +1247,3 @@ if (filesEnabled)
 
   return 0;
 }
-
-//      ______                 __  _
-//     / ____/_  ______  _____/ /_(_)___  ____  _____
-//    / /_  / / / / __ \/ ___/ __/ / __ \/ __ \/ ___/
-//   / __/ / /_/ / / / / /__/ /_/ / /_/ / / / (__  )
-//  /_/    \__,_/_/ /_/\___/\__/_/\____/_/ /_/____/
-//
-
-
-// void rollbackSave(int &rollbackFront, int &rollBackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4 , BST<Person*> w){
-//   switch(rollbackFront)
-//   {
-//     case 0  :
-//         file0.saveStudFile(w.getListOfNodes());
-//       break; //optional
-//     case 1  :
-//       file1.saveStudFile(w.getListOfNodes());
-//       break; //optional
-//     case 2  :
-//       file2.saveStudFile(w.getListOfNodes());
-//       break; //optional
-//     case 3  :
-//       file3.saveStudFile(w.getListOfNodes());
-//       break; //optional
-//     case 4  :
-//       file4.saveStudFile(w.getListOfNodes());
-//       break; //optional
-//   }
-
-//   rollbackFront++;
-//       if (rollbackFront > 4) {rollbackFront = 0;}
-//       cout << "Front on: " << rollbackFront << endl;
-// }//end rollbackSave
-
-// void rollbackLoad(int &rollbackFront, int &rollbackBack, FileManager file0, FileManager file1, FileManager file2, FileManager file3, FileManager file4, BST<Person*> w){
-//     if (rollbackFront == rollbackBack) {return;}
-
-//     else
-//     {
-//       switch(rollbackBack)
-//         {
-//           case 0  :
-//           {
-//             cout << "Test" << endl << "Test" << endl;
-//             BST<Person*> *tempTree = new BST<Person*>();
-//             *tempTree = file0.getStudData();
-//             w = *tempTree;
-//             break; //optional
-//           }
-//           case 1  :
-//             w = file1.getStudData();
-//             break; //optional
-//           case 2  :
-//             w = file2.getStudData();
-//             break; //optional
-//           case 3  :
-//             w = file3.getStudData();
-//             break; //optional
-//           case 4  :
-//             w = file4.getStudData();
-//             break; //optional
-
-//             rollbackFront++;
-//             if (rollbackFront > 4) {rollbackFront = 0;}
-//         }
-//     }
-
-//       rollbackBack++;
-//       if (rollbackFront > 4) {rollbackFront = 0;}
-
-//       cout << "Back on: " << rollbackBack << endl;
-
-// }//end rollbackLoad

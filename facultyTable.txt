@@ -1,11 +1,4 @@
 3
-70
-chris change
-assistant professor
-poop
-1
-40
-
 50
 Lucas Torti
 Lecturer
@@ -19,4 +12,10 @@ professor
 Argyros
 1
 30
+
+70
+Chris Chang
+assistant professor
+poop
+0
 

@@ -17,11 +17,11 @@
 //default constructor
 FileManager::FileManager()
 {
-    studDataFile = "studData.txt";
-    facDataFile = "facData.txt";
+    studDataFile = "studentTable.txt";
+    facDataFile = "facultyTable.txt";
 
-    const char *facDataFileTest = "facData.txt";
-    const char *studDataFileTest = "studData.txt";
+    const char *facDataFileTest = "facultyTable.txt";
+    const char *studDataFileTest = "studentTable.txt";
 
 
     //makes sure that there is some data in the file if there wasn't any previously. Otherwise program would crash
